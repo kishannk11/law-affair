@@ -1,5 +1,5 @@
 /**
- * Theme: Crovex - Responsive Bootstrap 4 Admin Dashboard
+ * Theme: Law Affair - Responsive Bootstrap 4 Admin Dashboard
  * Author: Mannatthemes
  * Sweet Alert Js
  */
@@ -130,9 +130,9 @@
         //Custom Image
         $('#sa-image').click(function () {
             Swal.fire({
-                title: 'Crovex',
+                title: 'Law Affair',
                 text: 'Modal with a custom image.',
-                imageUrl: '../assets/images/logo-sm.png',
+                imageUrl: '../assets/images/logo.png',
                 imageHeight: 80,
                 animation: false
             })            

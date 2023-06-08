@@ -1,5 +1,5 @@
 /**
- * Theme: Crovex - Responsive Bootstrap 4 Admin Dashboard
+ * Theme: Law Affair - Responsive Bootstrap 4 Admin Dashboard
  * Author: Mannatthemes
  * Apexcharts Js
  */
@@ -2954,7 +2954,7 @@ var spark1 = {
       opacity: 0.2,
   },
   series: [{
-      name: 'Crovex Sales ',
+      name: 'Law Affair Sales ',
       data: randomizeArray(sparklineData)
   }],
   yaxis: {
@@ -3006,7 +3006,7 @@ var spark2 = {
       opacity: 0.2,
   },
   series: [{
-      name: 'Crovex Expenses ',
+      name: 'Law Affair Expenses ',
       data: randomizeArray(sparklineData)
   }],
   yaxis: {
