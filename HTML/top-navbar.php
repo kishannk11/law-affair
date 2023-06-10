@@ -83,7 +83,10 @@
         <div class="left-sidenav">
             <ul class="metismenu left-sidenav-menu">
                 <li>
-                    <a href="../dashboard/helpdesk-index.html"><i class="ti-bar-chart"></i><span>Dashboard</span></i></span></a>
+                    <a href="../dashboard/helpdesk-index.php"><i class="ti-bar-chart"></i><span>Dashboard</span></i></span></a>
+                </li>
+                <li>
+                    <a href="../dashboard/helpdesk-index.php"><i class="ti-bar-chart"></i><span>Dashboard</span></i></span></a>
                 </li>
 
                 <li>
