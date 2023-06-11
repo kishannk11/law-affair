@@ -36,7 +36,7 @@
                                     </div><!--end auth-logo-box-->
                                     
                                     <div class="text-center auth-logo-text">
-                                        <h4 class="mt-0 mb-3 mt-5">Reset Password For Law Affair</h4>
+                                        <h4 class="mt-0 mb-3 mt-5">Reset Password</h4>
                                         <p class="text-muted mb-0">Enter your Email and instructions will be sent to you!</p>  
                                     </div> <!--end auth-logo-text-->  
     
@@ -63,7 +63,7 @@
                                 </div><!--end /div-->
                                 
                                 <div class="m-3 text-center text-muted">
-                                    <p class="">Remember It ?  <a href="index.html" class="text-primary ml-2">Sign in here</a></p>
+                                    <p class="">Remember It ?  <a href="login.php" class="text-primary ml-2">Sign in here</a></p>
                                 </div>
                             </div><!--end card-body-->
                         </div><!--end card-->
