@@ -84,9 +84,9 @@ require("top-navbar.php");
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Airi Satou</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
+                                            <td>Siri Sharma</td>
+                                            <td>Kishan Nayak</td>
+                                            <td>siri@gmail.com</td>
                                             <td>2008/11/28</td>
                                             <td>                                                                                                       
                                                 <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
