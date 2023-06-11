@@ -31,7 +31,7 @@
 
             <!-- LOGO -->
             <div class="topbar-left">
-                <a href="helpdesk.php" class="logo">
+                <a href="dashboard.php" class="logo">
                     <span>
                         <img src="assets/images/logo-full.png" alt="logo" class="logo-sm">
                     </span>
@@ -79,27 +79,27 @@
         <div class="left-sidenav">
             <ul class="metismenu left-sidenav-menu">
                 <li>
-                    <a href="helpdesk.php"><i class="ti-bar-chart"></i><span>Dashboard</span></i></span></a>
+                    <a href="dashboard.php"><i class="ti-bar-chart"></i><span>Dashboard</span></i></span></a>
                 </li>
 
                 <li>
                     <a href="javascript: void(0);"><i class="ti-tag"></i><span>Advocates</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        <li class="nav-item"><a class="nav-link" href="../authentication/auth-login.html"><i class="ti-control-record"></i>Add Advocate</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../authentication/auth-register.html"><i class="ti-control-record"></i>Advocates List</a></li>
+                        <li class="nav-item"><a class="nav-link" href="add_advocate.php"><i class="ti-control-record"></i>Add Advocate</a></li>
+                        <li class="nav-item"><a class="nav-link" href="advocate-list.php"><i class="ti-control-record"></i>Advocates List</a></li>
                     </ul>
                 </li>
 
                 <li>
                     <a href="javascript: void(0);"><i class="ti-briefcase"></i><span>Clients</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        <li class="nav-item"><a class="nav-link" href="../authentication/auth-login.html"><i class="ti-control-record"></i>Add Client</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../authentication/auth-register.html"><i class="ti-control-record"></i>Client List</a></li>
+                        <li class="nav-item"><a class="nav-link" href="add_client.php"><i class="ti-control-record"></i>Add Client</a></li>
+                        <li class="nav-item"><a class="nav-link" href="client_list.php"><i class="ti-control-record"></i>Client List</a></li>
                     </ul>
                 </li>
 
                 <li>
-                    <a href="helpdesk.php"><i class="ti-power-off"></i><span>Logout</span></i></span></a>
+                    <a href="dashboard.php"><i class="ti-power-off"></i><span>Logout</span></i></span></a>
                 </li>
 
             </ul>

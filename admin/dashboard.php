@@ -144,7 +144,7 @@ require("top-navbar.php");
                                                 <tr>
                                                     <td>
                                                         <div class="media">
-                                                            <img src="assets/images/users/kishan.jpeg" alt="" class="thumb-sm rounded-circle mr-2">                                       
+                                                            <img src="assets/images/users/kishan.png" alt="" class="thumb-sm rounded-circle mr-2">                                       
                                                             <div class="media-body align-self-center text-truncate">
                                                                 <h6 class="mt-0 mb-1 text-dark">Kishan Nayak</h6>
                                                                 <p class="text-muted mb-0">Senior Advocate</p>
@@ -164,7 +164,7 @@ require("top-navbar.php");
                                                 <tr>
                                                     <td>
                                                         <div class="media">
-                                                            <img src="assets/images/users/ranju.jpeg" alt="" class="thumb-sm rounded-circle mr-2">                                       
+                                                            <img src="assets/images/users/ranju.png" alt="" class="thumb-sm rounded-circle mr-2">                                       
                                                             <div class="media-body align-self-center text-truncate">
                                                                 <h6 class="mt-0 mb-1 text-dark">Ranjith</h6>
                                                                 <p class="text-muted mb-0">Senior Advocate</p>
