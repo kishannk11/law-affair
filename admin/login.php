@@ -99,7 +99,7 @@ require_once "User.php";
                                             </div>
                                         </div><!--end col-->
                                         <div class="col-sm-6 text-right">
-                                            <a href="auth-recover-pw.html" class="text-muted font-13"><i
+                                            <a href="forgot_password.php" class="text-muted font-13"><i
                                                     class="dripicons-lock"></i> Forgot password?</a>
                                         </div><!--end col-->
                                     </div><!--end form-group-->
