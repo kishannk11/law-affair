@@ -3,7 +3,7 @@ require_once('config/session.php');
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark" >
 
     <head>
         <meta charset="utf-8" />
@@ -100,7 +100,7 @@ require_once('config/session.php');
                 </li>
 
                 <li>
-                    <a href="dashboard.php"><i class="ti-power-off"></i><span>Logout</span></i></span></a>
+                    <a href="logout.php"><i class="ti-power-off"></i><span>Logout</span></i></span></a>
                 </li>
 
             </ul>
