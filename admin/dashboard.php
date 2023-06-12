@@ -72,7 +72,7 @@ require("top-navbar.php");
                             </div><!--end row-->                                                      
                             <div class="card">
                                 <div class="card-body">  
-                                    <h4 class="header-title mt-0">Tickets Status</h4>                                                                    
+                                    <h4 class="header-title mt-0">Cases Status</h4>                                                                    
                                     <div class="">
                                         <div id="ana_dash_1" class="apex-charts"></div>
                                     </div>  
