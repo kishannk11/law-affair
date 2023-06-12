@@ -1,8 +1,9 @@
 <?php
+require_once('config/session.php');
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark" >
 
     <head>
         <meta charset="utf-8" />
@@ -50,7 +51,7 @@
                             <span class="ml-1 nav-user-name hidden-sm">Kishan Nayak<i class="mdi mdi-chevron-down"></i> </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="profile.php"><i class="ti-user text-muted mr-2"></i> Profile</a>
+                            <a class="dropdown-item" href="#"><i class="ti-user text-muted mr-2"></i> Profile</a>
                             <a class="dropdown-item" href="#"><i class="ti-power-off text-muted mr-2"></i> Logout</a>
                         </div>
                     </li>
@@ -108,6 +109,7 @@
 
                 <li>
                     <a href="dashboard.php"><i class="ti-power-off"></i><span>Logout</span></i></span></a>
+                    <a href="logout.php"><i class="ti-power-off"></i><span>Logout</span></i></span></a>
                 </li>
 
             </ul>
