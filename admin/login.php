@@ -65,7 +65,7 @@ require_once "User.php";
                                 </div> <!--end auth-logo-text-->
 
 
-                                <form method="POST" class="form-horizontal auth-form my-4" action="index.php">
+                                <form method="POST" class="form-horizontal auth-form my-4" action="login.php">
 
                                     <div class="form-group">
                                         <label for="username">Username</label>
