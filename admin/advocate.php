@@ -38,9 +38,9 @@ class AddAdvocate
         // Execute statement
         $stmt->execute();
         if($stmt->rowCount() > 0) { 
-            $succes = "Data inserted successfully.";   
+            $this->succes = "Data inserted successfully.";   
         } else { 
-            $succes = "Error inserting data."; 
+            $this->succes = "Error inserting data."; 
             
         }
     }
@@ -85,8 +85,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Add advocate data to the database
         $addAdvocate->addAdvocateData($_POST["name"], $_POST["mobileNumber"], $_POST["joiningDate"], $photo, $_POST["address"], $_POST["lawyer"]);
-        $succes = $addAdvocate->getSuccessMessage(); 
-        header("Location: add_advocate.php?succes=" . urlencode($succes)); 
+        $success = $addAdvocate->getSuccessMessage(); 
+        header("Location: add_advocate.php?succes=" . urlencode($success)); 
 
     }
 }
