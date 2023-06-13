@@ -80,7 +80,7 @@ require_once('config/session.php');
         <div class="left-sidenav">
             <ul class="metismenu left-sidenav-menu">
                 <li>
-                    <a href="dashboard.php"><i class="ti-bar-chart"></i><span>Dashboard</span></i></span></a>
+                    <a href="dashboard.php"><i class="ti-bar-chart"></i><span>Dashboard</span></i></a>
                 </li>
 
                 <li>
