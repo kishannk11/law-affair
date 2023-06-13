@@ -6,6 +6,7 @@ require_once 'config/config.php';
 class AddAdvocate
 {
     private $conn;
+    public $succes;
     public function __construct($conn)
     {
         $this->conn = $conn;
@@ -36,7 +37,16 @@ class AddAdvocate
         $stmt->bindParam(6, json_encode($specialization), PDO::PARAM_STR);
         // Execute statement
         $stmt->execute();
+        if($stmt->rowCount() > 0) { 
+            $succes = "Data inserted successfully.";   
+        } else { 
+            $succes = "Error inserting data."; 
+            
+        }
     }
+    public function getSuccessMessage() { 
+        return $this->succes; 
+    } 
 }
 $addAdvocate = new AddAdvocate($conn);
 $errors = array();
@@ -75,7 +85,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Add advocate data to the database
         $addAdvocate->addAdvocateData($_POST["name"], $_POST["mobileNumber"], $_POST["joiningDate"], $photo, $_POST["address"], $_POST["lawyer"]);
-        header("Location: add_advocate.php");
+        $succes = $addAdvocate->getSuccessMessage(); 
+        header("Location: add_advocate.php?succes=" . urlencode($succes)); 
 
     }
 }

@@ -37,8 +37,8 @@ require("top-navbar.php");
                                                 <input class="form-control" name="name" type="text"
                                                     id="example-text-input">
                                                 <?php
-                                                if (isset($errors["name"])) {
-                                                    echo '<div class="alert alert-danger">' . $error . '</div>';
+                                                if (isset($succes)) {
+                                                    echo '<div class="alert alert-danger">' . htmlspecialchars($succes ). '</div>';
                                                 }
                                                 ?>
                                             </div>
