@@ -108,7 +108,7 @@ require_once('config/session.php');
                 </li>
 
                 <li>
-                    <a href="dashboard.php"><i class="ti-power-off"></i><span>Logout</span></i></span></a>
+                    
                     <a href="logout.php"><i class="ti-power-off"></i><span>Logout</span></i></span></a>
                 </li>
 
