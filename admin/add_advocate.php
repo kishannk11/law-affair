@@ -36,10 +36,26 @@ require("top-navbar.php");
                                             <div class="col-sm-10">
                                                 <input class="form-control" name="name" type="text"
                                                     id="example-text-input">
+
+
+
+
                                                 <?php
                                                 if (isset($_GET['succes'])) {
                                                     $success = $_GET['succes']; 
-                                                    echo '<div class="alert alert-success">' . htmlspecialchars($success ). '</div>';
+                                                    //echo '<div class="alert alert-success">' . htmlspecialchars($success ). '</div>';
+                                                    echo '<script>
+                                                            document.addEventListener("DOMContentLoaded", function() {
+                                                                document.getElementById("sa-mixin").addEventListener("click", function() {
+                                                                    Swal.fire({
+                                                                        title: "Success!",
+                                                                        text: "'.htmlspecialchars($success).'",
+                                                                        icon: "success",
+                                                                        confirmButtonText: "OK"
+                                                                    });
+                                                                });
+                                                            });
+                                                          </script>';
                                                 }
                                                 ?>
                                             </div>
@@ -180,6 +196,9 @@ require("top-navbar.php");
 
 <script src="plugins/apexcharts/apexcharts.min.js"></script>
 <script src="assets/pages/jquery.helpdesk-dashboard.init.js"></script>
+
+<script src="plugins/sweet-alert2/sweetalert2.min.js"></script>
+<script src="assets/pages/jquery.sweet-alert.init.js"></script>
 
 <!-- App js -->
 <script src="assets/js/app.js"></script>
