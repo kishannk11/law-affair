@@ -27,7 +27,7 @@ require("top-navbar.php");
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action="add_advocate.php" method="POST" enctype="multipart/form-data">
+                            <form action="advocate.php" method="POST" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group row">
