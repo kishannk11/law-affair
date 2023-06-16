@@ -15,7 +15,8 @@ require_once('config/session.php');
 
         <!-- App favicon -->
         <link rel="shortcut icon" href="assets/images/favicon.png">
-
+        <link href="plugins/sweet-alert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
+        <link href="plugins/animate/animate.css" rel="stylesheet" type="text/css">
         <!-- App css -->
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/jquery-ui.min.css" rel="stylesheet">
