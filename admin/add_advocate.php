@@ -40,16 +40,11 @@ require("top-navbar.php");
                                                 <?php
                                                 if (isset($_GET['succes'])) {
                                                     $success = $_GET['succes']; 
-                                                    //echo '<div class="alert alert-success">' . htmlspecialchars($success ). '</div>';
+                                                   // echo '<div class="alert alert-success">' . $success . '</div>';
                                                     echo '<script>
                                                             document.addEventListener("DOMContentLoaded", function() {
                                                                 document.getElementById("sa-mixin").addEventListener("click", function() {
-                                                                    Swal.fire({
-                                                                        title: "Success!",
-                                                                        text: "'.htmlspecialchars($success).'",
-                                                                        icon: "success",
-                                                                        confirmButtonText: "OK"
-                                                                    });
+                                                                    Swal.fire("Success!", "'.$success.'", "success");
                                                                 });
                                                             });
                                                           </script>';
@@ -105,8 +100,7 @@ require("top-navbar.php");
                                                         <input type="checkbox" name="lawyer[]" value="Tax Lawyer"
                                                             class="custom-control-input" id="customCheck06"
                                                             data-parsley-multiple="groups" data-parsley-mincheck="2">
-                                                        <label class="custom-control-label" for="customCheck06">Tax
-                                                            Lawyer</label>
+                                                        <label class="custom-control-label" for="customCheck06">Tax Lawyer</label>
                                                     </div>
                                                 </div>
 
@@ -115,8 +109,7 @@ require("top-navbar.php");
                                                         <input type="checkbox" name="lawyer[]" value="Criminal Lawyer"
                                                             class="custom-control-input" id="customCheck07"
                                                             data-parsley-multiple="groups" data-parsley-mincheck="2">
-                                                        <label class="custom-control-label" for="customCheck07">Criminal
-                                                            Lawyer</label>
+                                                        <label class="custom-control-label" for="customCheck07">Criminal Lawyer</label>
                                                     </div>
                                                 </div>
 
@@ -127,8 +120,7 @@ require("top-navbar.php");
                                                             id="customCheck08" data-parsley-multiple="groups"
                                                             data-parsley-mincheck="2">
                                                         <label class="custom-control-label"
-                                                            for="customCheck08">Intellectual
-                                                            Lawyer</label>
+                                                            for="customCheck08">Intellectual Lawyer</label>
                                                     </div>
                                                 </div>
 
@@ -137,8 +129,7 @@ require("top-navbar.php");
                                                         <input type="checkbox" name="lawyer[]" value="Buisness lawyer"
                                                             class="custom-control-input" id="customCheck09"
                                                             data-parsley-multiple="groups" data-parsley-mincheck="2">
-                                                        <label class="custom-control-label" for="customCheck09">Buisness
-                                                            lawyer</label>
+                                                        <label class="custom-control-label" for="customCheck09">Buisness lawyer</label>
                                                     </div>
                                                 </div>
 
@@ -147,8 +138,7 @@ require("top-navbar.php");
                                                         <input type="checkbox" name="lawyer[]" value="Family Lawyer"
                                                             class="custom-control-input" id="customCheck10"
                                                             data-parsley-multiple="groups" data-parsley-mincheck="2">
-                                                        <label class="custom-control-label" for="customCheck10">Family
-                                                            Lawyer</label>
+                                                        <label class="custom-control-label" for="customCheck10">Family Lawyer</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -195,7 +185,8 @@ require("top-navbar.php");
 
 <script src="plugins/sweet-alert2/sweetalert2.min.js"></script>
 <script src="assets/pages/jquery.sweet-alert.init.js"></script>
-
+<link href="plugins/sweet-alert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
+<link href="plugins/animate/animate.css" rel="stylesheet" type="text/css">
 <!-- App js -->
 <script src="assets/js/app.js"></script>
 
