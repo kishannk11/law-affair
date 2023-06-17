@@ -15,10 +15,10 @@ require("top-navbar.php");
                         <div class="float-right">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="dashboard.php">Law Affair</a></li>
-                                <li class="breadcrumb-item active">Add Advocate</li>
+                                <li class="breadcrumb-item active">Edit Advocate</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">Add Advocate</h4>
+                        <h4 class="page-title">Edit Advocate</h4>
                     </div><!--end page-title-box-->
                 </div><!--end col-->
             </div>
@@ -36,6 +36,9 @@ require("top-navbar.php");
                                             <div class="col-sm-10">
                                                 <input class="form-control" name="name" type="text"
                                                     id="example-text-input">
+
+
+
 
                                                 <?php
                                                 if (isset($_GET['succes'])) {
@@ -57,7 +60,6 @@ require("top-navbar.php");
                                                 ?>
                                             </div>
                                         </div>
-
                                         <div class="form-group row">
                                             <label for="example-tel-input"
                                                 class="col-sm-2 col-form-label text-right">Mobile
@@ -68,6 +70,7 @@ require("top-navbar.php");
                                             </div>
                                         </div>
 
+
                                         <div class="form-group row">
                                             <label for="example-datetime-local-input"
                                                 class="col-sm-2 col-form-label text-right">Joining Date</label>
@@ -77,9 +80,9 @@ require("top-navbar.php");
                                             </div>
                                         </div>
 
-
                                         <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label text-right">Upload Photo</label>
+                                            <label for="example-datetime-local-input"
+                                                class="col-sm-2 col-form-label text-right">Upload Photo</label>
                                             <div class="col-sm-10">
                                                 <input type="file" name="photo" class="custom-file-input"
                                                     id="inputGroupFile04">
@@ -151,28 +154,29 @@ require("top-navbar.php");
                                                             Lawyer</label>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-sm-10 ml-auto">
                                                 <button type="submit" class="btn btn-gradient-primary">Submit</button>
-                                                <button type="button" class="btn btn-gradient-danger">Cancel</button>
-                                            </div>
-                                        </div> 
-                                        
-                                    </div>
-                                </div>
                             </form>
+                            <button type="button" class="btn btn-gradient-danger">Cancel</button>
+
                         </div>
                     </div>
-                </div>
-            </div><!--end row-->
-        </div><!-- container -->
 
-        <footer class="footer text-center text-sm-left">
-            &copy; 2023 Law Affair
-        </footer><!--end footer-->
+
+
+                </div>
+
+
+
+            </div>
+        </div><!--end card-body-->
+    </div><!--end card-->
+</div><!--end col-->
+</div><!--end row-->
+</div><!-- container -->
+
+<footer class="footer text-center text-sm-left">
+    &copy; 2023 Law Affair
+</footer><!--end footer-->
 </div>
 <!-- end page content -->
 </div>

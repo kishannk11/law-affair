@@ -51,7 +51,7 @@ require("top-navbar.php");
                                             <td>25</td>
                                             <td>01/06/2023</td>
                                             <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
+                                                <a href="edit_advocate.php" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
                                                 <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
                                             </td>
                                         </tr>
@@ -62,7 +62,7 @@ require("top-navbar.php");
                                             <td>25</td>
                                             <td>01/06/2023</td>
                                             <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
+                                                <a href="edit_advocate.php" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
                                                 <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
                                             </td>
                                         </tr>
@@ -73,7 +73,7 @@ require("top-navbar.php");
                                             <td>32</td>
                                             <td>01/06/2023</td>                                        
                                             <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
+                                                <a href="edit_advocate.php" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
                                                 <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
                                             </td>
                                         </tr>
@@ -84,7 +84,7 @@ require("top-navbar.php");
                                             <td>22</td>
                                             <td>2012/03/29</td>
                                             <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
+                                                <a href="edit_advocate.php" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
                                                 <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
                                             </td>
                                         </tr>
@@ -95,7 +95,7 @@ require("top-navbar.php");
                                             <td>33</td>
                                             <td>2008/11/28</td>
                                             <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
+                                                <a href="edit_advocate.php" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
                                                 <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
                                             </td>
                                         </tr>
@@ -106,7 +106,7 @@ require("top-navbar.php");
                                             <td>61</td>
                                             <td>2012/12/02</td>
                                             <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
+                                                <a href="edit_advocate.php" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
                                                 <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
                                             </td>
                                         </tr>
@@ -117,7 +117,7 @@ require("top-navbar.php");
                                             <td>59</td>
                                             <td>2012/08/06</td>
                                             <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
+                                                <a href="edit_advocate.php" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
                                                 <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
                                             </td>
                                         </tr>
@@ -128,7 +128,7 @@ require("top-navbar.php");
                                             <td>55</td>
                                             <td>2010/10/14</td>
                                             <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
+                                                <a href="edit_advocate.php" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
                                                 <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
                                             </td>
                                         </tr>
@@ -139,7 +139,7 @@ require("top-navbar.php");
                                             <td>39</td>
                                             <td>2009/09/15</td>
                                             <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
+                                                <a href="edit_advocate.php" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
                                                 <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
                                             </td>
                                         </tr>
@@ -150,7 +150,7 @@ require("top-navbar.php");
                                             <td>23</td>
                                             <td>2008/12/13</td>
                                             <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
+                                                <a href="edit_advocate.php" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
                                                 <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
                                             </td>
                                         </tr>
@@ -161,7 +161,7 @@ require("top-navbar.php");
                                             <td>30</td>
                                             <td>2008/12/19</td>
                                             <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
+                                                <a href="edit_advocate.php" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
                                                 <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
                                             </td>
                                         </tr>
@@ -172,7 +172,7 @@ require("top-navbar.php");
                                             <td>22</td>
                                             <td>2013/03/03</td>
                                             <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
+                                                <a href="edit_advocate.php" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
                                                 <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
                                             </td>
                                         </tr>
@@ -183,7 +183,7 @@ require("top-navbar.php");
                                             <td>22</td>
                                             <td>2013/03/03</td>
                                             <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
+                                                <a href="edit_advocate.php" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
                                                 <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
                                             </td>
                                         </tr>
@@ -194,7 +194,7 @@ require("top-navbar.php");
                                             <td>22</td>
                                             <td>2013/03/03</td>
                                             <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
+                                                <a href="edit_advocate.php" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
                                                 <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
                                             </td>
                                         </tr>
@@ -205,7 +205,7 @@ require("top-navbar.php");
                                             <td>22</td>
                                             <td>2013/03/03</td>
                                             <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
+                                                <a href="edit_advocate.php" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
                                                 <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
                                             </td>
                                         </tr>
