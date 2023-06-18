@@ -37,16 +37,17 @@ class AddAdvocate
         $stmt->bindParam(6, json_encode($specialization), PDO::PARAM_STR);
         // Execute statement
         $stmt->execute();
-        if($stmt->rowCount() > 0) { 
-            $this->succes = "Data inserted successfully.";   
-        } else { 
-            $this->succes = "Error inserting data."; 
-            
+        if ($stmt->rowCount() > 0) {
+            $this->succes = "Data inserted successfully.";
+        } else {
+            $this->succes = "Error inserting data.";
+
         }
     }
-    public function getSuccessMessage() { 
-        return $this->succes; 
-    } 
+    public function getSuccessMessage()
+    {
+        return $this->succes;
+    }
 }
 $addAdvocate = new AddAdvocate($conn);
 $errors = array();
@@ -73,21 +74,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (empty($errors)) {
-        // Handle file upload
         $photo = null;
-        if ($_FILES["photo"]["error"] == UPLOAD_ERR_OK) {
+        $allowed_types = array('jpg', 'jpeg', 'png');
+        $file_type = pathinfo($_FILES["photo"]["name"], PATHINFO_EXTENSION);
+        if ($_FILES["photo"]["error"] == UPLOAD_ERR_OK && in_array($file_type, $allowed_types)) {
             $tmp_name = $_FILES["photo"]["tmp_name"];
             $photo = file_get_contents($tmp_name);
         } else {
-            echo "Error uploading photo.";
-            return;
+            $photo_error = "Error uploading photo. Only JPG, JPEG, PNG, and GIF file types are allowed.";
+            header("Location: add_advocate.php?error=" . urlencode($photo_error));
+            //return;
         }
 
         // Add advocate data to the database
         $addAdvocate->addAdvocateData($_POST["name"], $_POST["mobileNumber"], $_POST["joiningDate"], $photo, $_POST["address"], $_POST["lawyer"]);
-        $success = $addAdvocate->getSuccessMessage(); 
-        header("Location: add_advocate.php?succes=" . urlencode($success)); 
+        $success = $addAdvocate->getSuccessMessage();
+        header("Location: add_advocate.php?succes=" . urlencode($success));
 
+    } else {
+        // Encode the error messages array as a JSON string and pass it as a URL parameter
+        $json_errors = json_encode($errors);
+        echo '<form id="errorForm" action="add_advocate.php" method="post" style="display:none;">';
+        foreach ($errors as $key => $value) {
+            echo '<input type="hidden" name="errors[' . $key . ']" value="' . $value . '">';
+        }
+        echo '</form>';
+        echo '<script>document.getElementById("errorForm").submit();</script>';
     }
 }
 ?>

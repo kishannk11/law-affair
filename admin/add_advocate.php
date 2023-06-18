@@ -39,17 +39,54 @@ require("top-navbar.php");
 
                                                 <?php
                                                 if (isset($_GET['succes'])) {
-                                                    $success = $_GET['succes']; 
-                                                   // echo '<div class="alert alert-success">' . $success . '</div>';
+                                                    $success = $_GET['succes'];
+                                                    // echo '<div class="alert alert-success">' . $success . '</div>';
                                                     echo '<script>
-                                                            document.addEventListener("DOMContentLoaded", function() {
-                                                                document.getElementById("sa-mixin").addEventListener("click", function() {
-                                                                    Swal.fire("Success!", "'.$success.'", "success");
-                                                                });
-                                                            });
+                                                    document.addEventListener("DOMContentLoaded", function() {
+                                                        Swal.fire("Success!", "' .htmlspecialchars( $success, ENT_QUOTES, 'UTF-8') . '", "success");
+                                                    });
                                                           </script>';
                                                 }
                                                 ?>
+                                                <?php
+                                                if (isset($_GET['error'])) {
+                                                    $error = $_GET['error'];
+                                                     echo '<script>
+                                                        document.addEventListener("DOMContentLoaded", function() {
+                                                            Swal.fire({
+                                                                icon: "error",
+                                                                title: "Oops...",
+                                                                text: "' . htmlspecialchars($error, ENT_QUOTES, 'UTF-8') . '",
+                                                            });
+                                                        });
+                                                    </script>';
+                                                }
+                                                ?>
+                                                <?php
+                                                if (isset($_POST['errors'])) {
+                                                    $error_messages = $_POST['errors'];
+                                                    // Build the error message string
+                                                    $error_string = "";
+                                                    foreach ($error_messages as $field => $message) {
+                                                        $error_string .= "$message ";
+                                                    }
+                                                    // Remove extra spaces from the error message string
+                                                    $error_string = trim($error_string);
+                                                    // Display the error message using SweetAlert
+                                                    echo '<script>
+                                                        document.addEventListener("DOMContentLoaded", function() {
+                                                            Swal.fire({
+                                                                icon: "error",
+                                                                title: "Error",
+                                                                text: "'.  htmlspecialchars($error_string, ENT_QUOTES, 'UTF-8').'",
+                                                                
+                                                            });
+                                                        });
+                                                    </script>';
+                                                }
+                                                ?>
+
+                                            
                                             </div>
                                         </div>
 
@@ -68,7 +105,7 @@ require("top-navbar.php");
                                                 class="col-sm-2 col-form-label text-right">Joining Date</label>
                                             <div class="col-sm-10">
                                                 <input class="form-control" type="date" name="joiningDate"
-                                                    id="example-datetime-local-input">
+                                                    id="example-datetime-local-input" >
                                             </div>
                                         </div>
 
@@ -76,7 +113,7 @@ require("top-navbar.php");
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label text-right">Upload Photo</label>
                                             <div class="col-sm-10">
-                                                <input type="file" name="photo" class="custom-file-input"
+                                                <input type="file" name="photo" class="form-control"
                                                     id="inputGroupFile04">
                                                 <label class="custom-file-label" for="inputGroupFile04">Choose
                                                     file</label>
@@ -87,8 +124,8 @@ require("top-navbar.php");
                                             <label for="example-text-input"
                                                 class="col-sm-2 col-form-label text-right">Address</label>
                                             <div class="col-sm-10">
-                                                <textarea class="form-control" name="address" rows="5"
-                                                    id="message"></textarea>
+                                                <textarea class="form-control" name="address" rows="5" id="message"
+                                                    ></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -100,7 +137,8 @@ require("top-navbar.php");
                                                         <input type="checkbox" name="lawyer[]" value="Tax Lawyer"
                                                             class="custom-control-input" id="customCheck06"
                                                             data-parsley-multiple="groups" data-parsley-mincheck="2">
-                                                        <label class="custom-control-label" for="customCheck06">Tax Lawyer</label>
+                                                        <label class="custom-control-label" for="customCheck06">Tax
+                                                            Lawyer</label>
                                                     </div>
                                                 </div>
 
@@ -109,7 +147,8 @@ require("top-navbar.php");
                                                         <input type="checkbox" name="lawyer[]" value="Criminal Lawyer"
                                                             class="custom-control-input" id="customCheck07"
                                                             data-parsley-multiple="groups" data-parsley-mincheck="2">
-                                                        <label class="custom-control-label" for="customCheck07">Criminal Lawyer</label>
+                                                        <label class="custom-control-label" for="customCheck07">Criminal
+                                                            Lawyer</label>
                                                     </div>
                                                 </div>
 
@@ -129,7 +168,8 @@ require("top-navbar.php");
                                                         <input type="checkbox" name="lawyer[]" value="Buisness lawyer"
                                                             class="custom-control-input" id="customCheck09"
                                                             data-parsley-multiple="groups" data-parsley-mincheck="2">
-                                                        <label class="custom-control-label" for="customCheck09">Buisness lawyer</label>
+                                                        <label class="custom-control-label" for="customCheck09">Buisness
+                                                            lawyer</label>
                                                     </div>
                                                 </div>
 
@@ -138,7 +178,8 @@ require("top-navbar.php");
                                                         <input type="checkbox" name="lawyer[]" value="Family Lawyer"
                                                             class="custom-control-input" id="customCheck10"
                                                             data-parsley-multiple="groups" data-parsley-mincheck="2">
-                                                        <label class="custom-control-label" for="customCheck10">Family Lawyer</label>
+                                                        <label class="custom-control-label" for="customCheck10">Family
+                                                            Lawyer</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -149,8 +190,8 @@ require("top-navbar.php");
                                                 <button type="submit" class="btn btn-gradient-primary">Submit</button>
                                                 <button type="button" class="btn btn-gradient-danger">Cancel</button>
                                             </div>
-                                        </div> 
-                                        
+                                        </div>
+
                                     </div>
                                 </div>
                             </form>
@@ -163,8 +204,8 @@ require("top-navbar.php");
         <footer class="footer text-center text-sm-left">
             &copy; 2023 Law Affair
         </footer><!--end footer-->
-</div>
-<!-- end page content -->
+    </div>
+    <!-- end page content -->
 </div>
 <!-- end page-wrapper -->
 
@@ -189,6 +230,7 @@ require("top-navbar.php");
 <link href="plugins/animate/animate.css" rel="stylesheet" type="text/css">
 <!-- App js -->
 <script src="assets/js/app.js"></script>
+<script src="assets/js/customClass.js"></script>
 
 </body>
 
