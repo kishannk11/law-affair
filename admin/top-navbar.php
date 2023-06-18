@@ -106,7 +106,7 @@ require_once('config/session.php');
                 <li>
                     <a href="javascript: void(0);"><i class="ti-briefcase"></i><span>Clients</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        <li class="nav-item"><a class="nav-link" href="add_client.php"><i class="ti-control-record"></i>Add Client</a></li>
+                        <li class="nav-item"><a class="nav-link" href="client.php"><i class="ti-control-record"></i>Add Client</a></li>
                         <li class="nav-item"><a class="nav-link" href="client_list.php"><i class="ti-control-record"></i>Client List</a></li>
                     </ul>
                 </li>
