@@ -15,10 +15,10 @@ require("top-navbar.php");
                         <div class="float-right">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="dashboard.php">Law Affair</a></li>
-                                <li class="breadcrumb-item active">Add Advocate</li>
+                                <li class="breadcrumb-item active">Edit Advocate</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">Add Advocate</h4>
+                        <h4 class="page-title">Edit Advocate</h4>
                     </div><!--end page-title-box-->
                 </div><!--end col-->
             </div>
@@ -37,14 +37,22 @@ require("top-navbar.php");
                                                 <input class="form-control" name="name" type="text"
                                                     id="example-text-input">
 
+
+
+
                                                 <?php
                                                 if (isset($_GET['succes'])) {
                                                     $success = $_GET['succes']; 
-                                                   // echo '<div class="alert alert-success">' . $success . '</div>';
+                                                    //echo '<div class="alert alert-success">' . htmlspecialchars($success ). '</div>';
                                                     echo '<script>
                                                             document.addEventListener("DOMContentLoaded", function() {
                                                                 document.getElementById("sa-mixin").addEventListener("click", function() {
-                                                                    Swal.fire("Success!", "'.$success.'", "success");
+                                                                    Swal.fire({
+                                                                        title: "Success!",
+                                                                        text: "'.htmlspecialchars($success).'",
+                                                                        icon: "success",
+                                                                        confirmButtonText: "OK"
+                                                                    });
                                                                 });
                                                             });
                                                           </script>';
@@ -52,7 +60,6 @@ require("top-navbar.php");
                                                 ?>
                                             </div>
                                         </div>
-
                                         <div class="form-group row">
                                             <label for="example-tel-input"
                                                 class="col-sm-2 col-form-label text-right">Mobile
@@ -63,6 +70,7 @@ require("top-navbar.php");
                                             </div>
                                         </div>
 
+
                                         <div class="form-group row">
                                             <label for="example-datetime-local-input"
                                                 class="col-sm-2 col-form-label text-right">Joining Date</label>
@@ -72,9 +80,9 @@ require("top-navbar.php");
                                             </div>
                                         </div>
 
-
                                         <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label text-right">Upload Photo</label>
+                                            <label for="example-datetime-local-input"
+                                                class="col-sm-2 col-form-label text-right">Upload Photo</label>
                                             <div class="col-sm-10">
                                                 <input type="file" name="photo" class="custom-file-input"
                                                     id="inputGroupFile04">
@@ -100,7 +108,8 @@ require("top-navbar.php");
                                                         <input type="checkbox" name="lawyer[]" value="Tax Lawyer"
                                                             class="custom-control-input" id="customCheck06"
                                                             data-parsley-multiple="groups" data-parsley-mincheck="2">
-                                                        <label class="custom-control-label" for="customCheck06">Tax Lawyer</label>
+                                                        <label class="custom-control-label" for="customCheck06">Tax
+                                                            Lawyer</label>
                                                     </div>
                                                 </div>
 
@@ -109,7 +118,8 @@ require("top-navbar.php");
                                                         <input type="checkbox" name="lawyer[]" value="Criminal Lawyer"
                                                             class="custom-control-input" id="customCheck07"
                                                             data-parsley-multiple="groups" data-parsley-mincheck="2">
-                                                        <label class="custom-control-label" for="customCheck07">Criminal Lawyer</label>
+                                                        <label class="custom-control-label" for="customCheck07">Criminal
+                                                            Lawyer</label>
                                                     </div>
                                                 </div>
 
@@ -120,7 +130,8 @@ require("top-navbar.php");
                                                             id="customCheck08" data-parsley-multiple="groups"
                                                             data-parsley-mincheck="2">
                                                         <label class="custom-control-label"
-                                                            for="customCheck08">Intellectual Lawyer</label>
+                                                            for="customCheck08">Intellectual
+                                                            Lawyer</label>
                                                     </div>
                                                 </div>
 
@@ -129,7 +140,8 @@ require("top-navbar.php");
                                                         <input type="checkbox" name="lawyer[]" value="Buisness lawyer"
                                                             class="custom-control-input" id="customCheck09"
                                                             data-parsley-multiple="groups" data-parsley-mincheck="2">
-                                                        <label class="custom-control-label" for="customCheck09">Buisness lawyer</label>
+                                                        <label class="custom-control-label" for="customCheck09">Buisness
+                                                            lawyer</label>
                                                     </div>
                                                 </div>
 
@@ -138,31 +150,33 @@ require("top-navbar.php");
                                                         <input type="checkbox" name="lawyer[]" value="Family Lawyer"
                                                             class="custom-control-input" id="customCheck10"
                                                             data-parsley-multiple="groups" data-parsley-mincheck="2">
-                                                        <label class="custom-control-label" for="customCheck10">Family Lawyer</label>
+                                                        <label class="custom-control-label" for="customCheck10">Family
+                                                            Lawyer</label>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-sm-10 ml-auto">
                                                 <button type="submit" class="btn btn-gradient-primary">Submit</button>
-                                                <button type="button" class="btn btn-gradient-danger">Cancel</button>
-                                            </div>
-                                        </div> 
-                                        
-                                    </div>
-                                </div>
                             </form>
+                            <button type="button" class="btn btn-gradient-danger">Cancel</button>
+
                         </div>
                     </div>
-                </div>
-            </div><!--end row-->
-        </div><!-- container -->
 
-        <footer class="footer text-center text-sm-left">
-            &copy; 2023 Law Affair
-        </footer><!--end footer-->
+
+
+                </div>
+
+
+
+            </div>
+        </div><!--end card-body-->
+    </div><!--end card-->
+</div><!--end col-->
+</div><!--end row-->
+</div><!-- container -->
+
+<footer class="footer text-center text-sm-left">
+    &copy; 2023 Law Affair
+</footer><!--end footer-->
 </div>
 <!-- end page content -->
 </div>
@@ -185,8 +199,7 @@ require("top-navbar.php");
 
 <script src="plugins/sweet-alert2/sweetalert2.min.js"></script>
 <script src="assets/pages/jquery.sweet-alert.init.js"></script>
-<link href="plugins/sweet-alert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
-<link href="plugins/animate/animate.css" rel="stylesheet" type="text/css">
+
 <!-- App js -->
 <script src="assets/js/app.js"></script>
 
