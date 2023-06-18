@@ -1,9 +1,13 @@
+<?php
+require_once('config/session.php');
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark" >
 
     <head>
         <meta charset="utf-8" />
-        <title>Crovex - Admin & Dashboard Template</title>
+        <title>Law Affair - Admin & Dashboard Template</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="" name="author" />
@@ -11,9 +15,8 @@
 
         <!-- App favicon -->
         <link rel="shortcut icon" href="assets/images/favicon.png">
-
-        <link href="plugins/jvectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet">
-
+        <link href="plugins/sweet-alert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
+        <link href="plugins/animate/animate.css" rel="stylesheet" type="text/css">
         <!-- App css -->
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/jquery-ui.min.css" rel="stylesheet">
@@ -34,26 +37,23 @@
 
     </head>
 
-    <body class="dark-topbar">
+    <body>
         
          <!-- Top Bar Start -->
          <div class="topbar">
 
             <!-- LOGO -->
             <div class="topbar-left">
-                <a href="dashboard/crm-index.html" class="logo">
+                <a href="dashboard.php" class="logo">
                     <span>
-                        <img src="assets/images/logo-sm.png" alt="logo-small" class="logo-sm">
-                    </span>
-                    <span>
-                        <img src="assets/images/logo.png" alt="logo-large" class="logo-lg logo-light">
+                        <img src="assets/images/logo-full.png" alt="logo" class="logo-sm">
                     </span>
                 </a>
             </div>
             <!--end logo-->
             <!-- Navbar -->
             <nav class="navbar-custom">    
-            <ul class="list-unstyled topbar-nav float-right mb-0"> 
+                <ul class="list-unstyled topbar-nav float-right mb-0"> 
                     
 
                     <li class="dropdown">
@@ -74,6 +74,12 @@
                         <button class="nav-link button-menu-mobile waves-effect waves-light">
                             <i class="ti-menu nav-icon"></i>
                         </button>
+                    </li>
+                    <li class="hide-phone app-search">
+                        <form role="search" class="">
+                            <input type="text" id="AllCompo" placeholder="Search..." class="form-control">
+                            <a href=""><i class="fas fa-search"></i></a>
+                        </form>
                     </li>
                 </ul>
             </nav>
@@ -111,10 +117,6 @@
                         <li class="nav-item"><a class="nav-link" href="add_case.php"><i class="ti-control-record"></i>Add Case</a></li>
                         <li class="nav-item"><a class="nav-link" href="case_list.php"><i class="ti-control-record"></i>Case List</a></li>
                     </ul>
-                </li>
-
-                <li>
-                    <a href="reports.php"><i class="ti-bar-chart"></i><span>Reports</span></i></span></a>
                 </li>
 
                 <li>
