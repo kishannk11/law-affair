@@ -23,129 +23,151 @@ require("top-navbar.php");
                 </div><!--end col-->
             </div>
             <!-- end page title end breadcrumb -->
-            
-            <!-- Test Element -->
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
                             <form action="advocate.php" method="POST" enctype="multipart/form-data">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Case No</label>
-                                    <input class="form-control" name="case_number" type="text" id="example-text-input">
-                                    <small id="emailHelp" class="form-text text-muted">We can use this to add something!!!</small>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Filing No</label>
-                                    <input class="form-control" name="ffiling_number" type="text" id="example-text-input">
-                                </div>
-                                <div class="form-group">
-                                    <label for="example-datetime-local-input">Filing Date</label>
-                                    <input class="form-control" name="joiningDate" type="date" id="example-datetime-local-input">
-                                </div>
-                                <div class="form-group">
-                                    <label class="drop-down">Select Client</label>
-                                    <select class="form-control">
-                                        <option>Select</option>
-                                        <option>Client 1</option>
-                                        <option>Client 2</option>
-                                        <option>Client 3</option>
-                                        <option>Client 4</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Party Name</label>
-                                    <input class="form-control" name="party_name" type="text" id="example-text-input">
-                                </div>
-                                
-                                <!-- Checkboxes -->
-                                <div class="form-group">
-                                    <label for="example-text-input">Case Status</label>
-                                    
-                                    <div class="col-md-9">
-                                        <div class="checkbox my-2">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" name="case[]" value="Tax Lawyer"
-                                                    class="custom-control-input" id="customCheck06"
-                                                    data-parsley-multiple="groups" data-parsley-mincheck="2">
-                                                <label class="custom-control-label" for="customCheck06">Status 1</label>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="form-group row">
+                                            <label for="example-text-input"
+                                                class="col-sm-2 col-form-label text-right">Name</label>
+                                            <div class="col-sm-10">
+                                                <input class="form-control" name="name" type="text"
+                                                    id="example-text-input">
+
+                                                <?php
+                                                if (isset($_GET['succes'])) {
+                                                    $success = $_GET['succes']; 
+                                                    //echo '<div class="alert alert-success">' . htmlspecialchars($success ). '</div>';
+                                                    echo '<script>
+                                                            document.addEventListener("DOMContentLoaded", function() {
+                                                                document.getElementById("sa-mixin").addEventListener("click", function() {
+                                                                    Swal.fire({
+                                                                        title: "Success!",
+                                                                        text: "'.htmlspecialchars($success).'",
+                                                                        icon: "success",
+                                                                        confirmButtonText: "OK"
+                                                                    });
+                                                                });
+                                                            });
+                                                          </script>';
+                                                }
+                                                ?>
                                             </div>
                                         </div>
 
-                                        <div class="checkbox my-2">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" name="case[]" value="Criminal Lawyer"
-                                                    class="custom-control-input" id="customCheck07"
-                                                    data-parsley-multiple="groups" data-parsley-mincheck="2">
-                                                <label class="custom-control-label" for="customCheck07">Status 2</label>
+                                        <div class="form-group row">
+                                            <label for="example-tel-input"
+                                                class="col-sm-2 col-form-label text-right">Mobile
+                                                Number</label>
+                                            <div class="col-sm-10">
+                                                <input class="form-control" name="mobileNumber" type="tel"
+                                                    id="example-tel-input">
                                             </div>
                                         </div>
 
-                                        <div class="checkbox my-2">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" name="case[]"
-                                                    value="Intellectual Lawyer" class="custom-control-input"
-                                                    id="customCheck08" data-parsley-multiple="groups"
-                                                    data-parsley-mincheck="2">
-                                                <label class="custom-control-label"
-                                                    for="customCheck08">Status 3</label>
+                                        <div class="form-group row">
+                                            <label for="example-datetime-local-input"
+                                                class="col-sm-2 col-form-label text-right">Joining Date</label>
+                                            <div class="col-sm-10">
+                                                <input class="form-control" type="date" name="joiningDate"
+                                                    id="example-datetime-local-input">
                                             </div>
                                         </div>
 
-                                        <div class="checkbox my-2">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" name="case[]" value="Buisness lawyer"
-                                                    class="custom-control-input" id="customCheck09"
-                                                    data-parsley-multiple="groups" data-parsley-mincheck="2">
-                                                <label class="custom-control-label" for="customCheck09">Status 4</label>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label text-right">Upload Photo</label>
+                                            <div class="col-sm-10">
+                                                <input type="file" name="photo" class="custom-file-input"
+                                                    id="inputGroupFile04">
+                                                <label class="custom-file-label" for="inputGroupFile04">Choose
+                                                    file</label>
                                             </div>
                                         </div>
 
-                                        <div class="checkbox my-2">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" name="case[]" value="Family Lawyer"
-                                                    class="custom-control-input" id="customCheck10"
-                                                    data-parsley-multiple="groups" data-parsley-mincheck="2">
-                                                <label class="custom-control-label" for="customCheck10">Status 5</label>
+                                        <div class="form-group row">
+                                            <label for="example-text-input"
+                                                class="col-sm-2 col-form-label text-right">Address</label>
+                                            <div class="col-sm-10">
+                                                <textarea class="form-control" name="address" rows="5"
+                                                    id="message"></textarea>
                                             </div>
                                         </div>
+                                        <div class="form-group row">
+                                            <label for="example-text-input"
+                                                class="col-sm-2 col-form-label text-right">Specialization</label>
+                                            <div class="col-md-9">
+                                                <div class="checkbox my-2">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" name="lawyer[]" value="Tax Lawyer"
+                                                            class="custom-control-input" id="customCheck06"
+                                                            data-parsley-multiple="groups" data-parsley-mincheck="2">
+                                                        <label class="custom-control-label" for="customCheck06">Tax
+                                                            Lawyer</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="checkbox my-2">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" name="lawyer[]" value="Criminal Lawyer"
+                                                            class="custom-control-input" id="customCheck07"
+                                                            data-parsley-multiple="groups" data-parsley-mincheck="2">
+                                                        <label class="custom-control-label" for="customCheck07">Criminal
+                                                            Lawyer</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="checkbox my-2">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" name="lawyer[]"
+                                                            value="Intellectual Lawyer" class="custom-control-input"
+                                                            id="customCheck08" data-parsley-multiple="groups"
+                                                            data-parsley-mincheck="2">
+                                                        <label class="custom-control-label"
+                                                            for="customCheck08">Intellectual
+                                                            Lawyer</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="checkbox my-2">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" name="lawyer[]" value="Buisness lawyer"
+                                                            class="custom-control-input" id="customCheck09"
+                                                            data-parsley-multiple="groups" data-parsley-mincheck="2">
+                                                        <label class="custom-control-label" for="customCheck09">Buisness
+                                                            lawyer</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="checkbox my-2">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" name="lawyer[]" value="Family Lawyer"
+                                                            class="custom-control-input" id="customCheck10"
+                                                            data-parsley-multiple="groups" data-parsley-mincheck="2">
+                                                        <label class="custom-control-label" for="customCheck10">Family
+                                                            Lawyer</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-10 ml-auto">
+                                                <button type="submit" class="btn btn-gradient-primary">Submit</button>
+                                                <button type="button" class="btn btn-gradient-danger">Cancel</button>
+                                            </div>
+                                        </div> 
+                                        
                                     </div>
                                 </div>
-                                <!-- End Checkboxes -->
-
-                                <div class="form-group">
-                                    <label class="drop-down">Advocate</label>
-                                    <select class="form-control">
-                                        <option>Select</option>
-                                        <option>Advocate 1</option>
-                                        <option>Advocate 2</option>
-                                        <option>Advocate 3</option>
-                                        <option>Advocate 4</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="example-datetime-local-input">Case Next Date</label>
-                                    <input class="form-control" name="case_next_date" type="date" id="example-datetime-local-input">
-                                </div>
-
-                                <div class="form-group">
-                                        <label for="message">Special Note</label>
-                                        <textarea class="form-control" rows="5" id="message"></textarea>
-                                </div>
-
-                                <div class="form-group form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                                </div>
-                                <button type="submit" class="btn btn-gradient-primary">Submit</button>
-                                <button type="button" class="btn btn-gradient-danger">Cancel</button>
-                            </form>                                           
-                        </div><!--end card-body-->
-                    </div><!--end card-->
-                </div><!--end col-->
-            </div><!--end row-->               
-            <!-- End Test Element -->
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div><!--end row-->
         </div><!-- container -->
 
         <footer class="footer text-center text-sm-left">
