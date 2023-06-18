@@ -98,7 +98,7 @@
                 </li>
 
                 <li>
-                    <a href="javascript: void(0);"><i class="ti-briefcase"></i><span>Clients</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                    <a href="javascript: void(0);"><i class="mdi mdi-account-alert"></i><span>Clients</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
                     <ul class="nav-second-level" aria-expanded="false">
                         <li class="nav-item"><a class="nav-link" href="add_client.php"><i class="ti-control-record"></i>Add Client</a></li>
                         <li class="nav-item"><a class="nav-link" href="client_list.php"><i class="ti-control-record"></i>Client List</a></li>
@@ -114,7 +114,7 @@
                 </li>
 
                 <li>
-                    <a href="reports.php"><i class="ti-bar-chart"></i><span>Reports</span></i></span></a>
+                    <a href="reports_list.php"><i class="ti-bar-chart"></i><span>Reports</span></i></span></a>
                 </li>
 
                 <li>
