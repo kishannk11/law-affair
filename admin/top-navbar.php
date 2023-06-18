@@ -23,6 +23,17 @@ require_once('config/session.php');
         <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/metisMenu.min.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+        <style>
+        .error-popup {
+            color: red;
+        }
+        .error-title {
+            color: red;
+        }
+        .error-text {
+            color: red;
+        }
+        </style>
 
     </head>
 
