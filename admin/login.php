@@ -52,7 +52,7 @@ require_once "User.php";
                             <div class="px-3">
                                 <div class="auth-logo-box">
                                     <a href="../dashboard/analytics-index.html" class="logo logo-admin"><img
-                                            src="assets/images/logo.png" height="55" alt="logo" class="auth-logo"></a>
+                                            src="assets/images/logo-sm.png" height="55" alt="logo" class="auth-logo"></a>
                                 </div><!--end auth-logo-box-->
                                 <?php
                                 if (isset($error)) {
