@@ -98,7 +98,7 @@ require("top-navbar.php");
                                             echo '<td>' . htmlspecialchars($row["address"]) . '</td>';
                                             echo '<td>' . htmlspecialchars($row["joining_date"]) . '</td>';
                                             echo '<td>';
-                                            echo '<a href="edit_advocate.php" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>';
+                                            echo '<a href="edit_advocate.php?id=' . $row['id'] . '" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>';
                                             echo "<a onclick=\"deleteAdvocate({$row['id']})\"><i class=\"fas fa-trash-alt text-danger font-16\"></i></a>";
                                             echo '</td>';
                                             echo '</tr>';
