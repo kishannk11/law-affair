@@ -238,6 +238,61 @@ class UpdateAdvocate {
         } else {  
             return "Error updating data.";  
          } 
-    } 
+    }
+    public function get_photo($id) {
+        $photo = null;
+        $stmt = $this->conn->prepare("SELECT photo FROM advocates WHERE id = ?");
+        $stmt->bindParam(1, $id, PDO::PARAM_INT);
+        if ($stmt->execute()) {
+            $stmt->bindColumn('photo', $photo, PDO::PARAM_LOB);
+            if ($stmt->fetch(PDO::FETCH_BOUND)) {
+                return $photo;
+            }
+        }
+        return null;
+    }
 } 
+
+class ClientDetails {
+    private $conn;
+
+    public function __construct($conn) {
+        $this->conn = $conn;
+    }
+
+    public function getClientDetails($id) {
+        $stmt = $this->conn->prepare("SELECT id,name, mobile_number, photo_name, address, document_name FROM clients WHERE id = ?");
+        $stmt->bindParam(1, $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+}
+
+class updateClient
+{
+    private $conn;
+
+    public function __construct($conn)
+    {
+        $this->conn = $conn;
+    }
+
+    public function updateClientData($id, $name, $mobileNumber, $photo, $address, $document)
+    {
+        $stmt = $this->conn->prepare("UPDATE clients SET name=:name, mobile_number=:mobileNumber, photo_name=:photo, address=:address, document_name=:document WHERE id=:id");
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':mobileNumber', $mobileNumber);
+        $stmt->bindParam(':photo', $photo);
+        $stmt->bindParam(':address', $address);
+        $stmt->bindParam(':document', $document);
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
 ?>

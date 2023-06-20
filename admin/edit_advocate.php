@@ -29,19 +29,12 @@ require("top-navbar.php");
                 <?php
                 if (isset($_GET['succes'])) {
                     $success = $_GET['succes'];
-                    //echo '<div class="alert alert-success">' . htmlspecialchars($success ). '</div>';
+                    // echo '<div class="alert alert-success">' . $success . '</div>';
                     echo '<script>
-                        document.addEventListener("DOMContentLoaded", function() {
-                            document.getElementById("sa-mixin").addEventListener("click", function() {
-                                Swal.fire({
-                                    title: "Success!",
-                                    text: "' . htmlspecialchars($success) . '",
-                                    icon: "success",
-                                    confirmButtonText: "OK"
-                                });
-                            });
-                        });
-                        </script>';
+                    document.addEventListener("DOMContentLoaded", function() {
+                        Swal.fire("Success!", "' .htmlspecialchars( $success, ENT_QUOTES, 'UTF-8') . '", "success");
+                    });
+                          </script>';
                 }
                 ?>
                 <div class="col-lg-12">
