@@ -3,7 +3,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 require_once 'config/config.php';
-class AddAdvocate
+class addAdvocate
 {
     private $conn;
     public $succes;
@@ -18,30 +18,33 @@ class AddAdvocate
         $data = htmlspecialchars($data);
         return $data;
     }
-    public function addAdvocateData($name, $mobileNumber, $joiningDate, $photo, $address, $specialization)
+    public function addAdvocateData($name, $mobileNumber, $joiningDate, $photo, $address, $specialization, $username, $password)
     {
         // Validate and sanitize input data
         $name = $this->validateInput($name);
         $mobileNumber = $this->validateInput($mobileNumber);
         $joiningDate = $this->validateInput($joiningDate);
         $address = $this->validateInput($address);
+        $username = $this->validateInput($username);
+        $password = $this->validateInput($password);
         // Validate and sanitize specialization array
         $specialization = array_map(array($this, 'validateInput'), $specialization);
         // Prepare and bind SQL statement
-        $stmt = $this->conn->prepare("INSERT INTO advocates (name, mobile_number, joining_date, photo, address, specializations) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt = $this->conn->prepare("INSERT INTO advocates (name, mobile_number, joining_date, photo, address, specializations, username, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->bindParam(1, $name, PDO::PARAM_STR);
         $stmt->bindParam(2, $mobileNumber, PDO::PARAM_STR);
         $stmt->bindParam(3, $joiningDate, PDO::PARAM_STR);
         $stmt->bindParam(4, $photo, PDO::PARAM_LOB);
         $stmt->bindParam(5, $address, PDO::PARAM_STR);
         $stmt->bindParam(6, json_encode($specialization), PDO::PARAM_STR);
+        $stmt->bindParam(7, $username, PDO::PARAM_STR);
+        $stmt->bindParam(8, $password, PDO::PARAM_STR);
         // Execute statement
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
             $this->succes = "Data inserted successfully.";
         } else {
             $this->succes = "Error inserting data.";
-
         }
     }
     public function getSuccessMessage()
@@ -86,8 +89,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             //return;
         }
 
+        $passwordfrom = $_POST["password"];
+        $hashed_password = password_hash($passwordfrom, PASSWORD_DEFAULT);
+
         // Add advocate data to the database
-        $addAdvocate->addAdvocateData($_POST["name"], $_POST["mobileNumber"], $_POST["joiningDate"], $photo, $_POST["address"], $_POST["lawyer"]);
+        $addAdvocate->addAdvocateData($_POST["name"], $_POST["mobileNumber"], $_POST["joiningDate"], $photo, $_POST["address"], $_POST["lawyer"],$_POST["username"],$hashed_password);
         $success = $addAdvocate->getSuccessMessage();
         header("Location: add_advocate.php?succes=" . urlencode($success));
 

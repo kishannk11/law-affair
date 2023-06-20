@@ -64,21 +64,14 @@ require("top-navbar.php");
                             $address = $advocateDetails['address'];
                             $specializations = explode(',', $advocateDetails['specializations']);
                             //print_r($specializations);
-                             //isChecked('Criminal Lawyer', $specializations);
+                            echo isChecked('Criminal Lawyer', $specializations);
                             //$specialization='Criminal Lawyer';
                             function isChecked($specialization, $specializations) {
-                                foreach ($specializations as $value) {
-                                    
-                                    if ($value == $specialization) {
-                                        return 'checked';
-                                        //echo $value."<br>";
-                                        //echo $specialization;
-
-                                    }
+                                if (in_array($specialization, $specializations)) {
+                                    return 'checked';
                                 }
                                 return '';
-                            }
-                            
+                            }                         
                             ?>
                             <form action="update_advocate.php" method="POST" enctype="multipart/form-data">
                                 <div class="row">
