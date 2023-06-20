@@ -49,7 +49,7 @@ require("top-navbar.php");
                         <div class="card-body">
                             <?php
                             include 'config/config.php';
-                            include 'Advcte.php';
+                            include 'Database.php';
                             ini_set('display_errors', 1);
                             ini_set('display_startup_errors', 1);
                             error_reporting(E_ALL);
@@ -63,7 +63,7 @@ require("top-navbar.php");
                             $photo = $advocateDetails['photo'];
                             $address = $advocateDetails['address'];
                             $specializations = json_decode($advocateDetails['specializations']);
-                            print_r($specializations);
+                            
                             function isChecked($specialization, $specializations)
                             {
                                 return in_array($specialization, $specializations);
@@ -76,6 +76,8 @@ require("top-navbar.php");
                                             <label for="example-text-input"
                                                 class="col-sm-2 col-form-label text-right">Name</label>
                                             <div class="col-sm-10">
+                                            <input class="form-control" name="id" type="hidden"
+                                                    id="example-text-input" value="<?php echo $id; ?>">
                                                 <input class="form-control" name="name" type="text"
                                                     id="example-text-input" value="<?php echo $name; ?>">
 
@@ -180,7 +182,7 @@ require("top-navbar.php");
                                                             Lawyer</label>
                                                     </div>
                                                 </div>
-                                                <button type="submit" class="btn btn-gradient-primary">Submit</button>
+                                                <button type="submit" class="btn btn-gradient-primary">Update</button>
                                                 </form>
                             <button type="button" onclick="goBack()" class="btn btn-gradient-danger">Cancel</button>
                                             </div>
