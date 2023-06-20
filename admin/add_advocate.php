@@ -204,7 +204,7 @@ require("top-navbar.php");
                                         <div class="row">
                                             <div class="col-sm-10 ml-auto">
                                                 <button type="submit" class="btn btn-gradient-primary">Submit</button>
-                                                <button type="button" class="btn btn-gradient-danger">Cancel</button>
+                                                <button type="button"   class="btn btn-gradient-danger">Cancel</button>
                                             </div>
                                         </div>
 
@@ -224,7 +224,6 @@ require("top-navbar.php");
     <!-- end page content -->
 </div>
 <!-- end page-wrapper -->
-
 
 
 
