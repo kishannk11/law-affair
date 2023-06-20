@@ -38,7 +38,7 @@ require("top-navbar.php");
                                                 $username = 'ADVCT' . rand(1000, 9999);
 
                                                 ?>
-                                                <input class="form-control" name="mobileNumber" type="text"
+                                                <input class="form-control" name="username" type="text"
                                                     id="example-tel-input" value="<?php echo $username ?>" readonly>
                                             </div>
                                         </div>
@@ -48,8 +48,9 @@ require("top-navbar.php");
                                             <div class="col-sm-10">
                                                 <input class="form-control" name="name" type="text"
                                                     id="example-text-input">
-
-                                                <?php
+                                            </div>
+                                        </div>
+                                        <?php
                                                 if (isset($_GET['succes'])) {
                                                     $success = $_GET['succes'];
                                                     // echo '<div class="alert alert-success">' . $success . '</div>';
@@ -98,10 +99,6 @@ require("top-navbar.php");
                                                 }
                                                 ?>
 
-                                            
-                                            </div>
-                                        </div>
-
                                         <div class="form-group row">
                                             <label for="example-tel-input"
                                                 class="col-sm-2 col-form-label text-right">Mobile
@@ -118,6 +115,14 @@ require("top-navbar.php");
                                             <div class="col-sm-10">
                                                 <input class="form-control" type="date" name="joiningDate"
                                                     id="example-datetime-local-input" >
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="example-text-input"
+                                                class="col-sm-2 col-form-label text-right">Password</label>
+                                            <div class="col-sm-10">
+                                                <input class="form-control" name="password" type="text"
+                                                    id="example-text-input">
                                             </div>
                                         </div>
 
