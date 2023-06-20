@@ -53,25 +53,21 @@ require("top-navbar.php");
                             ini_set('display_errors', 1);
                             ini_set('display_startup_errors', 1);
                             error_reporting(E_ALL);
-                             $advocate = new Advocate($conn);
+                            $advocate = new Advocate($conn);
                             $id = $_GET['id'];
                             $advocateDetails = $advocate->getAdvocateDetailsById($id);
-                             // Extract the advocate details
+                            // Extract the advocate details
                             $name = $advocateDetails['name'];
                             $mobile_number = $advocateDetails['mobile_number'];
                             $joining_date = $advocateDetails['joining_date'];
                             $photo = $advocateDetails['photo'];
                             $address = $advocateDetails['address'];
-                            $specializations = explode(',', $advocateDetails['specializations']);
-                            //print_r($specializations);
-                            echo isChecked('Criminal Lawyer', $specializations);
-                            //$specialization='Criminal Lawyer';
-                            function isChecked($specialization, $specializations) {
-                                if (in_array($specialization, $specializations)) {
-                                    return 'checked';
-                                }
-                                return '';
-                            }                         
+                            $specializations = json_decode($advocateDetails['specializations']);
+                            print_r($specializations);
+                            function isChecked($specialization, $specializations)
+                            {
+                                return in_array($specialization, $specializations);
+                            }
                             ?>
                             <form action="update_advocate.php" method="POST" enctype="multipart/form-data">
                                 <div class="row">
@@ -100,7 +96,8 @@ require("top-navbar.php");
                                                 class="col-sm-2 col-form-label text-right">Joining Date</label>
                                             <div class="col-sm-10">
                                                 <input class="form-control" type="date" name="joiningDate"
-                                                    id="example-datetime-local-input" value="<?php echo $joining_date; ?>">
+                                                    id="example-datetime-local-input"
+                                                    value="<?php echo $joining_date; ?>">
                                             </div>
                                         </div>
 
@@ -129,8 +126,12 @@ require("top-navbar.php");
                                             <div class="col-md-9">
                                                 <div class="checkbox my-2">
                                                     <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" name="lawyer[]" value="Tax Lawyer" class="custom-control-input" id="customCheck06" data-parsley-multiple="groups" data-parsley-mincheck="2" <?php echo isChecked('Tax Lawyer', $specializations); ?>>
-                                                        <label class="custom-control-label" for="customCheck06">Tax Lawyer</label>
+                                                        <input type="checkbox" name="lawyer[]" value="Tax Lawyer"
+                                                            class="custom-control-input" id="customCheck06"
+                                                            data-parsley-multiple="groups" data-parsley-mincheck="2"
+                                                            <?php echo isChecked('Tax Lawyer', $specializations) ? 'checked' : ''; ?>>
+                                                        <label class="custom-control-label" for="customCheck06">Tax
+                                                            Lawyer</label>
                                                     </div>
                                                 </div>
 
@@ -138,7 +139,8 @@ require("top-navbar.php");
                                                     <div class="custom-control custom-checkbox">
                                                         <input type="checkbox" name="lawyer[]" value="Criminal Lawyer"
                                                             class="custom-control-input" id="customCheck07"
-                                                            data-parsley-multiple="groups" data-parsley-mincheck="2" <?php echo isChecked('Criminal Lawyer', $specializations); ?>>
+                                                            data-parsley-multiple="groups" data-parsley-mincheck="2"
+                                                            <?php echo isChecked('Criminal Lawyer', $specializations) ? 'checked' : ''; ?>>
                                                         <label class="custom-control-label" for="customCheck07">Criminal
                                                             Lawyer</label>
                                                     </div>
@@ -149,7 +151,8 @@ require("top-navbar.php");
                                                         <input type="checkbox" name="lawyer[]"
                                                             value="Intellectual Lawyer" class="custom-control-input"
                                                             id="customCheck08" data-parsley-multiple="groups"
-                                                            data-parsley-mincheck="2" <?php echo isChecked('Intellectual Lawyer', $specializations); ?>>
+                                                            data-parsley-mincheck="2"
+                                                            <?php echo isChecked('Intellectual Lawyer', $specializations) ? 'checked' : ''; ?>>
                                                         <label class="custom-control-label"
                                                             for="customCheck08">Intellectual
                                                             Lawyer</label>
@@ -160,7 +163,8 @@ require("top-navbar.php");
                                                     <div class="custom-control custom-checkbox">
                                                         <input type="checkbox" name="lawyer[]" value="Buisness lawyer"
                                                             class="custom-control-input" id="customCheck09"
-                                                            data-parsley-multiple="groups" data-parsley-mincheck="2" <?php echo isChecked('Buisness Lawyer', $specializations); ?>>
+                                                            data-parsley-multiple="groups" data-parsley-mincheck="2"
+                                                            <?php echo isChecked('Buisness lawyer', $specializations) ? 'checked' : ''; ?>>
                                                         <label class="custom-control-label" for="customCheck09">Buisness
                                                             lawyer</label>
                                                     </div>
@@ -170,14 +174,18 @@ require("top-navbar.php");
                                                     <div class="custom-control custom-checkbox">
                                                         <input type="checkbox" name="lawyer[]" value="Family Lawyer"
                                                             class="custom-control-input" id="customCheck10"
-                                                            data-parsley-multiple="groups" data-parsley-mincheck="2" <?php echo isChecked('Family Lawyer', $specializations); ?>>
+                                                            data-parsley-multiple="groups" data-parsley-mincheck="2"
+                                                            <?php echo isChecked('Family Lawyer', $specializations) ? 'checked' : ''; ?>>
                                                         <label class="custom-control-label" for="customCheck10">Family
                                                             Lawyer</label>
                                                     </div>
                                                 </div>
                                                 <button type="submit" class="btn btn-gradient-primary">Submit</button>
-                            </form>
-                            <button type="button" class="btn btn-gradient-danger">Cancel</button>
+                                                </form>
+                            <button type="button" onclick="goBack()" class="btn btn-gradient-danger">Cancel</button>
+                                            </div>
+                                        </div>
+                            
 
                         </div>
                     </div>
@@ -203,7 +211,11 @@ require("top-navbar.php");
 <!-- end page content -->
 </div>
 <!-- end page-wrapper -->
-
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
 <!-- jQuery  -->
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/bootstrap.bundle.min.js"></script>
