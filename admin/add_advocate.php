@@ -34,8 +34,12 @@ require("top-navbar.php");
                                             <label for="example-tel-input"
                                                 class="col-sm-2 col-form-label text-right">Username</label>
                                             <div class="col-sm-10">
+                                                <?php
+                                                $username = 'ADVCT' . rand(1000, 9999);
+
+                                                ?>
                                                 <input class="form-control" name="mobileNumber" type="text"
-                                                    id="example-tel-input" value="<?php echo $username='' ?>">
+                                                    id="example-tel-input" value="<?php echo $username ?>" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -123,8 +127,7 @@ require("top-navbar.php");
                                             <div class="col-sm-10">
                                                 <input type="file" name="photo" class="form-control"
                                                     id="inputGroupFile04">
-                                                <label class="custom-file-label" for="inputGroupFile04">Choose
-                                                    file</label>
+                                                
                                             </div>
                                         </div>
 
