@@ -30,6 +30,14 @@ require("top-navbar.php");
                             <form action="advocate.php" method="POST" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-lg-12">
+                                    <div class="form-group row">
+                                            <label for="example-tel-input"
+                                                class="col-sm-2 col-form-label text-right">Username</label>
+                                            <div class="col-sm-10">
+                                                <input class="form-control" name="mobileNumber" type="text"
+                                                    id="example-tel-input" value="<?php echo $username='' ?>">
+                                            </div>
+                                        </div>
                                         <div class="form-group row">
                                             <label for="example-text-input"
                                                 class="col-sm-2 col-form-label text-right">Name</label>

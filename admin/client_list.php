@@ -33,266 +33,53 @@ require("top-navbar.php");
                                     <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                         <thead>
                                         <tr>
+                                            <th>Client Username</th>
                                             <th>Client Name</th>
-                                            <th>Handelled by</th>
-                                            <th>Email</th>
-                                            <th>Start date</th>
+                                            <th>Mobile Number</th>
+                                            <th>Address</th>
                                             <th>Action</th>
                                         </tr>
                                         </thead>
     
     
                                         <tbody>
-                                        <tr>
-                                            <td>Gautham</td>
-                                            <td>Kishan Nayak</td>
-                                            <td>gautham@gmail.com</td>
-                                            <td>01/06/2023</td>
-                                            <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
-                                                <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Krishna</td>
-                                            <td>Ranjith</td>
-                                            <td>krishna@gmail.com</td>
-                                            <td>01/06/2023</td>
-                                            <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
-                                                <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Irfaan</td>
-                                            <td>Rakesh Marate</td>
-                                            <td>rakesh@gmail.com</td>
-                                            <td>01/06/2023</td>                                        
-                                            <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
-                                                <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cedric Kelly</td>
-                                            <td>Ranjith</td>
-                                            <td>cedric@gmail.com</td>
-                                            <td>2012/03/29</td>
-                                            <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
-                                                <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Siri Sharma</td>
-                                            <td>Kishan Nayak</td>
-                                            <td>siri@gmail.com</td>
-                                            <td>2008/11/28</td>
-                                            <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
-                                                <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Brielle Williamson</td>
-                                            <td>Integration Specialist</td>
-                                            <td>New York</td>
-                                            <td>2012/12/02</td>
-                                            <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
-                                                <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Herrod Chandler</td>
-                                            <td>Sales Assistant</td>
-                                            <td>San Francisco</td>
-                                            <td>2012/08/06</td>
-                                            <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
-                                                <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Rhona Davidson</td>
-                                            <td>Integration Specialist</td>
-                                            <td>Tokyo</td>
-                                            <td>2010/10/14</td>
-                                            <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
-                                                <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Colleen Hurst</td>
-                                            <td>Javascript Developer</td>
-                                            <td>San Francisco</td>
-                                            <td>2009/09/15</td>
-                                            <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
-                                                <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Sonya Frost</td>
-                                            <td>Software Engineer</td>
-                                            <td>Edinburgh</td>
-                                            <td>2008/12/13</td>
-                                            <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
-                                                <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jena Gaines</td>
-                                            <td>Office Manager</td>
-                                            <td>London</td>
-                                            <td>2008/12/19</td>
-                                            <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
-                                                <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Quinn Flynn</td>
-                                            <td>Support Lead</td>
-                                            <td>Edinburgh</td>
-                                            <td>2013/03/03</td>
-                                            <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
-                                                <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Charde Marshall</td>
-                                            <td>Regional Director</td>
-                                            <td>San Francisco</td>
-                                            <td>2008/10/16</td>
-                                            <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
-                                                <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Haley Kennedy</td>
-                                            <td>Senior Marketing Designer</td>
-                                            <td>London</td>
-                                            <td>2012/12/18</td>
-                                            <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
-                                                <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tatyana Fitzpatrick</td>
-                                            <td>Regional Director</td>
-                                            <td>London</td>
-                                            <td>2010/03/17</td>
-                                            <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
-                                                <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Michael Silva</td>
-                                            <td>Marketing Designer</td>
-                                            <td>London</td>
-                                            <td>2012/11/27</td>
-                                            <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
-                                                <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Paul Byrd</td>
-                                            <td>Chief Financial Officer (CFO)</td>
-                                            <td>New York</td>
-                                            <td>2010/06/09</td>
-                                            <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
-                                                <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Gloria Little</td>
-                                            <td>Systems Administrator</td>
-                                            <td>New York</td>
-                                            <td>2009/04/10</td>
-                                            <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
-                                                <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Bradley Greer</td>
-                                            <td>Software Engineer</td>
-                                            <td>London</td>
-                                            <td>2012/10/13</td>
-                                            <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
-                                                <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Dai Rios</td>
-                                            <td>Personnel Lead</td>
-                                            <td>Edinburgh</td>
-                                            <td>2012/09/26</td>
-                                            <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
-                                                <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jenette Caldwell</td>
-                                            <td>Development Lead</td>
-                                            <td>New York</td>
-                                            <td>2011/09/03</td>
-                                            <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
-                                                <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Yuri Berry</td>
-                                            <td>Chief Marketing Officer (CMO)</td>
-                                            <td>New York</td>
-                                            <td>2009/06/25</td>
-                                            <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
-                                                <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Caesar Vance</td>
-                                            <td>Pre-Sales Support</td>
-                                            <td>New York</td>
-                                            <td>2011/12/12</td>
-                                            <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
-                                                <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Doris Wilder</td>
-                                            <td>Sales Assistant</td>
-                                            <td>Sidney</td>
-                                            <td>2010/09/20</td>
-                                            <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
-                                                <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Angelica Ramos</td>
-                                            <td>Chief Executive Officer (CEO)</td>
-                                            <td>London</td>
-                                            <td>2009/10/09</td>
-                                            <td>                                                                                                       
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
-                                                <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
-                                            </td>
-                                        </tr>
+                                        <tbody>
+                                    <?php
+                                    ini_set('display_errors', 1);
+                                    ini_set('display_startup_errors', 1);
+                                    error_reporting(E_ALL);
+
+                                    require_once 'config/config.php';
+                                    try {
+                                        // Create a new PDO instance
+                                        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                                        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                        // Prepare and execute the SQL query
+                                        $stmt = $conn->prepare("SELECT username,id,name, mobile_number, address FROM clients");
+                                        $stmt->execute();
+                                        // Print the data in the desired format
+                                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                            echo '<tr>';
+                                            echo '<td>' . htmlspecialchars($row["username"]) . '</td>';
+                                            echo '<td>' . htmlspecialchars($row["name"]) . '</td>';
+                                            echo '<td>' . htmlspecialchars($row["mobile_number"]) . '</td>';
+                                            echo '<td>' . htmlspecialchars($row["address"]) . '</td>';
+                                            
+                                            echo '<td>';
+                                            echo '<a href="edit_advocate.php?id=' . $row['id'] . '" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>';
+                                            echo "<a onclick=\"deleteAdvocate({$row['id']})\"><i class=\"fas fa-trash-alt text-danger font-16\"></i></a>";
+                                            echo '</td>';
+                                            echo '</tr>';
+                                        }
+                                    } catch (PDOException $e) {
+                                        echo "Error: " . $e->getMessage();
+                                    }
+                                    // Close the database connection
+                                    $conn = null;
+
+
+                                    ?>
+                                </tbody>
                                         </tbody>
                                     </table>        
                                 </div>
