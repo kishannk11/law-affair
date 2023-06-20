@@ -295,4 +295,110 @@ class updateClient
         }
     }
 }
+
+class SelectAdvocate
+{
+    private $conn;
+
+    public function __construct($conn)
+    {
+        $this->conn = $conn;
+    }
+
+    public function getAdvocateNames()
+    {
+        $stmt = $this->conn->prepare("SELECT name,username FROM advocates");
+        $stmt->execute();
+        $advocateNames = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $advocateNames;
+    }
+}
+
+class SelectClient
+{
+    private $conn;
+
+    public function __construct($conn)
+    {
+        $this->conn = $conn;
+    }
+
+    public function getClientNames()
+    {
+        $stmt = $this->conn->prepare("SELECT name,username FROM clients");
+        $stmt->execute();
+        $clientNames = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $clientNames;
+    }
+}
+
+class AddCase
+{
+    private $conn;
+
+    public function __construct($conn)
+    {
+        $this->conn = $conn;
+    }
+
+    public function saveCase($data)
+    {
+        $sql = "INSERT INTO cases (case_number, filing_number, fillingDate, client, party_name, case_status, advocate, case_next_date, special_note) VALUES (:case_number, :ffiling_number, :fillingDate, :client, :party_name, :case_status, :advocate, :case_next_date, :special_note)";
+
+        $stmt = $this->conn->prepare($sql);
+
+        $stmt->bindParam(':case_number', $data['case_number']);
+        $stmt->bindParam(':ffiling_number', $data['ffiling_number']);
+        $stmt->bindParam(':fillingDate', $data['fillingDate']);
+        $stmt->bindParam(':client', $data['client']);
+        $stmt->bindParam(':party_name', $data['party_name']);
+        $stmt->bindParam(':case_status', $data['case_status']);
+        $stmt->bindParam(':advocate', $data['advocate']);
+        $stmt->bindParam(':case_next_date', $data['case_next_date']);
+        $stmt->bindParam(':special_note', $data['special_note']);
+
+        return $stmt->execute();
+    }
+}
+
+class CaseList
+{
+    private $conn;
+
+    public function __construct($conn)
+    {
+        $this->conn = $conn;
+    }
+
+    public function getCases()
+    {
+        $stmt = $this->conn->prepare("SELECT id,case_number, filing_number, fillingDate, client, party_name, case_status, advocate, case_next_date, special_note FROM cases");
+        $stmt->execute();
+        $cases = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($cases as &$case) {
+            $advocateName = $this->getAdvocateName($case['advocate']);
+            $clientName = $this->getClientName($case['client']);
+            $case['advocate'] = $advocateName;
+            $case['client'] = $clientName;
+        }
+        return $cases;
+    }
+    public function getAdvocateName($username)
+    {
+        $stmt = $this->conn->prepare("SELECT name FROM advocates WHERE username = ?");
+        $stmt->bindParam(1, $username, PDO::PARAM_STR);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['name'];
+    }
+
+    public function getClientName($username)
+    {
+        $stmt = $this->conn->prepare("SELECT name FROM clients WHERE username = ?");
+        $stmt->bindParam(1, $username, PDO::PARAM_STR);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['name'];
+    }
+}
 ?>
