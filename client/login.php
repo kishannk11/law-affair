@@ -2,26 +2,19 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-// require_once 'config.php';
-require_once 'Database.php';
-require_once 'User.php';
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = $_POST['username'];
-    $password = $_POST['userpassword'];
-    $db = new Database($db_host, $db_user, $db_password, $db_name);
-    $user = new User($db);
-    $authenticatedUser = $user->authenticate($username, $password);
-    if ($authenticatedUser) {
-        // Log the user in and redirect to the dashboard
-        session_start();
-        $_SESSION['user'] = $authenticatedUser;
-        header('Location: dashboard.php');
+require_once 'config/config.php';
+require_once "Database.php";
+ if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $user = new User($conn);
+    $user->username = $_POST["username"];
+    $user->password = $_POST["userpassword"];
+     if ($user->login()) {
+        header("location: dashboard.php");
+        exit;
     } else {
-        // Show an error message
-        $error = "Invalid username or password";
+        $error = "Invalid username or password.";
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 </div> <!--end auth-logo-text-->
 
 
-                                <form method="POST" class="form-horizontal auth-form my-4" action="index.php">
+                                <form method="POST" class="form-horizontal auth-form my-4" action="login.php">
 
                                     <div class="form-group">
                                         <label for="username">Username</label>
