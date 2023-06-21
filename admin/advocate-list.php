@@ -58,6 +58,7 @@ require("top-navbar.php");
                                     }
                                     ?>
                                     <tr>
+                                        <th>Advocate Username</th>
                                         <th>Name</th>
                                         <th>Specialization</th>
                                         <th>Mobile Number</th>
@@ -78,11 +79,12 @@ require("top-navbar.php");
                                         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
                                         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                                         // Prepare and execute the SQL query
-                                        $stmt = $conn->prepare("SELECT id,name, mobile_number, joining_date, address, specializations FROM advocates");
+                                        $stmt = $conn->prepare("SELECT username,id,name, mobile_number, joining_date, address, specializations FROM advocates");
                                         $stmt->execute();
                                         // Print the data in the desired format
                                         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                                             echo '<tr>';
+                                            echo '<td>' . htmlspecialchars($row["username"]) . '</td>';
                                             echo '<td>' . htmlspecialchars($row["name"]) . '</td>';
                                             $specializations = json_decode($row["specializations"]);
                                             if ($specializations !== null) {
@@ -98,7 +100,7 @@ require("top-navbar.php");
                                             echo '<td>' . htmlspecialchars($row["address"]) . '</td>';
                                             echo '<td>' . htmlspecialchars($row["joining_date"]) . '</td>';
                                             echo '<td>';
-                                            echo '<a href="edit_advocate.php?id=' . $row['id'] . '" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>';
+                                            echo '<a href="edit_case.php?id=' . $row['id'] . '" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>';
                                             echo "<a onclick=\"deleteAdvocate({$row['id']})\"><i class=\"fas fa-trash-alt text-danger font-16\"></i></a>";
                                             echo '</td>';
                                             echo '</tr>';
