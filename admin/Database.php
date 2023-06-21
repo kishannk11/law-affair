@@ -403,4 +403,29 @@ class CaseList
         return $result['name'];
     }
 }
+
+class deleteCase {
+    private $conn;
+    private $table_name = "cases";
+
+    public function __construct($db) {
+        $this->conn = $db;
+    }
+
+    // Function to delete a case by ID
+    public function delete($id) {
+        // SQL query to delete a case by ID
+        $query = "DELETE FROM " . $this->table_name . " WHERE id = :id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":id", $id);
+
+        if ($stmt->execute()) {
+            // Case deleted successfully
+            return true;
+        } else {
+            // Error deleting case
+            return false;
+        }
+    }
+}
 ?>
