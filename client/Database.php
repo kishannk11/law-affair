@@ -1,17 +1,37 @@
 <?php
-class Database {
+class User {
     private $conn;
-     public function __construct($host, $user, $pass, $dbname) {
-        $this->conn = new mysqli($host, $user, $pass, $dbname);
+    private $table_name = "advocates";
+     public $id;
+    public $username;
+    public $password;
+     public function __construct($db) {
+        $this->conn = $db;
     }
-     public function getUserByUsername($username) {
-        $stmt = $this->conn->prepare("SELECT * FROM admin WHERE username = ?");
-        $stmt->bind_param("s", $username);
+     public function login() {
+        $query = "SELECT * FROM " . $this->table_name . " WHERE username = :username";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":username", $this->username);
         $stmt->execute();
-        $result = $stmt->get_result();
-        $user = $result->fetch_assoc();
-        $stmt->close();
-        return $user;
+         if ($stmt->rowCount() > 0) {
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            if (password_verify($this->password, $row['password'])) {
+                session_start();
+                $_SESSION["loggedin"] = true;
+                $_SESSION["id"] = $row["id"];
+                $_SESSION["username"] = $row["username"];
+                $_SESSION["role"] = $row["role"];
+                 if (isset($_POST['remember_me'])) {
+                    setcookie("username", $this->username, time() + (86400 * 30), "/");
+                    setcookie("password", $this->password, time() + (86400 * 30), "/");
+                }
+                 return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 }
 ?>

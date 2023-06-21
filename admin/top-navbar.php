@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 require_once('config/session.php');
 ?>
 
@@ -37,7 +40,7 @@ require_once('config/session.php');
 
     </head>
 
-    <body>
+    <body class="dark-topbar">
         
          <!-- Top Bar Start -->
          <div class="topbar">

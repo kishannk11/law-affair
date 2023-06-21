@@ -20,6 +20,7 @@ class User {
                 $_SESSION["loggedin"] = true;
                 $_SESSION["id"] = $row["id"];
                 $_SESSION["username"] = $row["username"];
+                $_SESSION["role"] = $row["role"];
                  if (isset($_POST['remember_me'])) {
                     setcookie("username", $this->username, time() + (86400 * 30), "/");
                     setcookie("password", $this->password, time() + (86400 * 30), "/");
@@ -49,7 +50,7 @@ class AddAdvocate
         $data = htmlspecialchars($data);
         return $data;
     }
-     public function addAdvocateData($name, $mobileNumber, $joiningDate, $photo, $address, $specialization, $username, $password)
+     public function addAdvocateData($name, $mobileNumber, $joiningDate, $photo, $address, $specialization, $username, $password,$role)
     {
         // Validate and sanitize input data
         $name = $this->validateInput($name);
@@ -61,7 +62,7 @@ class AddAdvocate
         // Validate and sanitize specialization array
         $specialization = array_map(array($this, 'validateInput'), $specialization);
         // Prepare and bind SQL statement
-        $stmt = $this->conn->prepare("INSERT INTO advocates (name, mobile_number, joining_date, photo, address, specializations, username, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $this->conn->prepare("INSERT INTO advocates (name, mobile_number, joining_date, photo, address, specializations, username, password,role) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)");
         $stmt->bindParam(1, $name, PDO::PARAM_STR);
         $stmt->bindParam(2, $mobileNumber, PDO::PARAM_STR);
         $stmt->bindParam(3, $joiningDate, PDO::PARAM_STR);
@@ -70,6 +71,7 @@ class AddAdvocate
         $stmt->bindParam(6, json_encode($specialization), PDO::PARAM_STR);
         $stmt->bindParam(7, $username, PDO::PARAM_STR);
         $stmt->bindParam(8, $password, PDO::PARAM_STR);
+        $stmt->bindParam(9, $role, PDO::PARAM_STR);
         // Execute statement
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
@@ -291,6 +293,137 @@ class updateClient
         if ($stmt->execute()) {
             return true;
         } else {
+            return false;
+        }
+    }
+}
+
+class SelectAdvocate
+{
+    private $conn;
+
+    public function __construct($conn)
+    {
+        $this->conn = $conn;
+    }
+
+    public function getAdvocateNames()
+    {
+        $stmt = $this->conn->prepare("SELECT name,username FROM advocates");
+        $stmt->execute();
+        $advocateNames = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $advocateNames;
+    }
+}
+
+class SelectClient
+{
+    private $conn;
+
+    public function __construct($conn)
+    {
+        $this->conn = $conn;
+    }
+
+    public function getClientNames()
+    {
+        $stmt = $this->conn->prepare("SELECT name,username FROM clients");
+        $stmt->execute();
+        $clientNames = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $clientNames;
+    }
+}
+
+class AddCase
+{
+    private $conn;
+
+    public function __construct($conn)
+    {
+        $this->conn = $conn;
+    }
+
+    public function saveCase($data)
+    {
+        $sql = "INSERT INTO cases (case_number, filing_number, fillingDate, client, party_name, case_status, advocate, case_next_date, special_note) VALUES (:case_number, :ffiling_number, :fillingDate, :client, :party_name, :case_status, :advocate, :case_next_date, :special_note)";
+
+        $stmt = $this->conn->prepare($sql);
+
+        $stmt->bindParam(':case_number', $data['case_number']);
+        $stmt->bindParam(':ffiling_number', $data['ffiling_number']);
+        $stmt->bindParam(':fillingDate', $data['fillingDate']);
+        $stmt->bindParam(':client', $data['client']);
+        $stmt->bindParam(':party_name', $data['party_name']);
+        $stmt->bindParam(':case_status', $data['case_status']);
+        $stmt->bindParam(':advocate', $data['advocate']);
+        $stmt->bindParam(':case_next_date', $data['case_next_date']);
+        $stmt->bindParam(':special_note', $data['special_note']);
+
+        return $stmt->execute();
+    }
+}
+
+class CaseList
+{
+    private $conn;
+
+    public function __construct($conn)
+    {
+        $this->conn = $conn;
+    }
+
+    public function getCases()
+    {
+        $stmt = $this->conn->prepare("SELECT id,case_number, filing_number, fillingDate, client, party_name, case_status, advocate, case_next_date, special_note FROM cases");
+        $stmt->execute();
+        $cases = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($cases as &$case) {
+            $advocateName = $this->getAdvocateName($case['advocate']);
+            $clientName = $this->getClientName($case['client']);
+            $case['advocate'] = $advocateName;
+            $case['client'] = $clientName;
+        }
+        return $cases;
+    }
+    public function getAdvocateName($username)
+    {
+        $stmt = $this->conn->prepare("SELECT name FROM advocates WHERE username = ?");
+        $stmt->bindParam(1, $username, PDO::PARAM_STR);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['name'];
+    }
+
+    public function getClientName($username)
+    {
+        $stmt = $this->conn->prepare("SELECT name FROM clients WHERE username = ?");
+        $stmt->bindParam(1, $username, PDO::PARAM_STR);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['name'];
+    }
+}
+
+class deleteCase {
+    private $conn;
+    private $table_name = "cases";
+
+    public function __construct($db) {
+        $this->conn = $db;
+    }
+
+    // Function to delete a case by ID
+    public function delete($id) {
+        // SQL query to delete a case by ID
+        $query = "DELETE FROM " . $this->table_name . " WHERE id = :id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":id", $id);
+
+        if ($stmt->execute()) {
+            // Case deleted successfully
+            return true;
+        } else {
+            // Error deleting case
             return false;
         }
     }

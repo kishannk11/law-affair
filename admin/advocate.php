@@ -43,9 +43,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $passwordfrom = $_POST["password"];
         $hashed_password = password_hash($passwordfrom, PASSWORD_DEFAULT);
+        $role="client";
 
         // Add advocate data to the database
-        $addAdvocate->addAdvocateData($_POST["name"], $_POST["mobileNumber"], $_POST["joiningDate"], $photo, $_POST["address"], $_POST["lawyer"],$_POST["username"],$hashed_password);
+        $addAdvocate->addAdvocateData($_POST["name"], $_POST["mobileNumber"], $_POST["joiningDate"], $photo, $_POST["address"], $_POST["lawyer"],$_POST["username"],$hashed_password,$role);
         $success = $addAdvocate->getSuccessMessage();
         header("Location: add_advocate.php?succes=" . urlencode($success));
 
