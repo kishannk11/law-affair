@@ -37,7 +37,7 @@ require_once('config/session.php');
 
     </head>
 
-    <body>
+    <body class="dark-topbar">
         
          <!-- Top Bar Start -->
          <div class="topbar">
