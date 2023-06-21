@@ -20,6 +20,7 @@ class User {
                 $_SESSION["loggedin"] = true;
                 $_SESSION["id"] = $row["id"];
                 $_SESSION["username"] = $row["username"];
+                $_SESSION["role"] = $row["role"];
                  if (isset($_POST['remember_me'])) {
                     setcookie("username", $this->username, time() + (86400 * 30), "/");
                     setcookie("password", $this->password, time() + (86400 * 30), "/");
@@ -49,7 +50,7 @@ class AddAdvocate
         $data = htmlspecialchars($data);
         return $data;
     }
-     public function addAdvocateData($name, $mobileNumber, $joiningDate, $photo, $address, $specialization, $username, $password)
+     public function addAdvocateData($name, $mobileNumber, $joiningDate, $photo, $address, $specialization, $username, $password,$role)
     {
         // Validate and sanitize input data
         $name = $this->validateInput($name);
@@ -61,7 +62,7 @@ class AddAdvocate
         // Validate and sanitize specialization array
         $specialization = array_map(array($this, 'validateInput'), $specialization);
         // Prepare and bind SQL statement
-        $stmt = $this->conn->prepare("INSERT INTO advocates (name, mobile_number, joining_date, photo, address, specializations, username, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $this->conn->prepare("INSERT INTO advocates (name, mobile_number, joining_date, photo, address, specializations, username, password,role) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)");
         $stmt->bindParam(1, $name, PDO::PARAM_STR);
         $stmt->bindParam(2, $mobileNumber, PDO::PARAM_STR);
         $stmt->bindParam(3, $joiningDate, PDO::PARAM_STR);
@@ -70,6 +71,7 @@ class AddAdvocate
         $stmt->bindParam(6, json_encode($specialization), PDO::PARAM_STR);
         $stmt->bindParam(7, $username, PDO::PARAM_STR);
         $stmt->bindParam(8, $password, PDO::PARAM_STR);
+        $stmt->bindParam(9, $role, PDO::PARAM_STR);
         // Execute statement
         $stmt->execute();
         if ($stmt->rowCount() > 0) {

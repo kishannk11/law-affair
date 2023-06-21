@@ -20,6 +20,7 @@ class User {
                 $_SESSION["loggedin"] = true;
                 $_SESSION["id"] = $row["id"];
                 $_SESSION["username"] = $row["username"];
+                $_SESSION["role"] = $row["role"];
                  if (isset($_POST['remember_me'])) {
                     setcookie("username", $this->username, time() + (86400 * 30), "/");
                     setcookie("password", $this->password, time() + (86400 * 30), "/");
