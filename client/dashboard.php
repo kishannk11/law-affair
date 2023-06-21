@@ -29,7 +29,10 @@ require('top-navbar.php');
                                             <div class="icon-info mb-3">
                                                 <i class="fas fa-ticket-alt bg-soft-warning"></i>
                                             </div>
-                                            <h3 class="text-dark">184</h3>
+                                            <h3 class="text-dark"><?php echo $_SESSION['username']."<br>"; 
+                                            echo $_SESSION['role'];; 
+                                            
+                                            ?></h3>
                                             <h6 class="font-14 text-dark">Total Cases</h6>                                                                                                                            
                                         </div><!--end card-body--> 
                                     </div><!--end card-->   
