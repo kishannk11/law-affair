@@ -65,13 +65,7 @@ require("top-navbar.php");
                                 error_reporting(E_ALL);
                                 require_once 'config/config.php';
                                 require 'Database.php';
-                                $selectClient = new SelectClient($conn);
-                                $clientNames = $selectClient->getClientNames();
 
-                                $advocate = new SelectAdvocate($conn);
-                                $advocateNames = $advocate->getAdvocateNames();
-                                
-                                $casenumber= 'CASE' . rand(1000, 9999);
                                 ?>
                                 
                                 <div class="form-group">
