@@ -23,10 +23,12 @@ require("top-navbar.php");
                 </div><!--end col-->
             </div>
             <!-- end page title end breadcrumb -->
+            
+            <!-- Add Client Form Start -->
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
-                        <?php
+                    <?php
                         if (isset($_GET['success'])) {
                             $success = $_GET['success'];
                             //echo '<div class="alert alert-success">' . htmlspecialchars($success ). '</div>';
@@ -71,75 +73,38 @@ require("top-navbar.php");
                         }
                         ?>
                         <div class="card-body">
-                            <form action="add_client.php" method="POST" enctype="multipart/form-data">
-                                <div class="row">
-
-                                    <div class="col-lg-12">
-                                        <div class="form-group row">
-                                            <label for="example-text-input"
-                                                class="col-sm-2 col-form-label text-right">Name</label>
-                                            <div class="col-sm-10">
-                                                <input class="form-control" name="name" type="text"
-                                                    id="example-text-input">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="example-tel-input"
-                                                class="col-sm-2 col-form-label text-right">Mobile
-                                                Number</label>
-                                            <div class="col-sm-10">
-                                                <input class="form-control" name="mobileNumber" type="tel"
-                                                    id="example-tel-input">
-                                            </div>
-                                        </div>
-
-
-                                        <div class="form-group row">
-                                            <label for="example-datetime-local-input"
-                                                class="col-sm-2 col-form-label text-right">Upload Photo</label>
-
-                                            <div class="custom-file col-sm-10">
-                                                <input type="file" class="custom-file-input" id="customFile"
-                                                    name="photo">
-                                                <label class="custom-file-label" for="customFile">Choose file</label>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label for="example-text-input"
-                                                class="col-sm-2 col-form-label text-right">Address</label>
-                                            <div class="col-sm-10">
-                                                <textarea class="form-control" name="address" rows="5"
-                                                    id="message"></textarea>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label for="example-datetime-local-input"
-                                                class="col-sm-2 col-form-label text-right">Upload Documents</label>
-
-                                            <div class="custom-file col-sm-10">
-                                                <input type="file" class="custom-file-input" id="customFile"
-                                                    name="document">
-                                                <label class="custom-file-label" for="customFile">Choose file</label>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="row">
-                                            <div class="col-sm-10 ml-auto">
-                                                <button type="submit" class="btn btn-gradient-primary">Submit</button>
-                                                <button type="button" class="btn btn-gradient-danger">Cancel</button>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <form action="case.php" method="POST" enctype="multipart/form-data">
+                            
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Name</label>
+                                    <input class="form-control" name="name" type="text" id="example-text-input">
                                 </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div><!--end row-->
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Mobile</label>
+                                    <input class="form-control" name="mobile_number" type="text" id="example-text-input">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Upload Photo</label>
+                                    <input class="form-control" name="upload_photo" type="file" id="example-text-input">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Address</label>
+                                    <textarea class="form-control" name="address" rows="5" id="message"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Upload Documents</label>
+                                    <input class="form-control" name="upload_document" type="file" id="example-text-input">
+                                </div>
+                                
+                                <button type="submit" class="btn btn-gradient-primary">Submit</button>
+                                <button type="button" class="btn btn-gradient-danger">Cancel</button>
+                            </form>                                           
+                        </div><!--end card-body-->
+                    </div><!--end card-->
+                </div><!--end col-->
+            </div><!--end row-->    
 
+            <!-- Add Client Form Ends -->
         </div><!-- container -->
 
         <footer class="footer text-center text-sm-left">
