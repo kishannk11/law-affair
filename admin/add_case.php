@@ -54,6 +54,29 @@ require("top-navbar.php");
             </script>';
             }
             ?>
+            <?php
+            if (isset($_POST['errors'])) {
+                $error_messages = $_POST['errors'];
+                // Build the error message string
+                $error_string = "";
+                foreach ($error_messages as $field => $message) {
+                    $error_string .= "$message ";
+                }
+                // Remove extra spaces from the error message string
+                $error_string = trim($error_string);
+                // Display the error message using SweetAlert
+                echo '<script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Error",
+                            text: "'.  htmlspecialchars($error_string, ENT_QUOTES, 'UTF-8').'",
+                            
+                        });
+                    });
+                </script>';
+            }
+            ?>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">

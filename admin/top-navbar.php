@@ -21,6 +21,13 @@ require_once('config/session.php');
         <link href="plugins/sweet-alert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
         <link href="plugins/animate/animate.css" rel="stylesheet" type="text/css">
         <!-- App css -->
+
+        <link href="plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+        <link href="plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+        <!-- Responsive datatable examples -->
+        <link href="plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" /> 
+
+
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/jquery-ui.min.css" rel="stylesheet">
         <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />

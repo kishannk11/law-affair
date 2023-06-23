@@ -73,7 +73,7 @@ require("top-navbar.php");
                         }
                         ?>
                         <div class="card-body">
-                            <form action="case.php" method="POST" enctype="multipart/form-data">
+                            <form action="add_client.php" method="POST" enctype="multipart/form-data">
                             
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Name</label>
