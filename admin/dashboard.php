@@ -20,6 +20,16 @@ require('top-navbar.php');
                         </div><!--end col-->
                     </div>
                     <!-- end page title end breadcrumb -->
+                    <?php
+                    require_once 'config/config.php';
+                    require_once 'Database.php';
+                    $case = new totalCase($conn);
+                    $total_count_case = $case->getTotalCount();
+
+                    $totalAdvocates = new totalAdvocates($conn);
+                    $total_count_advocate = $totalAdvocates->getTotalCount();
+
+                    ?>
                     <div class="row">
                         <div class="col-lg-12">  
                             <div class="row">
@@ -30,7 +40,7 @@ require('top-navbar.php');
                                                 <i class="fas fa-ticket-alt bg-soft-warning"></i>
                                             </div>
                                             <h3 class="text-dark">
-                                            
+                                            <?php echo $total_count_case;?>
                                             </h3>
                                             <h6 class="font-14 text-dark">Total Cases</h6>                                                                                                                            
                                         </div><!--end card-body--> 
@@ -42,7 +52,7 @@ require('top-navbar.php');
                                             <div class="icon-info mb-3">
                                                 <i class="fas fa-ribbon bg-soft-pink"></i>
                                             </div>
-                                            <h3 class="text-dark">101</h3>
+                                            <h3 class="text-dark"><?php echo $total_count_advocate;?></h3>
                                             <h6 class="font-14 text-dark">Total Advocates</h6>                                                                                                                            
                                         </div><!--end card-body--> 
                                     </div><!--end card-->   

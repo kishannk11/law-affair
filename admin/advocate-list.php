@@ -101,7 +101,7 @@ require("top-navbar.php");
                                             echo '<td>' . htmlspecialchars($row["address"]) . '</td>';
                                             echo '<td>' . htmlspecialchars($row["joining_date"]) . '</td>';
                                             echo '<td>';
-                                            echo '<a href="edit_case.php?id=' . $row['id'] . '" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>';
+                                            echo '<a href="edit_advocate.php?id=' . $row['id'] . '" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>';
                                             echo "<a onclick=\"deleteAdvocate({$row['id']})\"><i class=\"fas fa-trash-alt text-danger font-16\"></i></a>";
                                             echo '</td>';
                                             echo '</tr>';
@@ -167,6 +167,23 @@ require("top-navbar.php");
 
 <!-- App js -->
 <script src="assets/js/app.js"></script>
+
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables/dataTables.bootstrap4.min.js"></script>
+<!-- Buttons examples -->
+<script src="plugins/datatables/dataTables.buttons.min.js"></script>
+<script src="plugins/datatables/buttons.bootstrap4.min.js"></script>
+<script src="plugins/datatables/jszip.min.js"></script>
+<script src="plugins/datatables/pdfmake.min.js"></script>
+<script src="plugins/datatables/vfs_fonts.js"></script>
+<script src="plugins/datatables/buttons.html5.min.js"></script>
+<script src="plugins/datatables/buttons.print.min.js"></script>
+<script src="plugins/datatables/buttons.colVis.min.js"></script>
+<!-- Responsive examples -->
+<script src="plugins/datatables/dataTables.responsive.min.js"></script>
+<script src="plugins/datatables/responsive.bootstrap4.min.js"></script>
+<script src="assets/pages/jquery.datatable.init.js"></script>
+
 
 <script src="plugins/sweet-alert2/sweetalert2.min.js"></script>
 <script src="assets/pages/jquery.sweet-alert.init.js"></script>

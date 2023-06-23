@@ -36,6 +36,19 @@ require("top-navbar.php");
                     });
                           </script>';
                 }
+
+                if (isset($_GET['error'])) {
+                    $error = $_GET['error'];
+                    echo '<script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "' . htmlspecialchars($error, ENT_QUOTES, 'UTF-8') . '",
+                        });
+                    });
+                </script>';
+                }
                 ?>
                 <div class="col-lg-12">
                     <div class="card">
