@@ -22,6 +22,29 @@ require("top-navbar.php");
                     </div><!--end page-title-box-->
                 </div><!--end col-->
             </div>
+            <?php
+            if (isset($_GET['success'])) {
+                $success = $_GET['success'];
+                // echo '<div class="alert alert-success">' . $success . '</div>';
+                echo '<script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            Swal.fire("Success!", "' . htmlspecialchars($success, ENT_QUOTES, 'UTF-8') . '", "success");
+                        });
+                                </script>';
+            }
+            if (isset($_GET['error'])) {
+                $error = $_GET['error'];
+                echo '<script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                                Swal.fire({
+                                    icon: "error",
+                                    title: "Oops...",
+                                    text: "' . htmlspecialchars($error, ENT_QUOTES, 'UTF-8') . '",
+                                });
+                            });
+                        </script>';
+            }
+            ?>
             <!-- end page title end breadcrumb -->
             <div class="row">
                 <div class="col-lg-12 col-sm-12">
@@ -35,29 +58,7 @@ require("top-navbar.php");
                                 class="table table-striped table-bordered dt-responsive nowrap"
                                 style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
-                                    <?php
-                                    if (isset($_GET['success'])) {
-                                        $success = $_GET['success'];
-                                        // echo '<div class="alert alert-success">' . $success . '</div>';
-                                        echo '<script>
-                                                document.addEventListener("DOMContentLoaded", function() {
-                                                    Swal.fire("Success!", "' . htmlspecialchars($success, ENT_QUOTES, 'UTF-8') . '", "success");
-                                                });
-                                                      </script>';
-                                    }
-                                    if (isset($_GET['error'])) {
-                                        $error = $_GET['error'];
-                                        echo '<script>
-                                                    document.addEventListener("DOMContentLoaded", function() {
-                                                        Swal.fire({
-                                                            icon: "error",
-                                                            title: "Oops...",
-                                                            text: "' . htmlspecialchars($error, ENT_QUOTES, 'UTF-8') . '",
-                                                        });
-                                                    });
-                                                </script>';
-                                    }
-                                    ?>
+                                    
                                     <tr>
                                         <th>Advocate Username</th>
                                         <th>Name</th>

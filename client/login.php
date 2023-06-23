@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 require_once 'config/config.php';
 require_once "Database.php";
  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $user = new User($conn);
+    $user = new UserLogin($conn);
     $user->username = $_POST["username"];
     $user->password = $_POST["userpassword"];
      if ($user->login()) {
