@@ -1,5 +1,6 @@
 <?php
 require_once 'config/config.php';
+require_once 'config/session.php';
 require_once 'Database.php';
  $client = new Client($conn);
  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -27,5 +28,4 @@ require_once 'Database.php';
         header("Location: client.php?required=".urlencode($error));
     }
 }
-?>
 ?>
