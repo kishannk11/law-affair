@@ -23,6 +23,54 @@ require("top-navbar.php");
                 </div><!--end col-->
             </div>
             <!-- end page title end breadcrumb -->
+            <?php
+            if (isset($_GET['succes'])) {
+                $success = $_GET['succes'];
+                // echo '<div class="alert alert-success">' . $success . '</div>';
+                echo '<script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    Swal.fire("Success!", "' .htmlspecialchars( $success, ENT_QUOTES, 'UTF-8') . '", "success");
+                });
+                        </script>';
+            }
+            ?>
+            <?php
+            if (isset($_GET['error'])) {
+                $error = $_GET['error'];
+                    echo '<script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "' . htmlspecialchars($error, ENT_QUOTES, 'UTF-8') . '",
+                        });
+                    });
+                </script>';
+            }
+            ?>
+            <?php
+            if (isset($_POST['errors'])) {
+                $error_messages = $_POST['errors'];
+                // Build the error message string
+                $error_string = "";
+                foreach ($error_messages as $field => $message) {
+                    $error_string .= "$message ";
+                }
+                // Remove extra spaces from the error message string
+                $error_string = trim($error_string);
+                // Display the error message using SweetAlert
+                echo '<script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Error",
+                            text: "'.  htmlspecialchars($error_string, ENT_QUOTES, 'UTF-8').'",
+                            
+                        });
+                    });
+                </script>';
+            }
+            ?>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
@@ -30,123 +78,74 @@ require("top-navbar.php");
                             <form action="advocate.php" method="POST" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                    <div class="form-group row">
+                                    <div class="form-group">
                                             <label for="example-tel-input"
-                                                class="col-sm-2 col-form-label text-right">Username</label>
-                                            <div class="col-sm-10">
+                                                class="">Username</label>
+                                            
                                                 <?php
                                                 $username = 'ADVCT' . rand(1000, 9999);
 
                                                 ?>
                                                 <input class="form-control" name="username" type="text"
                                                     id="example-tel-input" value="<?php echo $username ?>" readonly>
-                                            </div>
+                                            
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="example-text-input"
-                                                class="col-sm-2 col-form-label text-right">Name</label>
-                                            <div class="col-sm-10">
-                                                <input class="form-control" name="name" type="text"
-                                                    id="example-text-input">
-                                            </div>
+                                        <div class="form-group">
+                                            <label for="example-text-input">Name</label>
+                                                <input class="form-control" name="name" type="text" id="example-text-input"> 
                                         </div>
-                                        <?php
-                                                if (isset($_GET['succes'])) {
-                                                    $success = $_GET['succes'];
-                                                    // echo '<div class="alert alert-success">' . $success . '</div>';
-                                                    echo '<script>
-                                                    document.addEventListener("DOMContentLoaded", function() {
-                                                        Swal.fire("Success!", "' .htmlspecialchars( $success, ENT_QUOTES, 'UTF-8') . '", "success");
-                                                    });
-                                                          </script>';
-                                                }
-                                                ?>
-                                                <?php
-                                                if (isset($_GET['error'])) {
-                                                    $error = $_GET['error'];
-                                                     echo '<script>
-                                                        document.addEventListener("DOMContentLoaded", function() {
-                                                            Swal.fire({
-                                                                icon: "error",
-                                                                title: "Oops...",
-                                                                text: "' . htmlspecialchars($error, ENT_QUOTES, 'UTF-8') . '",
-                                                            });
-                                                        });
-                                                    </script>';
-                                                }
-                                                ?>
-                                                <?php
-                                                if (isset($_POST['errors'])) {
-                                                    $error_messages = $_POST['errors'];
-                                                    // Build the error message string
-                                                    $error_string = "";
-                                                    foreach ($error_messages as $field => $message) {
-                                                        $error_string .= "$message ";
-                                                    }
-                                                    // Remove extra spaces from the error message string
-                                                    $error_string = trim($error_string);
-                                                    // Display the error message using SweetAlert
-                                                    echo '<script>
-                                                        document.addEventListener("DOMContentLoaded", function() {
-                                                            Swal.fire({
-                                                                icon: "error",
-                                                                title: "Error",
-                                                                text: "'.  htmlspecialchars($error_string, ENT_QUOTES, 'UTF-8').'",
-                                                                
-                                                            });
-                                                        });
-                                                    </script>';
-                                                }
-                                                ?>
 
-                                        <div class="form-group row">
+                                        
+                                        
+
+                                        <div class="form-group">
                                             <label for="example-tel-input"
-                                                class="col-sm-2 col-form-label text-right">Mobile
+                                                class="">Mobile
                                                 Number</label>
-                                            <div class="col-sm-10">
+                                            
                                                 <input class="form-control" name="mobileNumber" type="tel"
                                                     id="example-tel-input">
-                                            </div>
+                                            
                                         </div>
 
-                                        <div class="form-group row">
+                                        <div class="form-group">
                                             <label for="example-datetime-local-input"
-                                                class="col-sm-2 col-form-label text-right">Joining Date</label>
-                                            <div class="col-sm-10">
+                                                class="">Joining Date</label>
+                                            
                                                 <input class="form-control" type="date" name="joiningDate"
                                                     id="example-datetime-local-input" >
-                                            </div>
+                                            
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group">
                                             <label for="example-text-input"
-                                                class="col-sm-2 col-form-label text-right">Password</label>
-                                            <div class="col-sm-10">
+                                                class="">Password</label>
+                                            
                                                 <input class="form-control" name="password" type="text"
                                                     id="example-text-input">
-                                            </div>
+                                            
                                         </div>
 
 
-                                        <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label text-right">Upload Photo</label>
-                                            <div class="col-sm-10">
+                                        <div class="form-group">
+                                            <label class="">Upload Photo</label>
+                                            
                                                 <input type="file" name="photo" class="form-control"
                                                     id="inputGroupFile04">
                                                 
-                                            </div>
+                                            
                                         </div>
 
-                                        <div class="form-group row">
+                                        <div class="form-group">
                                             <label for="example-text-input"
-                                                class="col-sm-2 col-form-label text-right">Address</label>
-                                            <div class="col-sm-10">
+                                                class="">Address</label>
+                                            
                                                 <textarea class="form-control" name="address" rows="5" id="message"
                                                     ></textarea>
-                                            </div>
+                                            
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group">
                                             <label for="example-text-input"
-                                                class="col-sm-2 col-form-label text-right">Specialization</label>
+                                                class="">Specialization</label>
                                             <div class="col-md-9">
                                                 <div class="checkbox my-2">
                                                     <div class="custom-control custom-checkbox">
