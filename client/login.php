@@ -51,8 +51,8 @@ require_once "Database.php";
                         <div class="card-body">
                             <div class="px-3">
                                 <div class="auth-logo-box">
-                                    <a href="../dashboard/analytics-index.html" class="logo logo-admin"><img
-                                            src="assets/images/logo.png" height="55" alt="logo" class="auth-logo"></a>
+                                    <a href="#" class="logo logo-admin"><img
+                                            src="assets/images/logo-sm.png" height="55" alt="logo" class="auth-logo"></a>
                                 </div><!--end auth-logo-box-->
                                 <?php
                                 if (isset($error)) {
@@ -99,7 +99,7 @@ require_once "Database.php";
                                             </div>
                                         </div><!--end col-->
                                         <div class="col-sm-6 text-right">
-                                            <a href="auth-recover-pw.html" class="text-muted font-13"><i
+                                            <a href="forgot_password.php" class="text-muted font-13"><i
                                                     class="dripicons-lock"></i> Forgot password?</a>
                                         </div><!--end col-->
                                     </div><!--end form-group-->

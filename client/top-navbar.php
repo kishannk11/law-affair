@@ -34,7 +34,7 @@ require_once('config/session.php');
 
             <!-- LOGO -->
             <div class="topbar-left">
-                <a href="dashboard/crm-index.html" class="logo">
+                <a href="dashboard.php" class="logo">
                     <span>
                         <img src="assets/images/logo-sm.png" alt="logo-small" class="logo-sm">
                     </span>
@@ -57,7 +57,7 @@ require_once('config/session.php');
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="profile.php"><i class="ti-user text-muted mr-2"></i> Profile</a>
-                            <a class="dropdown-item" href="#"><i class="ti-power-off text-muted mr-2"></i> Logout</a>
+                            <a class="dropdown-item" href="logout.php"><i class="ti-power-off text-muted mr-2"></i> Logout</a>
                         </div>
                     </li>
                 </ul><!--end topbar-nav-->
@@ -85,29 +85,19 @@ require_once('config/session.php');
                 <li>
                     <a href="javascript: void(0);"><i class="ti-tag"></i><span>Advocates</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        <li class="nav-item"><a class="nav-link" href="add_advocate.php"><i class="ti-control-record"></i>Add Advocate</a></li>
-                        <li class="nav-item"><a class="nav-link" href="advocate-list.php"><i class="ti-control-record"></i>Advocates List</a></li>
+                        <li class="nav-item"><a class="nav-link" href="advocate_contacts.php"><i class="ti-control-record"></i>All Advocates</a></li>
                     </ul>
                 </li>
 
                 <li>
-                    <a href="javascript: void(0);"><i class="mdi mdi-account-alert"></i><span>Clients</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                    <a href="javascript: void(0);"><i class="ti-briefcase"></i><span>My Cases</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        <li class="nav-item"><a class="nav-link" href="client.php"><i class="ti-control-record"></i>Add Client</a></li>
-                        <li class="nav-item"><a class="nav-link" href="client_list.php"><i class="ti-control-record"></i>Client List</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="javascript: void(0);"><i class="ti-briefcase"></i><span>Cases</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
-                    <ul class="nav-second-level" aria-expanded="false">
-                        <li class="nav-item"><a class="nav-link" href="add_case.php"><i class="ti-control-record"></i>Add Case</a></li>
                         <li class="nav-item"><a class="nav-link" href="case_list.php"><i class="ti-control-record"></i>Case List</a></li>
                     </ul>
                 </li>
 
                 <li>
-                    <a href="reports_list.php"><i class="ti-bar-chart"></i><span>Reports</span></i></span></a>
+                    <a href="reports_list.php"><i class="ti-bar-chart"></i><span>My Reports</span></i></span></a>
                 </li>
 
                 <li>
