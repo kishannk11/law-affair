@@ -29,33 +29,12 @@ require('top-navbar.php');
                                             <div class="icon-info mb-3">
                                                 <i class="fas fa-ticket-alt bg-soft-warning"></i>
                                             </div>
-                                            <h3 class="text-dark"> </h3>
+                                            <h3 class="text-dark">52 </h3>
                                             <h6 class="font-14 text-dark">Total Cases</h6>                                                                                                                            
                                         </div><!--end card-body--> 
                                     </div><!--end card-->   
                                 </div><!-- end col-->
-                                <div class="col-lg-3">
-                                    <div class="card dash-data-card text-center">
-                                        <div class="card-body"> 
-                                            <div class="icon-info mb-3">
-                                                <i class="fas fa-ribbon bg-soft-pink"></i>
-                                            </div>
-                                            <h3 class="text-dark">101</h3>
-                                            <h6 class="font-14 text-dark">Total Advocates</h6>                                                                                                                            
-                                        </div><!--end card-body--> 
-                                    </div><!--end card-->   
-                                </div><!-- end col-->  
-                                <div class="col-lg-3">
-                                    <div class="card dash-data-card text-center">
-                                        <div class="card-body"> 
-                                            <div class="icon-info mb-3">
-                                                <i class="fas fa-handshake bg-soft-success"></i>
-                                            </div>
-                                            <h3 class="text-dark">18</h3>
-                                            <h6 class="font-14 text-dark">Assigned Cases</h6>                                                                                                                            
-                                        </div><!--end card-body--> 
-                                    </div><!--end card-->   
-                                </div><!-- end col-->
+                        
                                 <div class="col-lg-3">
                                     <div class="card dash-data-card text-center">
                                         <div class="card-body"> 
@@ -63,7 +42,7 @@ require('top-navbar.php');
                                                 <i class="fas fa-clipboard bg-soft-primary"></i>
                                             </div>
                                             <h3 class="text-danger">92</h3>
-                                            <h6 class="font-14 text-dark">Unassigned Cases</h6>                                                                                                                            
+                                            <h6 class="font-14 text-dark">Active Cases</h6>                                                                                                                            
                                         </div><!--end card-body--> 
                                     </div><!--end card-->   
                                 </div><!-- end col-->                       

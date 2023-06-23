@@ -74,7 +74,7 @@ require_once('config/session.php');
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="profile.php"><i class="ti-user text-muted mr-2"></i> Profile</a>
-                            <a class="dropdown-item" href="#"><i class="ti-power-off text-muted mr-2"></i> Logout</a>
+                            <a class="dropdown-item" href="logut.php"><i class="ti-power-off text-muted mr-2"></i> Logout</a>
                         </div>
                     </li>
                 </ul><!--end topbar-nav-->
