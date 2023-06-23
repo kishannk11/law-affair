@@ -24,13 +24,14 @@ require("top-navbar.php");
             </div>
             <!-- end page title end breadcrumb -->
             <div class="row">
-                <div class="col-12">
+                <div class="col-lg-12 col-sm-12">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body table-responsive">
 
                             <h4 class="mt-0 header-title">Advocates</h4>
+                            <div class="">
 
-                            <table id="datatable-buttons"
+                            <table id="datatable2"
                                 class="table table-striped table-bordered dt-responsive nowrap"
                                 style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
@@ -115,6 +116,7 @@ require("top-navbar.php");
                                     ?>
                                 </tbody>
                             </table>
+                                </div>
                         </div>
                     </div>
                 </div> <!-- end col -->
