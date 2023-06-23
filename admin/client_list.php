@@ -50,7 +50,7 @@ if (isset($_GET['error'])) {
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body table-responsive">
 
                             <h4 class="mt-0 header-title">Clients</h4>
 
