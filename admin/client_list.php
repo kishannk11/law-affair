@@ -67,9 +67,6 @@ if (isset($_GET['error'])) {
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-
-
-                                <tbody>
                                 <tbody>
                                     <?php
                                     ini_set('display_errors', 1);
@@ -106,7 +103,6 @@ if (isset($_GET['error'])) {
 
 
                                     ?>
-                                </tbody>
                                 </tbody>
                             </table>
                             </div>

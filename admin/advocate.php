@@ -30,12 +30,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (empty($errors)) {
-        $photo = null;
+        $photo_path = null;
         $allowed_types = array('jpg', 'jpeg', 'png');
         $file_type = pathinfo($_FILES["photo"]["name"], PATHINFO_EXTENSION);
         if ($_FILES["photo"]["error"] == UPLOAD_ERR_OK && in_array($file_type, $allowed_types)) {
             $tmp_name = $_FILES["photo"]["tmp_name"];
-            $photo = file_get_contents($tmp_name);
+            $file_name = $_FILES["photo"]["name"];
+            $photo_path = "uploads/" . $file_name;
+            move_uploaded_file($tmp_name, $photo_path);
         } else {
             $photo_error = "Error uploading photo. Only JPG, JPEG, PNG, and GIF file types are allowed.";
             header("Location: add_advocate.php?error=" . urlencode($photo_error));
@@ -47,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $role="client";
 
         // Add advocate data to the database
-        $addAdvocate->addAdvocateData($_POST["name"], $_POST["mobileNumber"], $_POST["joiningDate"], $photo, $_POST["address"], $_POST["lawyer"],$_POST["username"],$hashed_password,$role);
+        $addAdvocate->addAdvocateData($_POST["name"], $_POST["mobileNumber"], $_POST["joiningDate"], $photo_path, $_POST["address"], $_POST["lawyer"],$_POST["username"],$hashed_password,$role);
         $success = $addAdvocate->getSuccessMessage();
         header("Location: add_advocate.php?succes=" . urlencode($success));
 

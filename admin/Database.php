@@ -67,7 +67,7 @@ class AddAdvocate
         $stmt->bindParam(1, $name, PDO::PARAM_STR);
         $stmt->bindParam(2, $mobileNumber, PDO::PARAM_STR);
         $stmt->bindParam(3, $joiningDate, PDO::PARAM_STR);
-        $stmt->bindParam(4, $photo, PDO::PARAM_LOB);
+        $stmt->bindParam(4, $photo, PDO::PARAM_STR);
         $stmt->bindParam(5, $address, PDO::PARAM_STR);
         $stmt->bindParam(6, json_encode($specialization), PDO::PARAM_STR);
         $stmt->bindParam(7, $username, PDO::PARAM_STR);
@@ -76,9 +76,9 @@ class AddAdvocate
         // Execute statement
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
-            $this->succes = "Data inserted successfully.";
+            $this->succes = "Advocate added.";
         } else {
-            $this->succes = "Error inserting data.";
+            $this->succes = "Error addding advocate.";
         }
     }
      public function getSuccessMessage()
