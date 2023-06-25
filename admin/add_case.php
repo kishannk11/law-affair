@@ -77,6 +77,175 @@ require("top-navbar.php");
                 </script>';
             }
             ?>
+
+                <div class="row ">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="mt-0 header-title">Create Case</h4>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <form>
+                                            <?php
+                                                ini_set('display_errors', 1);
+                                                ini_set('display_startup_errors', 1);
+                                                error_reporting(E_ALL);
+                                                require_once 'config/config.php';
+                                                require 'Database.php';
+                                                $selectClient = new SelectClient($conn);
+                                                $clientNames = $selectClient->getClientNames();
+
+                                                $advocate = new SelectAdvocate($conn);
+                                                $advocateNames = $advocate->getAdvocateNames();
+                                                
+                                                $casenumber= 'CASE' . rand(1000, 9999);
+                                            ?>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 mb-2 mb-lg-0">
+                                                            <label for="pro-start-date">Case No</label>
+                                                            <input type="text" class="form-control" id="case_number">
+                                                        </div><!--end col-->
+                                                        <div class="col-lg-3 mb-2 mb-lg-0">
+                                                            <label for="pro-start-date">Filing No</label>
+                                                            <input type="text" class="form-control" id="case_number">
+                                                        </div><!--end col-->
+                                                        <div class="col-lg-3 mb-2 mb-lg-0">
+                                                            <label for="pro-start-date">Filing Date</label>
+                                                            <input type="date" class="form-control" id="pro-start-date" placeholder="Enter start date">
+                                                        </div><!--end col-->
+                                                        <div class="col-lg-3">
+                                                            <label for="pro-end-date">Client</label>
+                                                            <select class="form-control">
+                                                                <option>Client 1</option>
+                                                                <option>Client 2</option>
+                                                                <option>Client 3</option>
+                                                            </select>
+                                                        </div><!--end col-->                                                        
+                                                    </div><!--end row-->
+                                                </div><!--end form-group-->
+                                                <div class="form-group">
+                                                    <label for="projectName">Party Name :</label>
+                                                    <input type="text" class="form-control" id="projectName" aria-describedby="emailHelp" placeholder="Enter Party Name">
+                                                </div><!--end form-group-->
+                                                
+                                                <div class="form-group">
+                                                    <label for="example-text-input">Case Status</label>
+                                                    
+                                                    <div class="col-md-9">
+                                                        <div class="checkbox my-2">
+                                                            <div class="custom-control custom-checkbox">
+                                                                <input type="checkbox" name="case[]" value="Status 1"
+                                                                    class="custom-control-input" id="customCheck06"
+                                                                    data-parsley-multiple="groups" data-parsley-mincheck="2">
+                                                                <label class="custom-control-label" for="customCheck06">Status 1</label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="checkbox my-2">
+                                                            <div class="custom-control custom-checkbox">
+                                                                <input type="checkbox" name="case[]" value="Status 2"
+                                                                    class="custom-control-input" id="customCheck07"
+                                                                    data-parsley-multiple="groups" data-parsley-mincheck="2">
+                                                                <label class="custom-control-label" for="customCheck07">Status 2</label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="checkbox my-2">
+                                                            <div class="custom-control custom-checkbox">
+                                                                <input type="checkbox" name="case[]"
+                                                                    value="Status 3" class="custom-control-input"
+                                                                    id="customCheck08" data-parsley-multiple="groups"
+                                                                    data-parsley-mincheck="2">
+                                                                <label class="custom-control-label"
+                                                                    for="customCheck08">Status 3</label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="checkbox my-2">
+                                                            <div class="custom-control custom-checkbox">
+                                                                <input type="checkbox" name="case[]" value="Status 4"
+                                                                    class="custom-control-input" id="customCheck09"
+                                                                    data-parsley-multiple="groups" data-parsley-mincheck="2">
+                                                                <label class="custom-control-label" for="customCheck09">Status 4</label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="checkbox my-2">
+                                                            <div class="custom-control custom-checkbox">
+                                                                <input type="checkbox" name="case[]" value="Status 5"
+                                                                    class="custom-control-input" id="customCheck10"
+                                                                    data-parsley-multiple="groups" data-parsley-mincheck="2">
+                                                                <label class="custom-control-label" for="customCheck10">Status 5</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-lg-6 mb-2 mb-lg-0">
+                                                            <label for="pro-start-date">Case Next Date</label>
+                                                            <input type="date" class="form-control" id="pro-start-date" placeholder="Enter start date">
+                                                        </div><!--end col-->
+                                                        <div class="form-group col-lg-6 mb-2 mb-lg-0">
+                                                            <label class="drop-down">Select Advocate</label>
+                                                            <select class="form-control" name="advocate">
+                                                                <option value="">Select</option>
+                                                                <?php foreach ($advocateNames as $advocate) { ?>
+                                                                    <option value="<?php echo $advocate['username']; ?>"><?php echo $advocate['name'] . ' (' . $advocate['username'] . ')'; ?></option>
+                                                                <?php } ?>  
+                                                            </select>
+                                                        </div>                                                      
+                                                    </div><!--end row-->
+                                                </div><!--end form-group-->
+
+
+                                                <div class="form-group">
+                                                    <label for="pro-message">Special Note</label>
+                                                    <textarea class="form-control" rows="5" id="pro-message"  placeholder="Special Note"></textarea>
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <b>Payment Details</b>
+                                                    <div class="row">
+                                                        <div class="col-lg-3 mb-2 mb-lg-0">
+                                                            <label for="pro-start-date">Total Amount</label>
+                                                            <input type="text" class="form-control" id="case_number" value="Rs.10000">
+                                                        </div><!--end col-->
+                                                        <div class="col-lg-3 mb-2 mb-lg-0">
+                                                            <label for="pro-start-date">Received Amount</label>
+                                                            <input type="text" class="form-control" id="case_number">
+                                                        </div><!--end col-->
+                                                        <div class="col-lg-3 mb-2 mb-lg-0">
+                                                            <label for="pro-start-date">Pending Amount</label>
+                                                            <input type="text" class="form-control" id="case_number">
+                                                        </div><!--end col-->
+                                                        <div class="col-lg-3">
+                                                            <label for="pro-end-date">Mode of Payment</label>
+                                                            <select class="form-control">
+                                                                <option>UPI</option>
+                                                                <option>CASH</option>
+                                                                <option>Credit Card/Debit Card</option>
+                                                                <option>Netbanking</option>
+
+                                                            </select>
+                                                        </div><!--end col-->                                                        
+                                                    </div><!--end row-->
+                                                </div><!--end form-group-->
+                                                
+                                                <button type="submit" class="btn btn-gradient-primary">Create Case</button>
+                                                <button type="button" class="btn btn-gradient-danger">Cancel</button>
+                                            </form>  <!--end form-->
+                                        </div><!--end col-->
+                                    </div><!--end row-->                                                                              
+                                </div><!--end card-body-->
+                            </div><!--end card-->
+                        </div><!--end col-->
+                    </div><!--end row-->
+                    
+
+
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
@@ -197,6 +366,15 @@ require("top-navbar.php");
                                 <div class="form-group">
                                         <label for="message">Special Note</label>
                                         <textarea class="form-control" name="special_note" rows="5" id="message"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                        <label for="message" class="my-2"><b>Payment Details</b></label>
+                                        <hr class="my-2">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"><b>Total Amount: </b></label>
+                                    <input class="form-control" name="ffiling_number" type="text" id="example-text-input">
                                 </div>
 
                                 

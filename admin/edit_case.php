@@ -15,10 +15,10 @@ require("top-navbar.php");
                         <div class="float-right">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="dashboard.php">Law Affair</a></li>
-                                <li class="breadcrumb-item active">Add Case</li>
+                                <li class="breadcrumb-item active">Edit Case</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">Add Case</h4>
+                        <h4 class="page-title">Edit Case</h4>
                     </div><!--end page-title-box-->
                 </div><!--end col-->
             </div>
