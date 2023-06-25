@@ -338,18 +338,15 @@ class SelectClient
 class AddCase
 {
     private $conn;
-
     public function __construct($conn)
     {
         $this->conn = $conn;
     }
-
     public function saveCase($data)
     {
+        $special_note = $data['special_note'] . ' - ' . $_SESSION['username'];
         $sql = "INSERT INTO cases (case_number, filing_number, fillingDate, client, party_name, case_status, advocate, case_next_date, special_note) VALUES (:case_number, :ffiling_number, :fillingDate, :client, :party_name, :case_status, :advocate, :case_next_date, :special_note)";
-
         $stmt = $this->conn->prepare($sql);
-
         $stmt->bindParam(':case_number', $data['case_number']);
         $stmt->bindParam(':ffiling_number', $data['ffiling_number']);
         $stmt->bindParam(':fillingDate', $data['fillingDate']);
@@ -358,8 +355,7 @@ class AddCase
         $stmt->bindParam(':case_status', $data['case_status']);
         $stmt->bindParam(':advocate', $data['advocate']);
         $stmt->bindParam(':case_next_date', $data['case_next_date']);
-        $stmt->bindParam(':special_note', $data['special_note']);
-
+        $stmt->bindParam(':special_note', $special_note);
         return $stmt->execute();
     }
 }

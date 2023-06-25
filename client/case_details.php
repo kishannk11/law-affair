@@ -15,10 +15,10 @@ require("top-navbar.php");
                         <div class="float-right">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="dashboard.php">Law Affair</a></li>
-                                <li class="breadcrumb-item active">Add Case</li>
+                                <li class="breadcrumb-item active">Case details</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">Add Case</h4>
+                        <h4 class="page-title">Case Details</h4>
                     </div><!--end page-title-box-->
                 </div><!--end col-->
             </div>
@@ -81,119 +81,97 @@ require("top-navbar.php");
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action="case.php" method="POST" enctype="multipart/form-data">
+                            <form action="case_update.php" method="POST" enctype="multipart/form-data">
                                 <?php
-                                ini_set('display_errors', 1);
-                                ini_set('display_startup_errors', 1);
-                                error_reporting(E_ALL);
                                 require_once 'config/config.php';
                                 //require 'Database.php';
                                 $caseList = new getCaseDetails($conn);
                                 $cases = $caseList->getCases($_GET['id']);
-                                print_r($cases)
+                                
+                                function isChecked($status, $output) {
+                                    $statuses = explode(',', $output);
+                                    return in_array($status, $statuses);
+                                }
+    
                                 ?>
                                 
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Case No <?php echo $cases['case_number']; ?></label>
-                                    <input class="form-control" name="case_number" type="text" id="example-text-input" value="<?php echo $cases['case_nuumber']; ?>" readonly>
+                                    <label for="exampleInputEmail1">Case No</label>
+                                    <input class="form-control" name="case_number" type="text" id="example-text-input" value="<?php echo $cases[0]['case_number']; ?>" readonly>
                                     
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Filing No</label>
-                                    <input class="form-control" name="ffiling_number" type="text" id="example-text-input">
+                                    <input class="form-control" name="ffiling_number" type="text" id="example-text-input" value="<?php echo $cases[0]['filing_number']; ?>" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="example-datetime-local-input">Filing Date</label>
-                                    <input class="form-control" name="fillingDate" type="date" id="example-datetime-local-input">
+                                    <input class="form-control" name="fillingDate" type="date" id="example-datetime-local-input" value="<?php echo $cases[0]['fillingDate']; ?>" readonly >
                                 </div>
                                 <div class="form-group">
-                                    <label class="drop-down">Select Client</label>
-                                    <select class="form-control" name="client">
-                                        <option value="">Select</option>
-                                        <?php foreach ($clientNames as $client) { ?>
-                                            <option value="<?php echo $client['username']; ?>"><?php echo $client['name'] . ' (' . $client['username'] . ')'; ?></option>
-                                        <?php } ?>  
-                                    </select>
+                                    <label class="drop-down">Client Name</label>
+                                    <input class="form-control" type="text" id="example-text-input" value="<?php echo $cases[0]['client']; ?>" readonly>
+                                    
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Party Name</label>
-                                    <input class="form-control" name="party_name" type="text" id="example-text-input">
+                                    <input class="form-control" name="party_name" type="text" id="example-text-input" value="<?php echo $cases[0]['party_name']; ?>" readonly>
                                 </div>
                                 
                                 <!-- Checkboxes -->
                                 <div class="form-group">
-                                    <label for="example-text-input">Case Status</label>
-                                    
-                                    <div class="col-md-9">
-                                        <div class="checkbox my-2">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" name="case[]" value="Status 1"
-                                                    class="custom-control-input" id="customCheck06"
-                                                    data-parsley-multiple="groups" data-parsley-mincheck="2">
-                                                <label class="custom-control-label" for="customCheck06">Status 1</label>
-                                            </div>
-                                        </div>
+                                <label for="example-text-input">Case Status</label>
+                                <div class="col-md-9">
+                                    <?php
+                                    $caseStatuses = ['Status 1', 'Status 2', 'Status 3', 'Status 4', 'Status 5'];
+                                    $output = $cases[0]['case_status'];
+                                    $i = 6;
 
-                                        <div class="checkbox my-2">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" name="case[]" value="Status 2"
-                                                    class="custom-control-input" id="customCheck07"
-                                                    data-parsley-multiple="groups" data-parsley-mincheck="2">
-                                                <label class="custom-control-label" for="customCheck07">Status 2</label>
+                                    foreach ($caseStatuses as $status) {
+                                        $checked = isChecked($status, $output) ? 'checked' : '';
+                                        echo "
+                                            <div class='checkbox my-2'>
+                                                <div class='custom-control custom-checkbox'>
+                                                    <input type='checkbox' name='case[]' value='$status' class='custom-control-input' id='customCheck0$i' data-parsley-multiple='groups' data-parsley-mincheck='2' $checked>
+                                                    <label class='custom-control-label' for='customCheck0$i'>$status</label>
+                                                </div>
                                             </div>
-                                        </div>
-
-                                        <div class="checkbox my-2">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" name="case[]"
-                                                    value="Status 3" class="custom-control-input"
-                                                    id="customCheck08" data-parsley-multiple="groups"
-                                                    data-parsley-mincheck="2">
-                                                <label class="custom-control-label"
-                                                    for="customCheck08">Status 3</label>
-                                            </div>
-                                        </div>
-
-                                        <div class="checkbox my-2">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" name="case[]" value="Status 4"
-                                                    class="custom-control-input" id="customCheck09"
-                                                    data-parsley-multiple="groups" data-parsley-mincheck="2">
-                                                <label class="custom-control-label" for="customCheck09">Status 4</label>
-                                            </div>
-                                        </div>
-
-                                        <div class="checkbox my-2">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" name="case[]" value="Status 5"
-                                                    class="custom-control-input" id="customCheck10"
-                                                    data-parsley-multiple="groups" data-parsley-mincheck="2">
-                                                <label class="custom-control-label" for="customCheck10">Status 5</label>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        ";
+                                        $i++;
+                                    }
+                                    ?>
                                 </div>
+                            </div>
                                 <!-- End Checkboxes -->
 
                                 <div class="form-group">
-                                    <label class="drop-down">Select Advocate</label>
-                                    <select class="form-control" name="advocate">
-                                        <option value="">Select</option>
-                                        <?php foreach ($advocateNames as $advocate) { ?>
-                                            <option value="<?php echo $advocate['username']; ?>"><?php echo $advocate['name'] . ' (' . $advocate['username'] . ')'; ?></option>
-                                        <?php } ?>  
-                                    </select>
+                                    <label class="drop-down">Advocate Name</label>
+                                    <input class="form-control" name="party_name" type="text" id="example-text-input" value="<?php echo $cases[0]['advocate']; ?>" readonly>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="example-datetime-local-input">Case Next Date</label>
-                                    <input class="form-control" name="case_next_date" type="date" id="example-datetime-local-input">
+                                    <input class="form-control" name="case_next_date" type="date" id="example-datetime-local-input" value="<?php echo $cases[0]['case_next_date']; ?>" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-datetime-local-input">Filing Date</label>
+                                    <input class="form-control" name="fillingDate" type="date" id="example-datetime-local-input" value="<?php echo $cases[0]['fillingDate']; ?>" readonly >
                                 </div>
 
                                 <div class="form-group">
-                                        <label for="message">Special Note</label>
-                                        <textarea class="form-control" name="special_note" rows="5" id="message"></textarea>
+                                        <label for="message">Special Note for <?php echo $cases[0]['fillingDate']; ?></label>
+                                        <textarea class="form-control" name="special_note" rows="5" id="message" readonly><?php echo $cases[0]['special_note'];  ?></textarea>
                                 </div>
+                                <?php 
+                                if(!empty($cases[0]['case_next_date'])) { 
+                                ?> 
+                                <div class="form-group"> 
+                                    <label for="message">Special Note for <?php echo $cases[0]['case_next_date']; ?> </label> 
+                                    <textarea class="form-control" name="special_note" rows="5" id="message"></textarea> 
+                                </div> 
+                                <?php 
+                                } 
+                                ?>
 
                                 
                                 <button type="submit" class="btn btn-gradient-primary">Submit</button>
