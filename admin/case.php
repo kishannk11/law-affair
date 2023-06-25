@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 require_once 'config/config.php';
 require_once 'config/session.php';
 require_once 'Database.php';
@@ -6,8 +9,7 @@ $addCase = new AddCase($conn);
 $errors = array();
  if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Sanitize and validate user input
-    
-    $data = [
+     $data = [
         'case_number' => '',
         'ffiling_number' => '',
         'fillingDate' => '',
@@ -18,9 +20,8 @@ $errors = array();
         'case_next_date' => '',
         'special_note' => '',
     ];
-     
      // Check if any field is empty
-     foreach ($data as $key => $value) {
+    foreach ($data as $key => $value) {
         if ($key == 'case_status') {
             if (isset($_POST['case'])) {
                 $data['case_status'] = implode(',', $_POST['case']); // Assuming case_status is stored as a comma-separated string
@@ -28,7 +29,7 @@ $errors = array();
                 $errors[$key] = "Error: " . ucfirst($key) . " field is required.";
             }
         } else {
-            if (empty($_POST[$key])) {
+            if (empty($_POST[$key]) && $key !== 'special_note') {
                 $errors[$key] = "Error: " . ucfirst($key) . " field is required.";
             } else {
                 $data[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_STRING);
