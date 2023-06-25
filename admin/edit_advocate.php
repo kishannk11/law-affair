@@ -169,11 +169,11 @@ require("top-navbar.php");
 
                                                 <div class="checkbox my-2">
                                                     <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" name="lawyer[]" value="Buisness lawyer"
+                                                        <input type="checkbox" name="lawyer[]" value="Business lawyer"
                                                             class="custom-control-input" id="customCheck09"
                                                             data-parsley-multiple="groups" data-parsley-mincheck="2"
-                                                            <?php echo isChecked('Buisness lawyer', $specializations) ? 'checked' : ''; ?>>
-                                                        <label class="custom-control-label" for="customCheck09">Buisness
+                                                            <?php echo isChecked('Business lawyer', $specializations) ? 'checked' : ''; ?>>
+                                                        <label class="custom-control-label" for="customCheck09">Business
                                                             lawyer</label>
                                                     </div>
                                                 </div>
