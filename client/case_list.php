@@ -67,7 +67,6 @@ if (isset($_GET['error'])) {
                                         <th>Party Name</th>
                                         <th>Case Status</th>
                                         <th>Case Next Date</th>
-                                        <th>Note</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -94,8 +93,8 @@ if (isset($_GET['error'])) {
                                         <td><?php echo $case['case_status']; ?></td>
                                         <td><?php echo $case['advocate']; ?></td>
                                         <td><?php echo $case['case_next_date']; ?></td>
-                                        <td><?php echo $case['special_note']; ?></td>
-                                        <td><a href="case_details.php?id=<?php echo $case['id']; ?>">View Details</a></td>
+                                        
+                                        <td><a href="case_details.php?id=<?php echo $case['case_number']; ?>">View Details</a></td>
                                     </tr>
                                     <?php } ?>
                                 </tbody>

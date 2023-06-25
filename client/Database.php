@@ -82,7 +82,7 @@ class myCase {
     }
     public function getCases() {
         $username = $_SESSION['username'];
-        $stmt = $this->conn->prepare("SELECT * FROM cases WHERE advocate = ?");
+        $stmt = $this->conn->prepare("SELECT DISTINCT case_number,`filing_number`, `fillingDate`, `client`, `party_name`, `case_status`, `advocate`, `case_next_date` FROM cases WHERE advocate = ?");
         $stmt->bindParam(1, $username);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -119,9 +119,10 @@ class getCaseDetails {
         $this->conn = $conn;
     }
     public function getCases($id) {
-        
-        $stmt = $this->conn->prepare("SELECT * FROM cases WHERE id = ?");
+        $advocate=$_SESSION['username'];
+        $stmt = $this->conn->prepare("SELECT * FROM cases WHERE case_number = ? and advocate=? ");
         $stmt->bindParam(1, $id);
+        $stmt->bindParam(2, $advocate);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as &$case) {
