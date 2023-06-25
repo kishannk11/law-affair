@@ -87,6 +87,7 @@ require("top-navbar.php");
                                 //require 'Database.php';
                                 $caseList = new getCaseDetails($conn);
                                 $cases = $caseList->getCases($_GET['id']);
+                                print_r($cases);
                                 
                                 function isChecked($status, $output) {
                                     $statuses = explode(',', $output);
@@ -157,21 +158,22 @@ require("top-navbar.php");
                                     <label for="example-datetime-local-input">Filing Date</label>
                                     <input class="form-control" name="fillingDate" type="date" id="example-datetime-local-input" value="<?php echo $cases[0]['fillingDate']; ?>" readonly >
                                 </div>
-
-                                <div class="form-group">
-                                        <label for="message">Special Note for <?php echo $cases[0]['fillingDate']; ?></label>
-                                        <textarea class="form-control" name="special_note" rows="5" id="message" readonly><?php echo $cases[0]['special_note'];  ?></textarea>
-                                </div>
-                                <?php 
-                                if(!empty($cases[0]['case_next_date'])) { 
-                                ?> 
-                                <div class="form-group"> 
-                                    <label for="message">Special Note for <?php echo $cases[0]['case_next_date']; ?> </label> 
-                                    <textarea class="form-control" name="special_note" rows="5" id="message"></textarea> 
-                                </div> 
-                                <?php 
-                                } 
+                                <?php
+                                foreach ($cases as $case) {
                                 ?>
+                                <div class="form-group">
+                                    <label for="message">Special Note for <?php echo $case['fillingDate']; ?></label>
+                                    <textarea class="form-control" name="special_note" rows="5" id="message" readonly><?php echo $case['special_note']; ?></textarea>
+                                </div>
+                                
+                                <?php
+                                }
+                                ?>
+                                <div class="form-group"> 
+                                    <label for="message">Special Note for <?php echo $case['case_next_date']; ?> </label> 
+                                    <textarea class="form-control" name="special_note" rows="5" id="message"></textarea> 
+                                </div>
+                                 
 
                                 
                                 <button type="submit" class="btn btn-gradient-primary">Submit</button>
