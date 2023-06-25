@@ -7,7 +7,7 @@ require_once('config/session.php');
 
     <head>
         <meta charset="utf-8" />
-        <title>Crovex - Admin & Dashboard Template</title>
+        <title>Law-Affair Client</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="" name="author" />
@@ -45,6 +45,13 @@ require_once('config/session.php');
             </div>
             <!--end logo-->
             <!-- Navbar -->
+            <?php
+            require_once('config/config.php');
+            require 'Database.php';
+            $advocateDetails = new getAdvocateDetails($conn);
+            $details = $advocateDetails->getAdvocateDetails();
+
+            ?>
             <nav class="navbar-custom">    
                 <ul class="list-unstyled topbar-nav float-right mb-0"> 
                     
@@ -52,8 +59,8 @@ require_once('config/session.php');
                     <li class="dropdown">
                         <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
                             aria-haspopup="false" aria-expanded="false">
-                            <img src="assets/images/users/kishan.png" alt="profile-user" class="rounded-circle" /> 
-                            <span class="ml-1 nav-user-name hidden-sm">Kishan Nayak<i class="mdi mdi-chevron-down"></i> </span>
+                            <img src="../admin/<?php echo $details['profile_path'];?>" alt="profile-user" class="rounded-circle" /> 
+                            <span class="ml-1 nav-user-name hidden-sm"><?php echo $details['name'];?><i class="mdi mdi-chevron-down"></i> </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="profile.php"><i class="ti-user text-muted mr-2"></i> Profile</a>

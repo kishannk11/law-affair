@@ -67,7 +67,6 @@ if (isset($_GET['error'])) {
                                         <th>Party Name</th>
                                         <th>Case Status</th>
                                         <th>Case Next Date</th>
-                                        <th>Note</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -79,38 +78,25 @@ if (isset($_GET['error'])) {
                                     ini_set('display_errors', 1);
                                     ini_set('display_startup_errors', 1);
                                     error_reporting(E_ALL);
-                                    require_once 'Database.php';
-                                    require_once 'config/config.php';
-                                    $caseList = new CaseList($conn);
-
-                                    // Get the case details
+                                    require 'config/config.php';
+                                    $caseList = new myCase($conn);
                                     $cases = $caseList->getCases();
-
-
-                                    // Display the case details in a table
-                                    
                                     foreach ($cases as $case) {
-                                        echo "<tr>";
-                                        echo "<td>" . htmlspecialchars($case["case_number"]) . "</td>";
-                                        echo "<td>" . htmlspecialchars($case["filing_number"]) . "</td>";
-                                        echo "<td>" . htmlspecialchars($case["fillingDate"]) . "</td>";
-                                        echo "<td>" . htmlspecialchars($case["client"]) . "</td>";
-                                        echo "<td>" . htmlspecialchars($case["party_name"]) . "</td>";
-                                        echo "<td>" . htmlspecialchars($case["case_status"]) . "</td>";
-                                        echo "<td>" . htmlspecialchars($case["advocate"]) . "</td>";
-                                        echo "<td>" . htmlspecialchars($case["case_next_date"]) . "</td>";
-                                        echo "<td>" . htmlspecialchars($case["special_note"]) . "</td>";
-                                        echo "<td>";
-                                        echo '<a href="edit_client.php?id=" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>';
-                                        echo "<a onclick=\"deleteCase({$case['id']})\"><i class=\"fas fa-trash-alt text-danger font-16\"></i></a>";
-                                        echo "</td>";
-                                        echo "</tr>";
-                                    }
-                                    
-                                    
-
-
                                     ?>
+                                    <tr>
+                                        
+                                        <td><?php echo $case['case_number']; ?></td>
+                                        <td><?php echo $case['filing_number']; ?></td>
+                                        <td><?php echo $case['fillingDate']; ?></td>
+                                        <td><?php echo $case['client']; ?></td>
+                                        <td><?php echo $case['party_name']; ?></td>
+                                        <td><?php echo $case['case_status']; ?></td>
+                                        <td><?php echo $case['advocate']; ?></td>
+                                        <td><?php echo $case['case_next_date']; ?></td>
+                                        
+                                        <td><a href="case_details.php?id=<?php echo $case['case_number']; ?>">View Details</a></td>
+                                    </tr>
+                                    <?php } ?>
                                 </tbody>
                                 </tbody>
                             </table>

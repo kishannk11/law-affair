@@ -23,168 +23,50 @@ require("top-navbar.php");
             </div><!--end col-->
         </div>
         <!-- end page title end breadcrumb -->
+        <?php 
+        ini_set('display_errors', 1);
+        ini_set('display_startup_errors', 1);
+        error_reporting(E_ALL);
+        require_once('config/config.php'); 
+        //require 'Database.php';
+        $advocates = new getAllAdvocate($conn); 
+        $result=$advocates->getAdvocates(); 
+
+        ?>
         <div class="row">
-            <div class="col-lg-4">
-                <div class="card profile-card">
-                    <div class="card-body p-0">
-                        <div class="media p-3  align-items-center">                                                
-                            <img src="assets/images/users/ranju.png" alt="user" class="rounded-circle thumb-l">                                        
-                            <div class="media-body ml-3 align-self-center">
-                                <h5 class="pro-title">Ranjith</h5>
-                                <p class="mb-2 text-muted">Senior Advocate</p>
-                                <p class="mb-2 text-muted">ranjith@gmail.com</p>
-                                <p class="mb-2 text-muted">+91 81058 97579</p>                                          
+        <?php
+        foreach($result as $row) {
+            echo '<div class="col-lg-4">';
+            echo '<div class="card profile-card">';
+            echo '<div class="card-body p-0">';
+            echo '<div class="media p-3  align-items-center">';
+            echo '<img src="../admin/'.$row['photo'].'" alt="user" class="rounded-circle thumb-l" height="90" width="90">';
+            echo '<div class="media-body ml-3 align-self-center">';
+            echo '<h5 class="pro-title">'.htmlspecialchars($row['name']).'</h5>';
+            $specializations = json_decode($row["specializations"]);
+            if ($specializations !== null) {
+                $specializations = array_map(function ($item) {
+                    return str_replace("\r\n", " ", $item);
+                }, $specializations);
+                $specializationsStr = implode(', ', $specializations);
+            } else {
+                $specializationsStr = '';
+            }
+            echo '<p class="mb-2 text-muted">'.htmlspecialchars($specializationsStr).'</p>';
+            echo '<p class="mb-2 text-muted">'.htmlspecialchars($row['address']).'</p>';
+            echo '<p class="mb-2 text-muted">+91 '.htmlspecialchars($row['mobile_number']).'</p>';
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
+        }
+        
+        ?>
+        
+        <!--end col-->
 
-                            </div>                                                                          
-                        </div>                                    
-                    </div><!--end card-body-->                 
-                </div><!--end card--> 
-            </div><!--end col-->
-
-            <div class="col-lg-4">
-                <div class="card profile-card">
-                    <div class="card-body p-0">
-                        <div class="media p-3  align-items-center">                                                
-                            <img src="assets/images/users/kishan.png" alt="user" class="rounded-circle thumb-l">                                        
-                            <div class="media-body ml-3 align-self-center">
-                                <h5 class="pro-title">Kishan</h5>
-                                <p class="mb-2 text-muted">Senior Advocate</p>
-                                <p class="mb-2 text-muted">kishan@gmail.com</p>
-                                <p class="mb-2 text-muted">+91 97406 84686</p>                                          
-
-                            </div>                                                                          
-                        </div>                                    
-                    </div><!--end card-body-->                 
-                </div><!--end card--> 
-            </div><!--end col-->
-
-            <div class="col-lg-4">
-                <div class="card profile-card">
-                    <div class="card-body p-0">
-                        <div class="media p-3  align-items-center">
-                            <div class="avatar-box thumb-xl align-self-center mr-2">
-                                <span class="avatar-title bg-soft-pink rounded-circle thumb-l">RM</span>
-                            </div>
-                            
-                            <!-- Use this for DP -->
-                            <!-- <img src="assets/images/users/kishan.png" alt="user" class="rounded-circle thumb-l">                                         -->
-                            <div class="media-body ml-3 align-self-center">
-                                <h5 class="pro-title">Rakesh Marate</h5>
-                                <p class="mb-2 text-muted">Senior Advocate</p>
-                                <p class="mb-2 text-muted">rakesh@gmail.com</p>  
-                                <p class="mb-2 text-muted">+91 13245 67890</p>
-                            </div>                                                                           
-                        </div>                                    
-                    </div><!--end card-body-->                 
-                </div><!--end card--> 
-            </div><!--end col-->
-            <div class="col-lg-4">
-                <div class="card profile-card">
-                    <div class="card-body p-0">
-                        <div class="media p-3  align-items-center">                                                
-                            <img src="assets/images/users/ranju.png" alt="user" class="rounded-circle thumb-l">                                        
-                            <div class="media-body ml-3 align-self-center">
-                                <h5 class="pro-title">Ranjith</h5>
-                                <p class="mb-2 text-muted">Senior Advocate</p>
-                                <p class="mb-2 text-muted">ranjith@gmail.com</p>
-                                <p class="mb-2 text-muted">+91 81058 97579</p>                                          
-
-                            </div>                                                                          
-                        </div>                                    
-                    </div><!--end card-body-->                 
-                </div><!--end card--> 
-            </div><!--end col-->
-
-            <div class="col-lg-4">
-                <div class="card profile-card">
-                    <div class="card-body p-0">
-                        <div class="media p-3  align-items-center">                                                
-                            <img src="assets/images/users/kishan.png" alt="user" class="rounded-circle thumb-l">                                        
-                            <div class="media-body ml-3 align-self-center">
-                                <h5 class="pro-title">Kishan</h5>
-                                <p class="mb-2 text-muted">Senior Advocate</p>
-                                <p class="mb-2 text-muted">kishan@gmail.com</p>
-                                <p class="mb-2 text-muted">+91 97406 84686</p>                                          
-
-                            </div>                                                                          
-                        </div>                                    
-                    </div><!--end card-body-->                 
-                </div><!--end card--> 
-            </div><!--end col-->
-
-            <div class="col-lg-4">
-                <div class="card profile-card">
-                    <div class="card-body p-0">
-                        <div class="media p-3  align-items-center">
-                            <div class="avatar-box thumb-xl align-self-center mr-2">
-                                <span class="avatar-title bg-soft-pink rounded-circle thumb-l">RM</span>
-                            </div>
-                            
-                            <!-- Use this for DP -->
-                            <!-- <img src="assets/images/users/kishan.png" alt="user" class="rounded-circle thumb-l">                                         -->
-                            <div class="media-body ml-3 align-self-center">
-                                <h5 class="pro-title">Rakesh Marate</h5>
-                                <p class="mb-2 text-muted">Senior Advocate</p>
-                                <p class="mb-2 text-muted">rakesh@gmail.com</p>  
-                                <p class="mb-2 text-muted">+91 13245 67890</p>
-                            </div>                                                                           
-                        </div>                                    
-                    </div><!--end card-body-->                 
-                </div><!--end card--> 
-            </div><!--end col--><div class="col-lg-4">
-                <div class="card profile-card">
-                    <div class="card-body p-0">
-                        <div class="media p-3  align-items-center">                                                
-                            <img src="assets/images/users/ranju.png" alt="user" class="rounded-circle thumb-l">                                        
-                            <div class="media-body ml-3 align-self-center">
-                                <h5 class="pro-title">Ranjith</h5>
-                                <p class="mb-2 text-muted">Senior Advocate</p>
-                                <p class="mb-2 text-muted">ranjith@gmail.com</p>
-                                <p class="mb-2 text-muted">+91 81058 97579</p>                                          
-
-                            </div>                                                                          
-                        </div>                                    
-                    </div><!--end card-body-->                 
-                </div><!--end card--> 
-            </div><!--end col-->
-
-            <div class="col-lg-4">
-                <div class="card profile-card">
-                    <div class="card-body p-0">
-                        <div class="media p-3  align-items-center">                                                
-                            <img src="assets/images/users/kishan.png" alt="user" class="rounded-circle thumb-l">                                        
-                            <div class="media-body ml-3 align-self-center">
-                                <h5 class="pro-title">Kishan</h5>
-                                <p class="mb-2 text-muted">Senior Advocate</p>
-                                <p class="mb-2 text-muted">kishan@gmail.com</p>
-                                <p class="mb-2 text-muted">+91 97406 84686</p>                                          
-
-                            </div>                                                                          
-                        </div>                                    
-                    </div><!--end card-body-->                 
-                </div><!--end card--> 
-            </div><!--end col-->
-
-            <div class="col-lg-4">
-                <div class="card profile-card">
-                    <div class="card-body p-0">
-                        <div class="media p-3  align-items-center">
-                            <div class="avatar-box thumb-xl align-self-center mr-2">
-                                <span class="avatar-title bg-soft-pink rounded-circle thumb-l">RM</span>
-                            </div>
-                            
-                            <!-- Use this for DP -->
-                            <!-- <img src="assets/images/users/kishan.png" alt="user" class="rounded-circle thumb-l">                                         -->
-                            <div class="media-body ml-3 align-self-center">
-                                <h5 class="pro-title">Rakesh Marate</h5>
-                                <p class="mb-2 text-muted">Senior Advocate</p>
-                                <p class="mb-2 text-muted">rakesh@gmail.com</p>  
-                                <p class="mb-2 text-muted">+91 13245 67890</p>
-                            </div>                                                                           
-                        </div>                                    
-                    </div><!--end card-body-->                 
-                </div><!--end card--> 
-            </div><!--end col-->
+            <!--end col-->
         </div><!--end row-->
 
     </div><!-- container -->
