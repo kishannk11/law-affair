@@ -151,19 +151,23 @@ require("top-navbar.php");
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="example-datetime-local-input">Case Date</label>
+                                    <input class="form-control"  type="date" id="example-datetime-local-input" value="<?php echo $cases[0]['case_next_date']; ?>" readonly>
+                                </div>
+                                <div class="form-group">
                                     <label for="example-datetime-local-input">Case Next Date</label>
-                                    <input class="form-control" name="case_next_date" type="date" id="example-datetime-local-input" value="<?php echo $cases[0]['case_next_date']; ?>" readonly>
+                                    <input class="form-control" name ="case_date" type="date" id="example-datetime-local-input">
                                 </div>
                                 <div class="form-group">
                                     <label for="example-datetime-local-input">Filing Date</label>
-                                    <input class="form-control" name="fillingDate" type="date" id="example-datetime-local-input" value="<?php echo $cases[0]['fillingDate']; ?>" readonly >
+                                    <input class="form-control" type="date" id="example-datetime-local-input" value="<?php echo $cases[0]['fillingDate']; ?>" readonly >
                                 </div>
                                 <?php
                                 foreach ($cases as $case) {
                                 ?>
                                 <div class="form-group">
                                     <label for="message">Special Note for <?php echo $case['fillingDate']; ?></label>
-                                    <textarea class="form-control" name="special_note" rows="5" id="message" readonly><?php echo $case['special_note']; ?></textarea>
+                                    <textarea class="form-control"  rows="5" id="message" readonly><?php echo $case['special_note']; ?></textarea>
                                 </div>
                                 
                                 <?php
