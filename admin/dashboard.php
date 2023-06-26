@@ -19,6 +19,18 @@ require('top-navbar.php');
                             </div><!--end page-title-box-->
                         </div><!--end col-->
                     </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="jumbotron mb-0 bg-light">
+                                        <h1 class="display-4">Hello, Kishan! Welcome</h1>
+                                    </div>
+                                </div><!--end card-body-->    
+                            </div><!--end card-->
+                        </div><!--end col-->
+                    </div><!--end row-->
                     <!-- end page title end breadcrumb -->
                     <?php
                     require_once 'config/config.php';
