@@ -90,6 +90,7 @@ if (isset($_GET['error'])) {
 
                                     // Display the case details in a table
                                     
+                                    
                                     foreach ($cases as $case) {
                                         echo "<tr>";
                                         echo "<td>" . htmlspecialchars($case["case_number"]) . "</td>";
