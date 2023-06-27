@@ -81,7 +81,7 @@ if (isset($_GET['error'])) {
                                     require 'config/config.php';
                                     $caseList = new myCase($conn);
                                     $cases = $caseList->getCases();
-                                    print_r($cases);
+                                    
                                     foreach ($cases as $case) {
                                     ?>
                                     <tr>

@@ -7,9 +7,9 @@ require_once 'config/session.php';
 require_once 'Database.php';
 $addCase = new AddCase($conn);
 $errors = array();
- if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Sanitize and validate user input
-     $data = [
+    $data = [
         'case_number' => '',
         'ffiling_number' => '',
         'fillingDate' => '',
@@ -19,8 +19,12 @@ $errors = array();
         'advocate' => '',
         'case_next_date' => '',
         'special_note' => '',
+        'total_amount' => '',
+        'recieved_amount' => '',
+        'pending_amount' => '',
+        'payment' => '',
     ];
-     // Check if any field is empty
+    // Check if any field is empty
     foreach ($data as $key => $value) {
         if ($key == 'case_status') {
             if (isset($_POST['case'])) {
@@ -36,7 +40,7 @@ $errors = array();
             }
         }
     }
-     if (empty($errors)) {
+    if (empty($errors)) {
         // Save the form data to the database
         if ($addCase->saveCase($data)) {
             $success = "Case added successfully!";

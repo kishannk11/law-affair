@@ -345,7 +345,7 @@ class AddCase
     public function saveCase($data)
     {
         $special_note = $data['special_note'] . ' - ' . $_SESSION['username'];
-        $sql = "INSERT INTO cases (case_number, filing_number, fillingDate, client, party_name, case_status, advocate, case_next_date, special_note) VALUES (:case_number, :ffiling_number, :fillingDate, :client, :party_name, :case_status, :advocate, :case_next_date, :special_note)";
+        $sql = "INSERT INTO cases (case_number, filing_number, fillingDate, client, party_name, case_status, advocate, case_next_date, special_note, total_amount, recieved_amount, pending_amount, payment) VALUES (:case_number, :ffiling_number, :fillingDate, :client, :party_name, :case_status, :advocate, :case_next_date, :special_note, :total_amount, :recieved_amount, :pending_amount, :payment)";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':case_number', $data['case_number']);
         $stmt->bindParam(':ffiling_number', $data['ffiling_number']);
@@ -356,6 +356,10 @@ class AddCase
         $stmt->bindParam(':advocate', $data['advocate']);
         $stmt->bindParam(':case_next_date', $data['case_next_date']);
         $stmt->bindParam(':special_note', $special_note);
+        $stmt->bindParam(':total_amount', $data['total_amount']);
+        $stmt->bindParam(':recieved_amount', $data['recieved_amount']);
+        $stmt->bindParam(':pending_amount', $data['pending_amount']);
+        $stmt->bindParam(':payment', $data['payment']);
         return $stmt->execute();
     }
 }
@@ -371,7 +375,7 @@ class CaseList
 
     public function getCases()
     {
-        $stmt = $this->conn->prepare("SELECT id,case_number, filing_number, fillingDate, client, party_name, case_status, advocate, case_next_date, special_note FROM cases");
+        $stmt = $this->conn->prepare("SELECT * FROM cases");
         $stmt->execute();
         $cases = $stmt->fetchAll(PDO::FETCH_ASSOC);
         foreach ($cases as &$case) {
@@ -461,6 +465,71 @@ class totalAdvocates {
         $stmt->execute();
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         return $row['total_count'];
+    }
+}
+
+class getAllCaseDetails {
+    private $conn;
+    public function __construct($conn) {
+        $this->conn = $conn;
+    }
+    public function getCases($id) {
+        $stmt = $this->conn->prepare("SELECT * FROM cases WHERE case_number = ? ");
+        $stmt->bindParam(1, $id);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($result as &$case) {
+            $advocateName = $this->getAdvocateName($case['advocate']);
+            $clientName = $this->getClientName($case['client']);
+            $case['advocate'] = $advocateName;
+            $case['client'] = $clientName;
+        }
+        return $result;
+    }
+    public function getAdvocateName($username)
+    {
+        $stmt = $this->conn->prepare("SELECT name FROM advocates WHERE username = ?");
+        $stmt->bindParam(1, $username, PDO::PARAM_STR);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['name'];
+    }
+     public function getClientName($username)
+    {
+        $stmt = $this->conn->prepare("SELECT name FROM clients WHERE username = ?");
+        $stmt->bindParam(1, $username, PDO::PARAM_STR);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['name'];
+    }
+}
+
+class updateAllCase
+{
+    private $conn;
+    public function __construct($conn)
+    {
+        $this->conn = $conn;
+    }
+    public function saveCase($data)
+    {
+        $special_note = $data['special_note'] . ' - ' . $_SESSION['username'];
+        $sql = "UPDATE cases SET filing_number = :filing_number, fillingDate = :fillingDate, client = :client, party_name = :party_name, case_status = :case_status, advocate = :advocate, case_next_date = :case_next_date, special_note = :special_note, total_amount = :total_amount, recieved_amount = :recieved_amount, pending_amount = :pending_amount, payment = :payment WHERE case_number = :case_number";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':filing_number', $data['ffiling_number']);
+        $stmt->bindParam(':fillingDate', $data['fillingDate']);
+        $stmt->bindParam(':client', $data['client']);
+        $stmt->bindParam(':party_name', $data['party_name']);
+        $stmt->bindParam(':case_status', $data['case_status']);
+        $stmt->bindParam(':advocate', $data['advocate']);
+        $stmt->bindParam(':case_next_date', $data['case_next_date']);
+        $stmt->bindParam(':special_note', $special_note);
+        $stmt->bindParam(':total_amount', $data['total_amount']);
+        $stmt->bindParam(':recieved_amount', $data['recieved_amount']);
+        $stmt->bindParam(':pending_amount', $data['pending_amount']);
+        $stmt->bindParam(':payment', $data['payment']);
+        $stmt->bindParam(':case_number', $data['case_number']);
+        return $stmt->execute();
     }
 }
 ?>
