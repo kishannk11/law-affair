@@ -82,15 +82,15 @@ class myCase {
     }
     public function getCases() {
         $username = $_SESSION['username'];
-        $stmt = $this->conn->prepare("SELECT c.case_number, c.filing_number, MIN(c.fillingDate) as fillingDate, c.client, c.party_name, s.case_status, c.advocate, MAX(c.case_next_date) as case_next_date
+        $stmt = $this->conn->prepare("SELECT c.case_number, MIN(c.fillingDate) as fillingDate, c.filing_number, c.client, c.party_name, c.case_status, c.advocate, MAX(c.case_next_date) as case_next_date
         FROM cases c
-        INNER JOIN (
-          SELECT case_number, fillingDate, GROUP_CONCAT(case_status ORDER BY fillingDate DESC SEPARATOR ',') as case_status
+        WHERE c.advocate = ? AND c.fillingDate IN (
+          SELECT MAX(fillingDate)
           FROM cases
-          GROUP BY case_number, fillingDate
-        ) s ON c.case_number = s.case_number AND c.fillingDate = s.fillingDate
-        WHERE c.advocate = ?
-        GROUP BY c.case_number, c.filing_number, c.client, c.party_name, s.case_status, c.advocate");
+          GROUP BY case_number
+        )
+        GROUP BY c.case_number
+        ");
         $stmt->bindParam(1, $username);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -167,19 +167,73 @@ class CaseDetails {
     // Method to get the case number for the current logged in user using the username from the session variable
     public function getCaseNumber() {
         $username = $_SESSION['username'];
-        $stmt = $this->conn->prepare("SELECT case_number FROM cases WHERE advocate = ?");
+        $stmt = $this->conn->prepare("SELECT DISTINCT case_number FROM cases WHERE advocate = ?");
         $stmt->bindParam(1, $username);
         $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $result['case_number'];
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
     }
-    // Method to get the filling date and case next date for a given case number
+    // Method to get all the filling dates and case next dates for a given case number
     public function getCaseDates($caseNumber) {
-        $stmt = $this->conn->prepare("SELECT filling_date, case_next_date FROM cases WHERE case_number = ?");
+        $stmt = $this->conn->prepare("SELECT fillingDate, case_next_date FROM cases WHERE case_number = ?");
         $stmt->bindParam(1, $caseNumber);
         $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $fillingDates = array();
+        $caseNextDates = array();
+        foreach ($result as $row) {
+            $fillingDates[] = $row['fillingDate'];
+            $caseNextDates[] = $row['case_next_date'];
+        }
+        return array('fillingDates' => $fillingDates, 'caseNextDates' => $caseNextDates);
+    }
+}
+
+class caseReport {
+    private $conn;
+     public function __construct($conn) {
+        $this->conn = $conn;
+    }
+     public function getSpecialNotes($caseNumber, $startDate, $endDate) {
+        $stmt = $this->conn->prepare("SELECT * FROM cases WHERE case_number = ? AND fillingdate >= ? AND case_next_date <= ?");
+        $stmt->bindParam(1, $caseNumber);
+        $stmt->bindParam(2, $startDate);
+        $stmt->bindParam(3, $endDate);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
 }
+
+class InsertmyCases
+{
+    private $conn;
+    public function __construct($conn)
+    {
+        $this->conn = $conn;
+    }
+    public function insertCase($case_number,$filing_number, $fillingDate,$party_name, $case_status, $case_next_date, $special_note)
+    {   
+        $stmt = $this->conn->prepare("SELECT advocate, client FROM cases WHERE case_number = :case_number");
+        $stmt->bindParam(':case_number', $case_number);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $advocate = $result['advocate'];
+        $client = $result['client'];
+        // Validation and sanitization of data goes here
+        // Insert the case into the database
+        $stmt = $this->conn->prepare("INSERT INTO cases (case_number,filing_number, fillingDate, client, party_name, case_status, advocate, case_next_date, special_note) VALUES (:case_number, :filing_number, :fillingDate, :client, :party_name, :case_status, :advocate, :case_date, :case_next_date, :special_note)");
+        $stmt->bindParam(':filing_number', $case_number);
+        $stmt->bindParam(':filing_number', $filing_number);
+        $stmt->bindParam(':fillingDate', $fillingDate);
+        $stmt->bindParam(':client', $client);
+        $stmt->bindParam(':party_name', $party_name);
+        $stmt->bindParam(':case_status', $case_status);
+        $stmt->bindParam(':advocate', $advocate);
+        $stmt->bindParam(':case_next_date', $case_next_date);
+        $stmt->bindParam(':special_note', $special_note);
+        $stmt->execute();
+    }
+}
+
 ?>

@@ -1,16 +1,13 @@
 <?php
-class CaseDates {
-    private $conn;
-    public function __construct($conn) {
-        $this->conn = $conn;
-    }
-    // Method to get the filling date and case next date for a given case number
-    public function getCaseDates($caseNumber) {
-        $stmt = $this->conn->prepare("SELECT filling_date, case_next_date FROM cases WHERE case_number = ?");
-        $stmt->bindParam(1, $caseNumber);
-        $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $result;
-    }
-}
+// Include the config.php file to establish a database connection
+include 'config/config.php';
+include 'Database.php';
+$caseDetails = new CaseDetails($conn);
+// Get the case number from the POST data
+$caseNumber = $_POST['caseNumber'];
+// Get the filling date and case next date for the given case number
+$caseDates = $caseDetails->getCaseDates($caseNumber);
+// Return the case dates as JSON
+echo json_encode($caseDates);
+
 ?>
