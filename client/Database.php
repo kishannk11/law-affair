@@ -82,7 +82,15 @@ class myCase {
     }
     public function getCases() {
         $username = $_SESSION['username'];
-        $stmt = $this->conn->prepare("SELECT DISTINCT case_number,`filing_number`, `fillingDate`, `client`, `party_name`, `case_status`, `advocate`, `case_next_date` FROM cases WHERE advocate = ?");
+        $stmt = $this->conn->prepare("SELECT c.case_number, c.filing_number, MIN(c.fillingDate) as fillingDate, c.client, c.party_name, s.case_status, c.advocate, MAX(c.case_next_date) as case_next_date
+        FROM cases c
+        INNER JOIN (
+          SELECT case_number, fillingDate, GROUP_CONCAT(case_status ORDER BY fillingDate DESC SEPARATOR ',') as case_status
+          FROM cases
+          GROUP BY case_number, fillingDate
+        ) s ON c.case_number = s.case_number AND c.fillingDate = s.fillingDate
+        WHERE c.advocate = ?
+        GROUP BY c.case_number, c.filing_number, c.client, c.party_name, s.case_status, c.advocate");
         $stmt->bindParam(1, $username);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -148,6 +156,30 @@ class getCaseDetails {
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result['name'];
+    }
+}
+
+class CaseDetails {
+    private $conn;
+    public function __construct($conn) {
+        $this->conn = $conn;
+    }
+    // Method to get the case number for the current logged in user using the username from the session variable
+    public function getCaseNumber() {
+        $username = $_SESSION['username'];
+        $stmt = $this->conn->prepare("SELECT case_number FROM cases WHERE advocate = ?");
+        $stmt->bindParam(1, $username);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['case_number'];
+    }
+    // Method to get the filling date and case next date for a given case number
+    public function getCaseDates($caseNumber) {
+        $stmt = $this->conn->prepare("SELECT filling_date, case_next_date FROM cases WHERE case_number = ?");
+        $stmt->bindParam(1, $caseNumber);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result;
     }
 }
 ?>

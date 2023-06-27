@@ -23,139 +23,34 @@ require("top-navbar.php");
                 </div><!--end col-->
             </div>
             <!-- end page title end breadcrumb -->
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-
-                            <h4 class="mt-0 header-title">Reports</h4>
-
-                            <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                <thead>
-                                <tr>
-                                    <th>Case Number</th>
-                                    <th>Case Name</th>
-                                    <th>Handelled by</th>
-                                    <th>Start date</th>
-                                    <th>Action</th>
-                                </tr>
-                                </thead>
-
-
-                                <tbody>
-                                <tr>
-                                    <td>LFC123</td>
-                                    <td>Land Registry</td>
-                                    <td>Kishan Nayak</td>
-                                    <td>01/06/2023</td>
-                                    <td>                                                                                                       
-                                        <a href="report_details.php" class="mr-2"><i class="text-success font-14">View Details</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>LFC124</td>
-                                    <td>Car Accident</td>
-                                    <td>Kishan Nayak</td>
-                                    <td>01/06/2023</td>
-                                    <td>                                                                                                       
-                                        <a href="report_details.php" class="mr-2"><i class="text-success font-14">View Details</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>LFC125</td>
-                                    <td>Register Marriage</td>
-                                    <td>Kishan Nayak</td>
-                                    <td>01/06/2023</td>
-                                    <td>                                                                                                       
-                                        <a href="report_details.php" class="mr-2"><i class="text-success font-14">View Details</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>LFC126</td>
-                                    <td>Murder</td>
-                                    <td>Kishan Nayak</td>
-                                    <td>01/06/2023</td>
-                                    <td>                                                                                                       
-                                        <a href="report_details.php" class="mr-2"><i class="text-success font-14">View Details</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>LFC127</td>
-                                    <td>Land Registry</td>
-                                    <td>Kishan Nayak</td>
-                                    <td>01/06/2023</td>
-                                    <td>                                                                                                       
-                                        <a href="report_details.php" class="mr-2"><i class="text-success font-14">View Details</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>LFC128</td>
-                                    <td>Land Registry</td>
-                                    <td>Kishan Nayak</td>
-                                    <td>01/06/2023</td>
-                                    <td>                                                                                                       
-                                        <a href="report_details.php" class="mr-2"><i class="text-success font-14">View Details</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>LFC129</td>
-                                    <td>Land Registry</td>
-                                    <td>Kishan Nayak</td>
-                                    <td>01/06/2023</td>
-                                    <td>                                                                                                       
-                                        <a href="report_details.php" class="mr-2"><i class="text-success font-14">View Details</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>LFC130</td>
-                                    <td>Land Registry</td>
-                                    <td>Kishan Nayak</td>
-                                    <td>01/06/2023</td>
-                                    <td>                                                                                                       
-                                        <a href="report_details.php" class="mr-2"><i class="text-success font-14">View Details</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>LFC131</td>
-                                    <td>Land Registry</td>
-                                    <td>Kishan Nayak</td>
-                                    <td>01/06/2023</td>
-                                    <td>                                                                                                       
-                                        <a href="report_details.php" class="mr-2"><i class="text-success font-14">View Details</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>LFC132</td>
-                                    <td>Land Registry</td>
-                                    <td>Kishan Nayak</td>
-                                    <td>01/06/2023</td>
-                                    <td>                                                                                                       
-                                        <a href="report_details.php" class="mr-2"><i class="text-success font-14">View Details</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>LFC133</td>
-                                    <td>Land Registry</td>
-                                    <td>Kishan Nayak</td>
-                                    <td>01/06/2023</td>
-                                    <td>                                                                                                       
-                                        <a href="report_details.php" class="mr-2"><i class="text-success font-14">View Details</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>LFC134</td>
-                                    <td>Land Registry</td>
-                                    <td>Kishan Nayak</td>
-                                    <td>01/06/2023</td>
-                                    <td>                                                                                                       
-                                        <a href="report_details.php" class="mr-2"><i class="text-success font-14">View Details</i></a>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>        
-                        </div>
-                    </div>
-                </div> <!-- end col -->
+            <?php
+            include 'config/config.php';
+            ini_set('display_errors', 1);
+            ini_set('display_startup_errors', 1);
+            error_reporting(E_ALL);
+            $caseDetails = new CaseDetails($conn);
+            $caseNumber = $caseDetails->getCaseNumber();
+            ?>
+            <div class="row form-inline">
+                <div class="col-md-4">
+                    <label class="mb-3">Select CaseNumber</label>
+                    <select class="select2 form-control mb-3 custom-select" style="width: 100%; height:36px;" id="caseNumber">
+                        <option>Select</option>
+                        <option><?php echo $caseNumber; ?></option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="mb-3">Select Start Date</label>
+                    <select class="select2 form-control mb-3 custom-select" style="width: 100%; height:36px;">
+                        <option>Select</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="mb-3">Select End Date</label>
+                    <select class="select2 form-control mb-3 custom-select" style="width: 100%; height:36px;">
+                        <option>Select</option>
+                    </select>
+                </div>
             </div> <!-- end row -->
 
         </div><!-- container -->
@@ -163,8 +58,8 @@ require("top-navbar.php");
         <footer class="footer text-center text-sm-left">
             &copy; 2023 Law Affair
         </footer><!--end footer-->
-</div>
-<!-- end page content -->
+    </div>
+    <!-- end page content -->
 </div>
 <!-- end page-wrapper -->
 
@@ -172,6 +67,26 @@ require("top-navbar.php");
 
 
 <!-- jQuery  -->
+<script>
+    $(document).ready(function() {
+        // When the case number is selected, make an AJAX request to fetch the filling date and case next date
+        $('#caseNumber').on('change', function() {
+            var caseNumber = $(this).val();
+            $.ajax({
+                url: 'getCaseDates.php',
+                type: 'POST',
+                data: {caseNumber: caseNumber},
+                success: function(response) {
+                    var dates = JSON.parse(response);
+                    $('#startDate').html('<option>' + dates.filling_date + '</option>');
+                    $('#endDate').html('<option>' + dates.case_next_date + '</option>');
+                }
+            });
+        });
+    });
+</script>
+
+
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/metismenu.min.js"></script>

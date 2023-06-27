@@ -124,8 +124,11 @@ require("top-navbar.php");
                                 <label for="example-text-input">Case Status</label>
                                 <div class="col-md-9">
                                     <?php
+                                    foreach ($cases as $case) {
+                                        $output = $case['case_status'];  
+                                    }
                                     $caseStatuses = ['Status 1', 'Status 2', 'Status 3', 'Status 4', 'Status 5'];
-                                    $output = $cases[0]['case_status'];
+                                    //$output = $cases[0]['case_status'];
                                     $i = 6;
 
                                     foreach ($caseStatuses as $status) {
