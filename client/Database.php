@@ -212,26 +212,39 @@ class InsertmyCases
     {
         $this->conn = $conn;
     }
-    public function insertCase($case_number,$filing_number, $fillingDate,$party_name, $case_status, $case_next_date, $special_note)
+    public function insertCase($case_number, $filing_number, $party_name, $case_status, $case_next_date, $special_note, $total_amount, $received_amount, $pending_amount, $payment_mode)
     {   
-        $stmt = $this->conn->prepare("SELECT advocate, client FROM cases WHERE case_number = :case_number");
+        $stmt = $this->conn->prepare("SELECT advocate, client,case_next_date FROM cases WHERE case_number = :case_number");
         $stmt->bindParam(':case_number', $case_number);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         $advocate = $result['advocate'];
         $client = $result['client'];
+        $case_date=$result['case_next_date'];
         // Validation and sanitization of data goes here
         // Insert the case into the database
-        $stmt = $this->conn->prepare("INSERT INTO cases (case_number,filing_number, fillingDate, client, party_name, case_status, advocate, case_next_date, special_note) VALUES (:case_number, :filing_number, :fillingDate, :client, :party_name, :case_status, :advocate, :case_date, :case_next_date, :special_note)");
-        $stmt->bindParam(':filing_number', $case_number);
+        $stmt = $this->conn->prepare("INSERT INTO cases (case_number,filing_number, fillingDate,client, party_name, case_status, case_next_date, special_note, total_amount, recieved_amount, pending_amount, payment, advocate) VALUES (:case_number, :filing_number, :fillingDate, :client, :party_name, :case_status, :case_next_date, :special_note, :total_amount, :recieved_amount, :pending_amount, :payment, :advocate)");
+        $stmt->bindParam(':case_number', $case_number);
         $stmt->bindParam(':filing_number', $filing_number);
-        $stmt->bindParam(':fillingDate', $fillingDate);
+        $stmt->bindParam(':fillingDate', $case_date);
         $stmt->bindParam(':client', $client);
         $stmt->bindParam(':party_name', $party_name);
         $stmt->bindParam(':case_status', $case_status);
         $stmt->bindParam(':advocate', $advocate);
         $stmt->bindParam(':case_next_date', $case_next_date);
         $stmt->bindParam(':special_note', $special_note);
+        $stmt->bindParam(':total_amount', $total_amount);
+        $stmt->bindParam(':recieved_amount', $received_amount);
+        $stmt->bindParam(':pending_amount', $pending_amount);
+        $stmt->bindParam(':payment', $payment_mode);
+        $stmt->execute();
+
+        $stmt = $this->conn->prepare("UPDATE cases SET total_amount=:total_amount, recieved_amount = :recieved_amount, pending_amount = :pending_amount, payment=:payment WHERE case_number = :case_number");
+        $stmt->bindParam(':total_amount', $total_amount);
+        $stmt->bindParam(':recieved_amount', $received_amount);
+        $stmt->bindParam(':pending_amount', $pending_amount);
+        $stmt->bindParam(':case_number', $case_number);
+        $stmt->bindParam(':payment', $payment_mode);
         $stmt->execute();
     }
 }

@@ -110,7 +110,7 @@ require("top-navbar.php");
                                 </div>
                                 <div class="form-group">
                                     <label class="drop-down">Client Name</label>
-                                    <input class="form-control" name= "client" type="text" id="example-text-input" value="<?php echo $cases[0]['client']; ?>" readonly>
+                                    <input class="form-control" type="text" id="example-text-input" value="<?php echo $cases[0]['client']; ?>" readonly>
                                     
                                 </div>
                                 <div class="form-group">
@@ -149,7 +149,7 @@ require("top-navbar.php");
 
                                 <div class="form-group">
                                     <label class="drop-down">Advocate Name</label>
-                                    <input class="form-control" name="party_name" type="text" id="example-text-input" value="<?php echo $cases[0]['advocate']; ?>" readonly>
+                                    <input class="form-control" type="text" id="example-text-input" value="<?php echo $cases[0]['advocate']; ?>" readonly>
                                 </div>
 
                                 <div class="form-group">
