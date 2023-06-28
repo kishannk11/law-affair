@@ -474,7 +474,7 @@ class getAllCaseDetails {
         $this->conn = $conn;
     }
     public function getCases($id) {
-        $stmt = $this->conn->prepare("SELECT * FROM cases WHERE case_number = ? ");
+        $stmt = $this->conn->prepare("SELECT * FROM cases WHERE id = ? ");
         $stmt->bindParam(1, $id);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -514,7 +514,7 @@ class updateAllCase
     public function saveCase($data)
     {
         $special_note = $data['special_note'];
-        $sql = "UPDATE cases SET filing_number = :filing_number, fillingDate = :fillingDate, client = :client, party_name = :party_name, case_status = :case_status, advocate = :advocate, case_next_date = :case_next_date, special_note = :special_note, total_amount = :total_amount, recieved_amount = :recieved_amount, pending_amount = :pending_amount, payment = :payment WHERE case_number = :case_number";
+        $sql = "UPDATE cases SET filing_number = :filing_number, fillingDate = :fillingDate, client = :client, party_name = :party_name, case_status = :case_status, advocate = :advocate, case_next_date = :case_next_date, special_note = :special_note, total_amount = :total_amount, recieved_amount = :recieved_amount, pending_amount = :pending_amount, payment = :payment WHERE id = :id";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':filing_number', $data['ffiling_number']);
         $stmt->bindParam(':fillingDate', $data['fillingDate']);
@@ -528,8 +528,52 @@ class updateAllCase
         $stmt->bindParam(':recieved_amount', $data['recieved_amount']);
         $stmt->bindParam(':pending_amount', $data['pending_amount']);
         $stmt->bindParam(':payment', $data['payment']);
-        $stmt->bindParam(':case_number', $data['case_number']);
+        $stmt->bindParam(':id', $data['id']);
         return $stmt->execute();
+    }
+}
+
+class CaseDetails {
+    private $conn;
+    public function __construct($conn) {
+        $this->conn = $conn;
+    }
+    // Method to get the case number for the current logged in user using the username from the session variable
+    public function getCaseNumber() {
+        $stmt = $this->conn->prepare("SELECT DISTINCT case_number FROM cases");
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+    // Method to get all the filling dates and case next dates for a given case number
+    public function getCaseDates($caseNumber) {
+        $stmt = $this->conn->prepare("SELECT fillingDate, case_next_date FROM cases WHERE case_number = ?");
+        $stmt->bindParam(1, $caseNumber);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $fillingDates = array();
+        $caseNextDates = array();
+        foreach ($result as $row) {
+            $fillingDates[] = $row['fillingDate'];
+            $caseNextDates[] = $row['case_next_date'];
+        }
+        return array('fillingDates' => $fillingDates, 'caseNextDates' => $caseNextDates);
+    }
+}
+
+class caseReport {
+    private $conn;
+     public function __construct($conn) {
+        $this->conn = $conn;
+    }
+     public function getSpecialNotes($caseNumber, $startDate, $endDate) {
+        $stmt = $this->conn->prepare("SELECT * FROM cases WHERE case_number = ? AND fillingdate >= ? AND case_next_date <= ?");
+        $stmt->bindParam(1, $caseNumber);
+        $stmt->bindParam(2, $startDate);
+        $stmt->bindParam(3, $endDate);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
     }
 }
 ?>

@@ -10,7 +10,8 @@ $errors = array();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Sanitize and validate user input
     $data = [
-        'case_number' => filter_input(INPUT_POST, 'case_number', FILTER_SANITIZE_STRING),
+        'id' => filter_input(INPUT_POST, 'id', FILTER_SANITIZE_STRING),
+        //'case_number' => filter_input(INPUT_POST, 'case_number', FILTER_SANITIZE_STRING),
         'ffiling_number' => filter_input(INPUT_POST, 'ffiling_number', FILTER_SANITIZE_STRING),
         'fillingDate' => filter_input(INPUT_POST, 'fillingDate', FILTER_SANITIZE_STRING),
         'client' => filter_input(INPUT_POST, 'client', FILTER_SANITIZE_STRING),
@@ -30,11 +31,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $errors['case_status'] = "Error: Case status field is required.";
     }
-    if (empty($errors)) {
+     if (empty($errors)) {
         // Save the form data to the database
-        if ($addCase->saveCase($data)) {
+        $caseId = $data['id']; // Save the case and get the case ID
+        if ($caseId) {
             $success = "Case Updated";
-            header("Location: edit_case.php?success=" . urlencode($success));
+            header("Location: edit_case.php?id=" . $caseId . "&success=" . urlencode($success));
         } else {
             $error = "Error: Could not add case.";
             header("Location: edit_case.php?error=" . urlencode($error));

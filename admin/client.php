@@ -81,11 +81,11 @@ require("top-navbar.php");
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Mobile</label>
-                                    <input class="form-control" name="mobile_number" type="text" id="example-text-input">
+                                    <input class="form-control" name="mobileNumber" type="text" id="example-text-input">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Upload Photo</label>
-                                    <input class="form-control" name="upload_photo" type="file" id="example-text-input">
+                                    <input class="form-control" name="photo" type="file" id="example-text-input">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Address</label>
@@ -93,7 +93,7 @@ require("top-navbar.php");
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Upload Documents</label>
-                                    <input class="form-control" name="upload_document" type="file" id="example-text-input">
+                                    <input class="form-control" name="document" type="file" id="example-text-input">
                                 </div>
                                 
                                 <button type="submit" class="btn btn-gradient-primary">Submit</button>

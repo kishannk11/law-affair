@@ -91,7 +91,8 @@ require("top-navbar.php");
                                                     <div class="row">
                                                         <div class="col-lg-3 mb-2 mb-lg-0">
                                                             <label for="pro-start-date">Case No</label>
-                                                            <input type="text" class="form-control" name="case_number"  id="case_number" value="<?php echo $cases[0]['case_number']; ?>" readonly    >
+                                                            <input type="text" class="form-control"  id="case_number" value="<?php echo $cases[0]['case_number']; ?>" readonly    >
+                                                            <input type="hidden" class="form-control" name="id"  id="id" value="<?php echo $cases[0]['id']; ?>" readonly    >
                                                         </div><!--end col-->
                                                         <div class="col-lg-3 mb-2 mb-lg-0">
                                                             <label for="pro-start-date">Filing No</label>
