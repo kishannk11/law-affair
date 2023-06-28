@@ -513,7 +513,7 @@ class updateAllCase
     }
     public function saveCase($data)
     {
-        $special_note = $data['special_note'] . ' - ' . $_SESSION['username'];
+        $special_note = $data['special_note'];
         $sql = "UPDATE cases SET filing_number = :filing_number, fillingDate = :fillingDate, client = :client, party_name = :party_name, case_status = :case_status, advocate = :advocate, case_next_date = :case_next_date, special_note = :special_note, total_amount = :total_amount, recieved_amount = :recieved_amount, pending_amount = :pending_amount, payment = :payment WHERE case_number = :case_number";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':filing_number', $data['ffiling_number']);

@@ -185,7 +185,7 @@ require("top-navbar.php");
                                                         <option value="card" <?php if ($cases[0]['payment'] == 'card') echo 'selected'; ?>>Credit Card/Debit Card</option>
                                                         <option value="Netbanking" <?php if ($cases[0]['payment'] == 'Netbanking') echo 'selected'; ?>>Netbanking</option>
                                                     </select>
-                                                </div><!--end col-->                                                        
+                                                    </div><!--end col-->                                                        
                                                 </div><!--end row-->
                                             </div><!--end form-group-->
                                                 

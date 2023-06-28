@@ -87,7 +87,6 @@ require("top-navbar.php");
                                 //require 'Database.php';
                                 $caseList = new getCaseDetails($conn);
                                 $cases = $caseList->getCases($_GET['id']);
-                                print_r($cases);
                                 
                                 function isChecked($status, $output) {
                                     $statuses = explode(',', $output);
@@ -124,8 +123,11 @@ require("top-navbar.php");
                                 <label for="example-text-input">Case Status</label>
                                 <div class="col-md-9">
                                     <?php
+                                    foreach ($cases as $case) {
+                                        $output = $case['case_status'];  
+                                    }
                                     $caseStatuses = ['Status 1', 'Status 2', 'Status 3', 'Status 4', 'Status 5'];
-                                    $output = $cases[0]['case_status'];
+                                    //$output = $cases[0]['case_status'];
                                     $i = 6;
 
                                     foreach ($caseStatuses as $status) {
@@ -142,21 +144,21 @@ require("top-navbar.php");
                                     }
                                     ?>
                                 </div>
-                            </div>
+                              </div>
                                 <!-- End Checkboxes -->
 
                                 <div class="form-group">
                                     <label class="drop-down">Advocate Name</label>
-                                    <input class="form-control" name="party_name" type="text" id="example-text-input" value="<?php echo $cases[0]['advocate']; ?>" readonly>
+                                    <input class="form-control" type="text" id="example-text-input" value="<?php echo $cases[0]['advocate']; ?>" readonly>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="example-datetime-local-input">Case Date</label>
-                                    <input class="form-control"  type="date" id="example-datetime-local-input" value="<?php echo $cases[0]['case_next_date']; ?>" readonly>
+                                    <input class="form-control"  name="case_date" type="date" id="example-datetime-local-input" value="<?php echo $cases[0]['case_next_date']; ?>" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="example-datetime-local-input">Case Next Date</label>
-                                    <input class="form-control" name ="case_date" type="date" id="example-datetime-local-input">
+                                    <input class="form-control" name ="case_next_date" type="date" id="example-datetime-local-input">
                                 </div>
                                 <div class="form-group">
                                     <label for="example-datetime-local-input">Filing Date</label>
@@ -177,6 +179,29 @@ require("top-navbar.php");
                                     <label for="message">Special Note for <?php echo $case['case_next_date']; ?> </label> 
                                     <textarea class="form-control" name="special_note" rows="5" id="message"></textarea> 
                                 </div>
+                                <div class="row">
+                                <div class="col-lg-3 mb-2 mb-lg-0">
+                                    <label for="pro-start-date">Total Amount</label>
+                                    <input type="text" name="total_amount" value="<?php echo $cases[0]['total_amount']; ?>" class="form-control" id="case_number">
+                                </div><!--end col-->
+                                <div class="col-lg-3 mb-2 mb-lg-0">
+                                    <label for="pro-start-date">Received Amount</label>
+                                    <input type="text" class="form-control" value="<?php echo $cases[0]['recieved_amount']; ?>" name="recieved_amount" id="case_number" oninput="calculatePendingAmount()">
+                                </div><!--end col-->
+                                <div class="col-lg-3 mb-2 mb-lg-0">
+                                    <label for="pro-start-date">Pending Amount</label>
+                                    <input type="text" class="form-control" value="<?php echo $cases[0]['pending_amount']; ?>" name="pending_amount" id="case_number" readonly>
+                                </div><!--end col-->
+                                <div class="col-lg-3">
+                                <label for="pro-end-date">Mode of Payment</label>
+                                <select class="form-control" name="payment">
+                                    <option value="upi" <?php if ($cases[0]['payment'] == 'upi') echo 'selected'; ?>>UPI</option>
+                                    <option value="cash" <?php if ($cases[0]['payment'] == 'cash') echo 'selected'; ?>>CASH</option>
+                                    <option value="card" <?php if ($cases[0]['payment'] == 'card') echo 'selected'; ?>>Credit Card/Debit Card</option>
+                                    <option value="Netbanking" <?php if ($cases[0]['payment'] == 'Netbanking') echo 'selected'; ?>>Netbanking</option>
+                                </select>
+                                </div><!--end col-->                                                        
+                            </div>
                                  
 
                                 
@@ -199,7 +224,24 @@ require("top-navbar.php");
 <!-- end page-wrapper -->
 
 
+<script>
+    function calculatePendingAmount() {
+        // Get the total amount and received amount input elements
+        var totalAmountInput = document.getElementsByName("total_amount")[0];
+        var receivedAmountInput = document.getElementsByName("recieved_amount")[0];
+        var pendingAmountInput = document.getElementsByName("pending_amount")[0];
 
+        // Get the values from the input elements
+        var totalAmount = parseFloat(totalAmountInput.value.replace("Rs.", ""));
+        var receivedAmount = parseFloat(receivedAmountInput.value);
+
+        // Calculate the pending amount
+        var pendingAmount = totalAmount - receivedAmount;
+
+        // Set the pending amount to the input element
+        pendingAmountInput.value = pendingAmount;
+    }
+</script>
 
 <!-- jQuery  -->
 <script src="assets/js/jquery.min.js"></script>
