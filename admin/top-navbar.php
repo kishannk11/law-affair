@@ -30,6 +30,7 @@ require_once('config/session.php');
         <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/metisMenu.min.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <style>
         .error-popup {
             color: red;
