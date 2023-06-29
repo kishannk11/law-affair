@@ -76,18 +76,8 @@ require("top-navbar.php");
                                                         <div class=" d-flex justify-content-between">
                                                             <img src="assets/images/widgets/monthly-re.png" alt="" height="75">
                                                             <div class="align-self-center">
-                                                                <h2 class="mt-0 mb-2 font-weight-semibold">$955<span class="badge badge-soft-success font-11 ml-2"><i class="fas fa-arrow-up"></i> 8.6%</span></h2>
+                                                                <h2 class="mt-0 mb-2 font-weight-semibold">₹955</h2>
                                                                 <h4 class="title-text mb-0">Monthly Revenue</h4>
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex justify-content-between bg-purple p-3 mt-3 rounded">
-                                                            <div>
-                                                                <h4 class="mb-1 font-weight-semibold text-white">$10255</h4>
-                                                                <p class="text-white mb-0">Card Balance</p>
-                                                            </div>
-                                                            <div>
-                                                                <h4 class=" mb-1 font-weight-semibold text-white">25.12 <small>BTC</small></h4>
-                                                                <p class="text-white mb-0">Crypto Balance</p>
                                                             </div>
                                                         </div>                                    
                                                     </div><!--end card-body-->

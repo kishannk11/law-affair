@@ -103,6 +103,8 @@ require("top-navbar.php");
                             </div>
                         </div>
                 <?php endif; ?>
+
+                <button type="submit" class="btn btn-gradient-danger">Close Case</button>
             </div> <!-- end row -->
 
         </div><!-- container -->
