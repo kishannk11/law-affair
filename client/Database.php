@@ -249,4 +249,44 @@ class InsertmyCases
     }
 }
 
+class AdvProfile {
+    private $conn;
+    public function __construct($conn) {
+        $this->conn = $conn;
+    }
+    public function updateProfile($name, $email, $password, $phone, $file) {
+        //$user=$_SESSION['username'];
+        $stmt = $this->conn->prepare("UPDATE advocates SET name = :name, email = :email, password = :password, mobile_number = :mobile_number, photo = :photo WHERE username= :username");
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':password', $password);
+        $stmt->bindParam(':mobile_number', $phone);
+        $stmt->bindParam(':photo', $file);
+        $stmt->bindParam(':username', $_SESSION['username']);
+        if($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+
+class UserProfile{
+    private $conn;
+    private $username;
+    
+    public function __construct($conn) {
+        $this->conn = $conn;
+    }
+    
+    public function displayUserInfo() {
+        $username=$_SESSION['username'];
+        $stmt = $this->conn->prepare("SELECT * FROM advocates WHERE username = ?");
+        $stmt->bindParam(1, $username);
+        $stmt->execute();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $user;
+    }
+}
+
 ?>
