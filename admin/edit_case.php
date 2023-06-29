@@ -2,34 +2,34 @@
 require("top-navbar.php");
 ?>
 <?php
-            if (isset($_GET['success'])) {
-                $success = $_GET['success'];
-                //echo '<div class="alert alert-success">' . htmlspecialchars($success ). '</div>';
-                echo '<script>
-                document.addEventListener("DOMContentLoaded", function() {
-                        Swal.fire({
-                            title: "Success!",
-                            text: "' . htmlspecialchars($success) . '",
-                            icon: "success",
-                            confirmButtonText: "OK"
-                        });
-                    });
-                </script>';
-            }
+if (isset($_GET['success'])) {
+$success = $_GET['success'];
+//echo '<div class="alert alert-success">' . htmlspecialchars($success ). '</div>';
+echo '<script>
+document.addEventListener("DOMContentLoaded", function() {
+    Swal.fire({
+        title: "Success!",
+        text: "' . htmlspecialchars($success) . '",
+        icon: "success",
+        confirmButtonText: "OK"
+    });
+});
+</script>';
+}
 
-            if (isset($_GET['error'])) {
-                $error = $_GET['error'];
-                echo '<script>
-                document.addEventListener("DOMContentLoaded", function() {
-                    Swal.fire({
-                        icon: "error",
-                        title: "Oops...",
-                        text: "' . htmlspecialchars($error, ENT_QUOTES, 'UTF-8') . '",
-                    });
-                });
-            </script>';
-            }
-            ?>
+if (isset($_GET['error'])) {
+$error = $_GET['error'];
+echo '<script>
+document.addEventListener("DOMContentLoaded", function() {
+Swal.fire({
+    icon: "error",
+    title: "Oops...",
+    text: "' . htmlspecialchars($error, ENT_QUOTES, 'UTF-8') . '",
+});
+});
+</script>';
+}
+?>
 <div class="page-wrapper">
 
     <!-- Page Content-->
