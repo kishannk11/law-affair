@@ -576,4 +576,20 @@ class caseReport {
         return $result;
     }
 }
+
+class AdminProfile {
+    private $conn;
+    public function __construct($conn) {
+        $this->conn = $conn;
+    }
+    public function updateProfile($name, $email, $password, $phone, $file) {
+        $stmt = $this->conn->prepare("UPDATE admin SET name = ?, email = ?, password = ?, phone = ?, file = ? WHERE username = ?");
+        $stmt->bind_param("ssssss", $name, $email, $password, $phone, $file, $_SESSION['username']);
+        if($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
 ?>
