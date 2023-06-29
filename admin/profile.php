@@ -37,8 +37,8 @@ require("top-navbar.php");
                                                         </span> -->
                                                     </div>
                                                     <div class="met-profile_user-detail">
-                                                        <h5 class="met-user-name">Kishan Nayak</h5>                                                        
-                                                        <p class="mb-0 met-user-name-post">Senior Advocate</p>
+                                                        <h5 class="met-user-name">Admin</h5>                                                        
+                                                        <p class="mb-0 met-user-name-post">Admin</p>
                                                     </div>
                                                 </div>                                                
                                             </div><!--end col-->
@@ -131,49 +131,31 @@ require("top-navbar.php");
                                         <div class="col-lg-12 col-xl-9 mx-auto">
                                             <div class="card">
                                                 <div class="card-body">
-                                                    <form method="post" class="card-box">
-                                                        <input type="file" id="input-file-now-custom-1" class="dropify"/>
-                                                    </form>
+                                                    
         
                                                     <div class="">
-                                                        <form class="form-horizontal form-material mb-0">
+                                                        <form class="form-horizontal form-material mb-0" method="POST" action="update_profile.php">
                                                             <div class="form-group">
-                                                                <input type="text" placeholder="Full Name" class="form-control">
+                                                                <input type="text" placeholder="Full Name" name="name" class="form-control">
                                                             </div>
                                                             
                                                             <div class="form-group row">
                                                                 <div class="col-md-4">
-                                                                    <input type="email" placeholder="Email" class="form-control" name="example-email" id="example-email">
+                                                                    <input type="email" placeholder="Email" name="email" class="form-control" name="example-email" id="example-email">
                                                                 </div>
-                                                                <div class="col-md-4">
-                                                                    <input type="password" placeholder="password" class="form-control">
+                                                                <div class="col-md-8">
+                                                                    <input type="password" name="password" placeholder="password" class="form-control">
                                                                 </div>
-                                                                <div class="col-md-4">
-                                                                    <input type="password" placeholder="Re-password" class="form-control">
-                                                                </div>
+                                                        
                                                             </div>
                                                             <div class="form-group row">
-                                                            <div class="col-md-4">
-                                                                    <select class="form-control">
-                                                                        <option>+91</option>
-                                                                        <option>+01</option>
-                                                                        <option>+02</option>
-                                                                        <option>+911</option>
-                                                                        <option>+82</option>
-                                                                    </select>
-                                                                </div> 
-                                                                <div class="col-md-8">
-                                                                    <input type="text" placeholder="Phone No" class="form-control">
+                                                
+                                                                <div class="col-md-12">
+                                                                    <input type="text" placeholder="Phone No" name="phone" class="form-control">
                                                                 </div>
-                                                                <!-- <div class="col-md-6">
-                                                                    <select class="form-control">
-                                                                        <option>London</option>
-                                                                        <option>India</option>
-                                                                        <option>Usa</option>
-                                                                        <option>Canada</option>
-                                                                        <option>Thailand</option>
-                                                                    </select>
-                                                                </div> -->
+                                                            </div>
+                                                            <div class="col-md-8">
+                                                            <input type="file" name="file" >
                                                             </div>
                                                             <div class="form-group">
                                                                 <!-- <textarea rows="5" placeholder="Message" class="form-control"></textarea> -->
