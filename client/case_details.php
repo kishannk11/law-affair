@@ -126,8 +126,11 @@ require("top-navbar.php");
                                     foreach ($cases as $case) {
                                         $output = $case['case_status'];  
                                     }
-                                    $caseStatuses = ['Status 1', 'Status 2', 'Status 3', 'Status 4', 'Status 5'];
+                                    print_r($output);
+                                    $caseStatuses = ['Status 1', 'Status 2', 'Status 3', 'Status 4', 'Status5 '];
                                     //$output = $cases[0]['case_status'];
+                                    //Status 1
+                                    //Status 1
                                     $i = 6;
 
                                     foreach ($caseStatuses as $status) {
