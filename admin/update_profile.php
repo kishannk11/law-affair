@@ -22,12 +22,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     if(in_array($fileType, $allowedTypes)){
         move_uploaded_file($_FILES['file']['tmp_name'], $targetFile);
         if($adminProfile->updateProfile($name, $email, $password, $phone, $file)) {
-            echo "Profile updated successfully!";
+            $success= "Profile updated successfully!";
+            header("Location: profile.php?success=" . urlencode($success));
         } else {
-            echo "Error updating profile!";
+            $error= "Error updating profile!";
+            header("Location: profile.php?error=" . urlencode($error));
         }
     } else {
-        echo "Invalid file type. Only JPG, JPEG, PNG, and GIF files are allowed.";
+        $error= "Invalid file type. Only JPG, JPEG, PNG, and GIF files are allowed.";
+        header("Location: profile.php?error=" . urlencode($error));
     }
 }
 ?>
