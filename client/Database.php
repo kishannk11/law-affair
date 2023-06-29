@@ -59,7 +59,7 @@ class getAdvocateDetails {
         $this->conn = $conn;
     }
      public function getAdvocateDetails() {
-        session_start();
+        // session_start();
         $advocateId = $_SESSION['username'];
         $stmt = $this->conn->prepare("SELECT name, photo FROM advocates WHERE username = :username");
         $stmt->bindParam(':username', $advocateId);
