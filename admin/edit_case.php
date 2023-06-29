@@ -190,7 +190,7 @@ require("top-navbar.php");
                                                 </div><!--end row-->
                                             </div><!--end form-group-->
                                                 
-                                                <button type="submit" class="btn btn-gradient-primary">Create Case</button>
+                                                <button type="submit" class="btn btn-gradient-primary">Update Case</button>
                                                 <button type="button" class="btn btn-gradient-danger">Cancel</button>
                                             </form>  <!--end form-->
                                         </div><!--end col-->
