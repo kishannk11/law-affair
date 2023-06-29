@@ -583,8 +583,14 @@ class AdminProfile {
         $this->conn = $conn;
     }
     public function updateProfile($name, $email, $password, $phone, $file) {
-        $stmt = $this->conn->prepare("UPDATE admin SET name = ?, email = ?, password = ?, phone = ?, file = ? WHERE username = ?");
-        $stmt->bind_param("ssssss", $name, $email, $password, $phone, $file, $_SESSION['username']);
+        $user='admin';
+        $stmt = $this->conn->prepare("UPDATE admin SET name = :name, email = :email, password = :password, phone = :phone, file = :file WHERE username= :username");
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':password', $password);
+        $stmt->bindParam(':phone', $phone);
+        $stmt->bindParam(':file', $file);
+        $stmt->bindParam(':username', $user);
         if($stmt->execute()) {
             return true;
         } else {
