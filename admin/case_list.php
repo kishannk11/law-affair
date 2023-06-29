@@ -39,10 +39,10 @@ if (isset($_GET['error'])) {
                             <div class="float-right">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="dashboard.php">Law Affair</a></li>
-                                    <li class="breadcrumb-item active">Client List</li>
+                                    <li class="breadcrumb-item active">Case List</li>
                                 </ol>
                             </div>
-                            <h4 class="page-title">Client List</h4>
+                            <h4 class="page-title">Case List</h4>
                         </div>
                         <!--end page-title-box-->
                     </div>
@@ -54,7 +54,7 @@ if (isset($_GET['error'])) {
                         <div class="card">
                             <div class="card-body table-responsive">
 
-                                <h4 class="mt-0 header-title">Advocates</h4>
+                                <h4 class="mt-0 header-title">Cases</h4>
                                 <div class="">
 
                                 <table id="datatable2"
@@ -72,14 +72,16 @@ if (isset($_GET['error'])) {
                                             <th>Case Status</th>
                                             <th>Case Next Date</th>
                                             <th>Note</th>
+                                            <th>Total Amount</th>
+                                            <th>Amount Recieved</th>
+                                            <th>Amount Pending</th>
                                             <th>Action</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
                                     <?php
-                                    ini_set('display_errors', 1);
-                                    ini_set('display_startup_errors', 1);
-                                    error_reporting(E_ALL);
+                                
                                     require_once 'Database.php';
                                     require_once 'config/config.php';
                                     $caseList = new CaseList($conn);
@@ -102,8 +104,11 @@ if (isset($_GET['error'])) {
                                         echo "<td>" . htmlspecialchars($case["advocate"]) . "</td>";
                                         echo "<td>" . htmlspecialchars($case["case_next_date"]) . "</td>";
                                         echo "<td>" . htmlspecialchars($case["special_note"]) . "</td>";
+                                        echo "<td>" . htmlspecialchars($case["total_amount"]) . "</td>";
+                                        echo "<td>" . htmlspecialchars($case["recieved_amount"]) . "</td>";
+                                        echo "<td>" . htmlspecialchars($case["pending_amount"]) . "</td>";
                                         echo "<td>";
-                                        echo '<a href="edit_case.php?id=" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>';
+                                        echo '<a href="edit_case.php?id='. $case["id"] .'" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>';
                                         echo "<a onclick=\"deleteCase({$case['id']})\"><i class=\"fas fa-trash-alt text-danger font-16\"></i></a>";
                                         echo "</td>";
                                         echo "</tr>";

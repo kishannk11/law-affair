@@ -82,7 +82,15 @@ class myCase {
     }
     public function getCases() {
         $username = $_SESSION['username'];
-        $stmt = $this->conn->prepare("SELECT DISTINCT case_number,`filing_number`, `fillingDate`, `client`, `party_name`, `case_status`, `advocate`, `case_next_date` FROM cases WHERE advocate = ?");
+        $stmt = $this->conn->prepare("SELECT c.case_number, MIN(c.fillingDate) as fillingDate, c.filing_number, c.client, c.party_name, c.case_status, c.advocate, MAX(c.case_next_date) as case_next_date
+        FROM cases c
+        WHERE c.advocate = ? AND c.fillingDate IN (
+          SELECT MAX(fillingDate)
+          FROM cases
+          GROUP BY case_number
+        )
+        GROUP BY c.case_number
+        ");
         $stmt->bindParam(1, $username);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -150,4 +158,95 @@ class getCaseDetails {
         return $result['name'];
     }
 }
+
+class CaseDetails {
+    private $conn;
+    public function __construct($conn) {
+        $this->conn = $conn;
+    }
+    // Method to get the case number for the current logged in user using the username from the session variable
+    public function getCaseNumber() {
+        $username = $_SESSION['username'];
+        $stmt = $this->conn->prepare("SELECT DISTINCT case_number FROM cases WHERE advocate = ?");
+        $stmt->bindParam(1, $username);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+    // Method to get all the filling dates and case next dates for a given case number
+    public function getCaseDates($caseNumber) {
+        $stmt = $this->conn->prepare("SELECT fillingDate, case_next_date FROM cases WHERE case_number = ?");
+        $stmt->bindParam(1, $caseNumber);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $fillingDates = array();
+        $caseNextDates = array();
+        foreach ($result as $row) {
+            $fillingDates[] = $row['fillingDate'];
+            $caseNextDates[] = $row['case_next_date'];
+        }
+        return array('fillingDates' => $fillingDates, 'caseNextDates' => $caseNextDates);
+    }
+}
+
+class caseReport {
+    private $conn;
+     public function __construct($conn) {
+        $this->conn = $conn;
+    }
+     public function getSpecialNotes($caseNumber, $startDate, $endDate) {
+        $stmt = $this->conn->prepare("SELECT * FROM cases WHERE case_number = ? AND fillingdate >= ? AND case_next_date <= ?");
+        $stmt->bindParam(1, $caseNumber);
+        $stmt->bindParam(2, $startDate);
+        $stmt->bindParam(3, $endDate);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+}
+
+class InsertmyCases
+{
+    private $conn;
+    public function __construct($conn)
+    {
+        $this->conn = $conn;
+    }
+    public function insertCase($case_number, $filing_number, $party_name, $case_status, $case_next_date, $special_note, $total_amount, $received_amount, $pending_amount, $payment_mode)
+    {   
+        $stmt = $this->conn->prepare("SELECT advocate, client,case_next_date FROM cases WHERE case_number = :case_number");
+        $stmt->bindParam(':case_number', $case_number);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $advocate = $result['advocate'];
+        $client = $result['client'];
+        $case_date=$result['case_next_date'];
+        // Validation and sanitization of data goes here
+        // Insert the case into the database
+        $stmt = $this->conn->prepare("INSERT INTO cases (case_number,filing_number, fillingDate,client, party_name, case_status, case_next_date, special_note, total_amount, recieved_amount, pending_amount, payment, advocate) VALUES (:case_number, :filing_number, :fillingDate, :client, :party_name, :case_status, :case_next_date, :special_note, :total_amount, :recieved_amount, :pending_amount, :payment, :advocate)");
+        $stmt->bindParam(':case_number', $case_number);
+        $stmt->bindParam(':filing_number', $filing_number);
+        $stmt->bindParam(':fillingDate', $case_date);
+        $stmt->bindParam(':client', $client);
+        $stmt->bindParam(':party_name', $party_name);
+        $stmt->bindParam(':case_status', $case_status);
+        $stmt->bindParam(':advocate', $advocate);
+        $stmt->bindParam(':case_next_date', $case_next_date);
+        $stmt->bindParam(':special_note', $special_note);
+        $stmt->bindParam(':total_amount', $total_amount);
+        $stmt->bindParam(':recieved_amount', $received_amount);
+        $stmt->bindParam(':pending_amount', $pending_amount);
+        $stmt->bindParam(':payment', $payment_mode);
+        $stmt->execute();
+
+        $stmt = $this->conn->prepare("UPDATE cases SET total_amount=:total_amount, recieved_amount = :recieved_amount, pending_amount = :pending_amount, payment=:payment WHERE case_number = :case_number");
+        $stmt->bindParam(':total_amount', $total_amount);
+        $stmt->bindParam(':recieved_amount', $received_amount);
+        $stmt->bindParam(':pending_amount', $pending_amount);
+        $stmt->bindParam(':case_number', $case_number);
+        $stmt->bindParam(':payment', $payment_mode);
+        $stmt->execute();
+    }
+}
+
 ?>

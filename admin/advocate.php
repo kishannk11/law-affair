@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             move_uploaded_file($tmp_name, $photo_path);
         } else {
             $photo_error = "Error uploading photo. Only JPG, JPEG, PNG, and GIF file types are allowed.";
-            header("Location: add_advocate.php?error=" . urlencode($photo_error));
+            header("Location: edit_advocate.php?error=" . urlencode($photo_error));
             //return;
         }
 
@@ -51,12 +51,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Add advocate data to the database
         $addAdvocate->addAdvocateData($_POST["name"], $_POST["mobileNumber"], $_POST["joiningDate"], $photo_path, $_POST["address"], $_POST["lawyer"],$_POST["username"],$hashed_password,$role);
         $success = $addAdvocate->getSuccessMessage();
-        header("Location: add_advocate.php?succes=" . urlencode($success));
+        header("Location: edit_advocate.php?succes=" . urlencode($success));
 
     } else {
         // Encode the error messages array as a JSON string and pass it as a URL parameter
         $json_errors = json_encode($errors);
-        echo '<form id="errorForm" action="add_advocate.php" method="post" style="display:none;">';
+        echo '<form id="errorForm" action="edit_advocate.php" method="post" style="display:none;">';
         foreach ($errors as $key => $value) {
             echo '<input type="hidden" name="errors[' . $key . ']" value="' . $value . '">';
         }

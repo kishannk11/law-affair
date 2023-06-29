@@ -208,31 +208,31 @@ require("top-navbar.php");
                                                 </div>
                                                 
                                                 <div class="form-group">
-                                                    <b>Payment Details</b>
-                                                    <div class="row">
-                                                        <div class="col-lg-3 mb-2 mb-lg-0">
-                                                            <label for="pro-start-date">Total Amount</label>
-                                                            <input type="text" name="total_amount" class="form-control" id="case_number">
-                                                        </div><!--end col-->
-                                                        <div class="col-lg-3 mb-2 mb-lg-0">
-                                                            <label for="pro-start-date">Received Amount</label>
-                                                            <input type="text" class="form-control" name="recieved_amount" id="case_number" oninput="calculatePendingAmount()">
-                                                        </div><!--end col-->
-                                                        <div class="col-lg-3 mb-2 mb-lg-0">
-                                                            <label for="pro-start-date">Pending Amount</label>
-                                                            <input type="text" class="form-control" name="peding_amount" id="case_number" readonly>
-                                                        </div><!--end col-->
-                                                        <div class="col-lg-3">
-                                                            <label for="pro-end-date">Mode of Payment</label>
-                                                            <select class="form-control" name="payment">
-                                                                <option value="upi">UPI</option>
-                                                                <option value="cash">CASH</option>
-                                                                <option value="card">Credit Card/Debit Card</option>
-                                                                <option value="Netbanking">Netbanking</option>
-                                                            </select>
-                                                        </div><!--end col-->                                                        
-                                                    </div><!--end row-->
-                                                </div><!--end form-group-->
+                                                <b>Payment Details</b>
+                                                <div class="row">
+                                                    <div class="col-lg-3 mb-2 mb-lg-0">
+                                                        <label for="pro-start-date">Total Amount</label>
+                                                        <input type="text" name="total_amount" class="form-control" id="case_number">
+                                                    </div><!--end col-->
+                                                    <div class="col-lg-3 mb-2 mb-lg-0">
+                                                        <label for="pro-start-date">Received Amount</label>
+                                                        <input type="text" class="form-control" name="recieved_amount" id="case_number" oninput="calculatePendingAmount()">
+                                                    </div><!--end col-->
+                                                    <div class="col-lg-3 mb-2 mb-lg-0">
+                                                        <label for="pro-start-date">Pending Amount</label>
+                                                        <input type="text" class="form-control" name="pending_amount" id="case_number" readonly>
+                                                    </div><!--end col-->
+                                                    <div class="col-lg-3">
+                                                        <label for="pro-end-date">Mode of Payment</label>
+                                                        <select class="form-control" name="payment">
+                                                            <option value="upi">UPI</option>
+                                                            <option value="cash">CASH</option>
+                                                            <option value="card">Credit Card/Debit Card</option>
+                                                            <option value="Netbanking">Netbanking</option>
+                                                        </select>
+                                                    </div><!--end col-->                                                        
+                                                </div><!--end row-->
+                                            </div><!--end form-group-->
                                                 
                                                 <button type="submit" class="btn btn-gradient-primary">Create Case</button>
                                                 <button type="button" class="btn btn-gradient-danger">Cancel</button>
@@ -264,7 +264,7 @@ require("top-navbar.php");
         // Get the total amount and received amount input elements
         var totalAmountInput = document.getElementsByName("total_amount")[0];
         var receivedAmountInput = document.getElementsByName("recieved_amount")[0];
-        var pendingAmountInput = document.getElementsByName("peding_amount")[0];
+        var pendingAmountInput = document.getElementsByName("pending_amount")[0];
 
         // Get the values from the input elements
         var totalAmount = parseFloat(totalAmountInput.value.replace("Rs.", ""));
