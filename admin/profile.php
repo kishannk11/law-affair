@@ -1,7 +1,35 @@
 <?php
 require("top-navbar.php");
 ?>
+<?php
+if (isset($_GET['success'])) {
+    $success = $_GET['success'];
+    //echo '<div class="alert alert-success">' . htmlspecialchars($success ). '</div>';
+    echo '<script>
+    document.addEventListener("DOMContentLoaded", function() {
+            Swal.fire({
+                title: "Success!",
+                text: "' . htmlspecialchars($success) . '",
+                icon: "success",
+                confirmButtonText: "OK"
+            });
+        });
+    </script>';
+}
 
+if (isset($_GET['error'])) {
+    $error = $_GET['error'];
+    echo '<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "' . htmlspecialchars($error, ENT_QUOTES, 'UTF-8') . '",
+        });
+    });
+</script>';
+}
+?>
         <div class="page-wrapper">
             <!-- Page Content-->
             <div class="page-content">
@@ -30,6 +58,9 @@ require("top-navbar.php");
                                         <div class="row">
                                             <div class="col-lg-4 align-self-center mb-3 mb-lg-0">
                                                 <div class="met-profile-main">
+                                                    <?php
+
+                                                    ?>
                                                     <div class="met-profile-main-pic">
                                                         <img src="assets/images/users/kishan.png" alt="" class="rounded-circle">
                                                         <!-- <span class="fro-profile_main-pic-change">
@@ -134,7 +165,7 @@ require("top-navbar.php");
                                                     
         
                                                     <div class="">
-                                                        <form class="form-horizontal form-material mb-0" method="POST" action="update_profile.php">
+                                                        <form class="form-horizontal form-material mb-0" method="POST" action="update_profile.php" enctype="multipart/form-data">
                                                             <div class="form-group">
                                                                 <input type="text" placeholder="Full Name" name="name" class="form-control">
                                                             </div>
@@ -155,7 +186,7 @@ require("top-navbar.php");
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-8">
-                                                            <input type="file" name="file" >
+                                                            <input type="file" name="file" enctype="multipart/form-data">
                                                             </div>
                                                             <div class="form-group">
                                                                 <!-- <textarea rows="5" placeholder="Message" class="form-control"></textarea> -->
@@ -207,7 +238,8 @@ require("top-navbar.php");
 
         <!-- App js -->
         <script src="assets/js/app.js"></script>
-        
+        <script src="plugins/sweet-alert2/sweetalert2.min.js"></script>
+        <script src="assets/pages/jquery.sweet-alert.init.js"></script>
     </body>
 
 </html>

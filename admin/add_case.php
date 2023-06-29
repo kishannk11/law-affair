@@ -87,9 +87,7 @@ require("top-navbar.php");
                                         <div class="col-lg-12">
                                         <form action="case.php" method="POST" enctype="multipart/form-data">
                                             <?php
-                                                ini_set('display_errors', 1);
-                                                ini_set('display_startup_errors', 1);
-                                                error_reporting(E_ALL);
+                                                
                                                 require_once 'config/config.php';
                                                 require 'Database.php';
                                                 $selectClient = new SelectClient($conn);
