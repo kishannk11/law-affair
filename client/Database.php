@@ -289,4 +289,22 @@ class UserProfile{
     }
 }
 
+class totalCase {
+    private $conn;
+    private $table_name = "cases";
+    
+    public function __construct($db) {
+        $this->conn = $db;
+    }
+    
+    // Function to fetch total count of cases
+    public function getTotalCount() {
+        // SQL query to fetch total count of cases
+        $query = "SELECT COUNT(*) as total_count FROM " . $this->table_name;
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row['total_count'];
+    }
+}
 ?>

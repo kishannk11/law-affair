@@ -598,4 +598,22 @@ class AdminProfile {
         }
     }
 }
+
+class AdProfile{
+    private $conn;
+    private $username;
+    
+    public function __construct($conn) {
+        $this->conn = $conn;
+    }
+    
+    public function displayUserInfo() {
+        $username=$_SESSION['username'];
+        $stmt = $this->conn->prepare("SELECT * FROM admin WHERE username = ?");
+        $stmt->bindParam(1, $username);
+        $stmt->execute();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $user;
+    }
+}
 ?>
