@@ -92,7 +92,7 @@ require("top-navbar.php");
                                         </div>
                                         <div class="form-group">
                                             <label for="example-text-input">Name</label>
-                                                <input class="form-control" name="name" type="text" id="example-text-input"> 
+                                                <input class="form-control" name="name" type="text" id="example-text-input" required> 
                                         </div>
 
                                         
