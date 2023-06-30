@@ -509,12 +509,6 @@ class getAllCaseDetails {
         $stmt->bindParam(1, $id);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        foreach ($result as &$case) {
-            $advocateName = $this->getAdvocateName($case['advocate']);
-            $clientName = $this->getClientName($case['client']);
-            $case['advocate'] = $advocateName;
-            $case['client'] = $clientName;
-        }
         return $result;
     }
     public function getAdvocateName($username)
