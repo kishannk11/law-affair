@@ -58,25 +58,29 @@ if (isset($_GET['error'])) {
                                         <div class="row">
                                             <div class="col-lg-4 align-self-center mb-3 mb-lg-0">
                                                 <div class="met-profile-main">
-                                                    <?php
-
+                                                <?php
+                                                    include 'Database.php';
+                                                    include 'config/config.php';
+                                                    $user = new AdProfile($conn);
+                                                    $info=$user->displayUserInfo();
+                                                    print_r($info);
                                                     ?>
                                                     <div class="met-profile-main-pic">
-                                                        <img src="assets/images/users/kishan.png" alt="" class="rounded-circle">
+                                                        <img src="<?php echo $info['file']; ?>" alt="" class="rounded-circle">
                                                         <!-- <span class="fro-profile_main-pic-change">
                                                             <i class="fas fa-camera"></i>
                                                         </span> -->
                                                     </div>
                                                     <div class="met-profile_user-detail">
-                                                        <h5 class="met-user-name">Admin</h5>                                                        
+                                                        <h5 class="met-user-name"><?php echo $info['name']; ?></h5>                                                        
                                                         <p class="mb-0 met-user-name-post">Admin</p>
                                                     </div>
                                                 </div>                                                
                                             </div><!--end col-->
                                             <div class="col-lg-4 ml-auto">
                                                 <ul class="list-unstyled personal-detail">
-                                                    <li class=""><i class="dripicons-phone mr-2 text-info font-18"></i> <b> phone </b> : +91 97406 84686</li>
-                                                    <li class="mt-2"><i class="dripicons-mail text-info font-18 mt-2 mr-2"></i> <b> Email </b> : kishannk11@gmail.com</li>
+                                                    <li class=""><i class="dripicons-phone mr-2 text-info font-18"></i> <b> phone </b> : +91 <?php echo $info['phone']; ?></li>
+                                                    <li class="mt-2"><i class="dripicons-mail text-info font-18 mt-2 mr-2"></i> <b> Email </b> : <?php echo $info['email']; ?></li>
                                                     <li class="mt-2"><i class="dripicons-location text-info font-18 mt-2 mr-2"></i> <b>Location</b> : India</li>
                                                 </ul>
                                             </div><!--end col-->
@@ -157,12 +161,12 @@ if (isset($_GET['error'])) {
                                                     <div class="">
                                                         <form class="form-horizontal form-material mb-0" method="POST" action="update_profile.php" enctype="multipart/form-data">
                                                             <div class="form-group">
-                                                                <input type="text" placeholder="Full Name" name="name" class="form-control">
+                                                                <input type="text" placeholder="Full Name" name="name" class="form-control" value="<?php echo $info['name']; ?>">
                                                             </div>
                                                             
                                                             <div class="form-group row">
                                                                 <div class="col-md-4">
-                                                                    <input type="email" placeholder="Email" name="email" class="form-control" name="example-email" id="example-email">
+                                                                    <input type="email" placeholder="Email" value="<?php echo $info['email']; ?>" name="email" class="form-control" name="example-email" id="example-email">
                                                                 </div>
                                                                 <div class="col-md-8">
                                                                     <input type="password" name="password" placeholder="password" class="form-control">
@@ -172,7 +176,7 @@ if (isset($_GET['error'])) {
                                                             <div class="form-group row">
                                                 
                                                                 <div class="col-md-12">
-                                                                    <input type="text" placeholder="Phone No" name="phone" class="form-control">
+                                                                    <input type="text" placeholder="Phone No" value="<?php echo $info['phone']; ?>" name="phone" class="form-control">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-8">

@@ -1,6 +1,15 @@
 <?php
 require('top-navbar.php');
 ?>
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+require_once 'config/config.php';
+$case = new totalCase($conn);
+$total_count_case = $case->getTotalCount();
+
+?>
 
 <div class="page-wrapper">
             <div class="page-content">
@@ -29,7 +38,7 @@ require('top-navbar.php');
                                             <div class="icon-info mb-3">
                                                 <i class="fas fa-ticket-alt bg-soft-warning"></i>
                                             </div>
-                                            <h3 class="text-dark">52 </h3>
+                                            <h3 class="text-dark"><?php echo $total_count_case;?></h3>
                                             <h6 class="font-14 text-dark">Total Cases</h6>                                                                                                                            
                                         </div><!--end card-body--> 
                                     </div><!--end card-->   
