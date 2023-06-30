@@ -162,6 +162,12 @@ Swal.fire({
                                                     <label for="pro-message">Special Note</label>
                                                     <textarea class="form-control" name="special_note" rows="5" id="pro-message"  placeholder="Special Note"><?php echo $cases[0]['special_note']; ?></textarea>
                                                 </div>
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Upload Photo</label>
+                                                    <input class="form-control" name="photo" type="file" id="example-text-input">
+                                                </div>
+                                                &nbsp;
+                                                &nbsp;
                                                 
                                                 <div class="form-group">
                                                 <b>Payment Details</b>

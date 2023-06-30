@@ -8,7 +8,8 @@ error_reporting(E_ALL);
 require_once 'config/config.php';
 $case = new totalCase($conn);
 $total_count_case = $case->getTotalCount();
-
+$user = new UserProfile($conn);
+$info=$user->displayUserInfo();
 ?>
 
 <div class="page-wrapper">
@@ -50,7 +51,7 @@ $total_count_case = $case->getTotalCount();
                                             <div class="icon-info mb-3">
                                                 <i class="fas fa-clipboard bg-soft-primary"></i>
                                             </div>
-                                            <h3 class="text-danger">92</h3>
+                                            <h3 class="text-danger">1</h3>
                                             <h6 class="font-14 text-dark">Active Cases</h6>                                                                                                                            
                                         </div><!--end card-body--> 
                                     </div><!--end card-->   

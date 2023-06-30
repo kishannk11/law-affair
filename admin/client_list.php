@@ -64,6 +64,9 @@ if (isset($_GET['error'])) {
                                         <th>Client Name</th>
                                         <th>Mobile Number</th>
                                         <th>Address</th>
+                                        <th>City</th>
+                                        <th>State</th>
+                                        <th>Pincode</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -79,7 +82,7 @@ if (isset($_GET['error'])) {
                                         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
                                         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                                         // Prepare and execute the SQL query
-                                        $stmt = $conn->prepare("SELECT username,id,name, mobile_number, address FROM clients");
+                                        $stmt = $conn->prepare("SELECT * FROM clients");
                                         $stmt->execute();
                                         // Print the data in the desired format
                                         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -88,6 +91,9 @@ if (isset($_GET['error'])) {
                                             echo '<td>' . htmlspecialchars($row["name"]) . '</td>';
                                             echo '<td>' . htmlspecialchars($row["mobile_number"]) . '</td>';
                                             echo '<td>' . htmlspecialchars($row["address"]) . '</td>';
+                                            echo '<td>' . htmlspecialchars($row["city"]) . '</td>';
+                                            echo '<td>' . htmlspecialchars($row["state"]) . '</td>';
+                                            echo '<td>' . htmlspecialchars($row["pincode"]) . '</td>';
 
                                             echo '<td>';
                                             echo '<a href="edit_client.php?id=' . $row['id'] . '" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>';

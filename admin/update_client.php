@@ -21,6 +21,9 @@ function getPreviousFileName($conn, $id, $column)
     $photo = $_FILES['photo'];
     $document = $_FILES['document'];
     $uploadDir = 'uploads/';
+    $city = htmlspecialchars($_POST['city']);
+    $state = htmlspecialchars($_POST['state']);
+    $pincode = htmlspecialchars($_POST['pincode']);
     $allowedPhotoFormats = array('jpg', 'jpeg', 'png');
     $allowedDocumentFormats = array('pdf', 'doc', 'docx');
      if (!empty($photo['name'])) {
@@ -45,7 +48,7 @@ function getPreviousFileName($conn, $id, $column)
     } else {
         $documentPath = getPreviousFileName($conn, $id, 'document_name'); // Use the previous document's path
     }
-     if ($updateClient->updateClientData($id, $name, $mobileNumber, $photoPath, $address, $documentPath)) {
+    if ($updateClient->updateClientData($id, $name, $mobileNumber, $photoPath, $address, $documentPath, $city, $state, $pincode)) {
         header("Location: edit_client.php?id=" . $_POST["id"] . "&success=Client Updated");
     } else {
         header("Location: edit_client.php?error=Erorr in Updating");
