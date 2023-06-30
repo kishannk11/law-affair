@@ -106,15 +106,15 @@ require("top-navbar.php");
                                                         </div><!--end col-->
                                                         <div class="col-lg-3 mb-2 mb-lg-0">
                                                             <label for="pro-start-date">Filing No</label>
-                                                            <input type="text" name="ffiling_number" class="form-control" id="case_number">
+                                                            <input type="text" name="ffiling_number" class="form-control" id="case_number" required> 
                                                         </div><!--end col-->
                                                         <div class="col-lg-3 mb-2 mb-lg-0">
                                                             <label for="pro-start-date">Filing Date</label>
-                                                            <input type="date" name="fillingDate" class="form-control" id="pro-start-date" placeholder="Enter start date">
+                                                            <input type="date" name="fillingDate" class="form-control" id="pro-start-date" placeholder="Enter start date" required>
                                                         </div><!--end col-->
                                                         <div class="col-lg-3">
                                                             <label for="pro-end-date">Client</label>
-                                                            <select class="form-control" name="client">
+                                                            <select class="form-control" name="client" required>
                                                             <option value="">Select</option>
                                                             <?php foreach ($clientNames as $client) { ?>
                                                                 <option value="<?php echo $client['username']; ?>"><?php echo $client['name'] . ' (' . $client['username'] . ')'; ?></option>
@@ -125,7 +125,7 @@ require("top-navbar.php");
                                                 </div><!--end form-group-->
                                                 <div class="form-group">
                                                     <label for="projectName">Party Name :</label>
-                                                    <input type="text" class="form-control" id="projectName" name="party_name" aria-describedby="emailHelp" placeholder="Enter Party Name">
+                                                    <input type="text" class="form-control" id="projectName" name="party_name" aria-describedby="emailHelp" placeholder="Enter Party Name" required>
                                                 </div><!--end form-group-->
                                                 
                                                 <div class="form-group">
@@ -189,7 +189,7 @@ require("top-navbar.php");
                                                         </div><!--end col-->
                                                         <div class="form-group col-lg-6 mb-2 mb-lg-0">
                                                             <label class="drop-down">Select Advocate</label>
-                                                            <select class="form-control" name="advocate">
+                                                            <select class="form-control" name="advocate" required>
                                                                 <option value="">Select</option>
                                                                 <?php foreach ($advocateNames as $advocate) { ?>
                                                                     <option value="<?php echo $advocate['username']; ?>"><?php echo $advocate['name'] . ' (' . $advocate['username'] . ')'; ?></option>
@@ -202,19 +202,24 @@ require("top-navbar.php");
 
                                                 <div class="form-group">
                                                     <label for="pro-message">Special Note</label>
-                                                    <textarea class="form-control" name="special_note" rows="5" id="pro-message"  placeholder="Special Note"></textarea>
+                                                    <textarea class="form-control" name="special_note" rows="5" id="pro-message"  placeholder="Special Note" required></textarea>
                                                 </div>
-                                                
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Upload Photo</label>
+                                                    <input class="form-control" name="photo" type="file" id="example-text-input" required>
+                                                </div>
+                                                &nbsp;
+                                                &nbsp;
                                                 <div class="form-group">
                                                 <b>Payment Details</b>
                                                 <div class="row">
                                                     <div class="col-lg-3 mb-2 mb-lg-0">
                                                         <label for="pro-start-date">Total Amount</label>
-                                                        <input type="text" name="total_amount" class="form-control" id="case_number">
+                                                        <input type="text" name="total_amount" class="form-control" id="case_number" required>
                                                     </div><!--end col-->
                                                     <div class="col-lg-3 mb-2 mb-lg-0">
                                                         <label for="pro-start-date">Received Amount</label>
-                                                        <input type="text" class="form-control" name="recieved_amount" id="case_number" oninput="calculatePendingAmount()">
+                                                        <input type="text" class="form-control" name="recieved_amount" id="case_number" oninput="calculatePendingAmount()" required>
                                                     </div><!--end col-->
                                                     <div class="col-lg-3 mb-2 mb-lg-0">
                                                         <label for="pro-start-date">Pending Amount</label>
@@ -222,7 +227,7 @@ require("top-navbar.php");
                                                     </div><!--end col-->
                                                     <div class="col-lg-3">
                                                         <label for="pro-end-date">Mode of Payment</label>
-                                                        <select class="form-control" name="payment">
+                                                        <select class="form-control" name="payment" required>
                                                             <option value="upi">UPI</option>
                                                             <option value="cash">CASH</option>
                                                             <option value="card">Credit Card/Debit Card</option>

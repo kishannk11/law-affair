@@ -19,8 +19,10 @@ require("top-navbar.php");
                             </ol>
                         </div>
                         <h4 class="page-title">Add Advocate</h4>
-                    </div><!--end page-title-box-->
-                </div><!--end col-->
+                    </div>
+                    <!--end page-title-box-->
+                </div>
+                <!--end col-->
             </div>
             <!-- end page title end breadcrumb -->
             <?php
@@ -78,74 +80,76 @@ require("top-navbar.php");
                             <form action="advocate.php" method="POST" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                    <div class="form-group">
-                                            <label for="example-tel-input"
-                                                class="">Username</label>
-                                            
-                                                <?php
+                                        <div class="form-group">
+                                            <label for="example-tel-input" class="">Username</label>
+
+                                            <?php
                                                 $username = 'ADVCT' . rand(1000, 9999);
 
                                                 ?>
-                                                <input class="form-control" name="username" type="text"
-                                                    id="example-tel-input" value="<?php echo $username ?>" readonly>
-                                            
+                                            <input class="form-control" name="username" type="text"
+                                                id="example-tel-input" value="<?php echo $username ?>" readonly>
+
                                         </div>
                                         <div class="form-group">
                                             <label for="example-text-input">Name</label>
-                                                <input class="form-control" name="name" type="text" id="example-text-input" required> 
+                                            <input class="form-control" name="name" type="text" id="example-text-input"
+                                                required>
                                         </div>
 
-                                        
-                                        
-
                                         <div class="form-group">
-                                            <label for="example-tel-input"
-                                                class="">Mobile
+                                            <label for="example-tel-input" class="">Mobile
                                                 Number</label>
-                                            
-                                                <input class="form-control" name="mobileNumber" type="tel"
-                                                    id="example-tel-input">
-                                            
+
+                                            <input class="form-control" name="mobileNumber" type="tel"
+                                                id="example-tel-input" required>
+
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="example-datetime-local-input"
-                                                class="">Joining Date</label>
-                                            
-                                                <input class="form-control" type="date" name="joiningDate"
-                                                    id="example-datetime-local-input" >
-                                            
+                                            <label for="example-datetime-local-input" class="">Joining Date</label>
+
+                                            <input class="form-control" type="date" name="joiningDate"
+                                                id="example-datetime-local-input" required>
+
                                         </div>
                                         <div class="form-group">
-                                            <label for="example-text-input"
-                                                class="">Password</label>
-                                            
-                                                <input class="form-control" name="password" type="text"
-                                                    id="example-text-input">
-                                            
-                                        </div>
+                                            <label for="example-text-input" class="">Password</label>
 
+                                            <input class="form-control" name="password" type="password"
+                                                id="example-text-input" required>
+
+                                        </div>
 
                                         <div class="form-group">
                                             <label class="">Upload Photo</label>
-                                            
-                                                <input type="file" name="photo" class="form-control"
-                                                    id="inputGroupFile04">
-                                                
-                                            
+
+                                            <input type="file" name="photo" class="form-control" id="inputGroupFile04" required>
+
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="example-text-input"
-                                                class="">Address</label>
-                                            
-                                                <textarea class="form-control" name="address" rows="5" id="message"
-                                                    ></textarea>
-                                            
-                                        </div>
+                                        <label for="exampleInputEmail1">Address</label>
+                                        <input class="form-control" name="address" type="text" id="example-text-input" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">City</label>
+                                        <input class="form-control" name="city" type="text" id="example-text-input" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">State</label>
+                                        <input class="form-control"  name="state" type="text" id="example-text-input" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Pincode</label>
+                                        <input class="form-control" name="pincode" type="text" id="example-text-input" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Country</label>
+                                        <input class="form-control" name="country" type="text" id="example-text-input" required>
+                                    </div>
                                         <div class="form-group">
-                                            <label for="example-text-input"
-                                                class="">Specialization</label>
+                                            <label for="example-text-input" class="">Specialization</label>
                                             <div class="col-md-9">
                                                 <div class="checkbox my-2">
                                                     <div class="custom-control custom-checkbox">
@@ -203,7 +207,7 @@ require("top-navbar.php");
                                         <div class="row">
                                             <div class="col-sm-10 ml-auto">
                                                 <button type="submit" class="btn btn-gradient-primary">Submit</button>
-                                                <button type="button"   class="btn btn-gradient-danger">Cancel</button>
+                                                <button type="button" class="btn btn-gradient-danger">Cancel</button>
                                             </div>
                                         </div>
 
@@ -213,18 +217,18 @@ require("top-navbar.php");
                         </div>
                     </div>
                 </div>
-            </div><!--end row-->
+            </div>
+            <!--end row-->
         </div><!-- container -->
 
         <footer class="footer text-center text-sm-left">
             &copy; 2023 Law Affair
-        </footer><!--end footer-->
+        </footer>
+        <!--end footer-->
     </div>
     <!-- end page content -->
 </div>
 <!-- end page-wrapper -->
-
-
 
 <!-- jQuery  -->
 <script src="assets/js/jquery.min.js"></script>

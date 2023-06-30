@@ -1,7 +1,16 @@
 <?php
 require('top-navbar.php');
 ?>
+<?php
+require_once 'config/config.php';
+require_once 'Database.php';
+$case = new totalCase($conn);
+$total_count_case = $case->getTotalCount();
 
+$totalAdvocates = new totalAdvocates($conn);
+$total_count_advocate = $totalAdvocates->getTotalCount();
+
+?>
 <div class="page-wrapper">
             <div class="page-content">
                 <div class="container-fluid">
@@ -25,7 +34,7 @@ require('top-navbar.php');
                             <div class="card">
                                 <div class="card-body">
                                     <div class="jumbotron mb-0 bg-light">
-                                        <h1 class="display-4">Hello, Kishan! Welcome</h1>
+                                        <h1 class="display-4">Hello, Admin! Welcome</h1>
                                     </div>
                                 </div><!--end card-body-->    
                             </div><!--end card-->
@@ -33,13 +42,8 @@ require('top-navbar.php');
                     </div><!--end row-->
                     <!-- end page title end breadcrumb -->
                     <?php
-                    require_once 'config/config.php';
-                    require_once 'Database.php';
-                    $case = new totalCase($conn);
-                    $total_count_case = $case->getTotalCount();
-
-                    $totalAdvocates = new totalAdvocates($conn);
-                    $total_count_advocate = $totalAdvocates->getTotalCount();
+                    
+                    
 
                     ?>
                     <div class="row">
@@ -75,7 +79,7 @@ require('top-navbar.php');
                                             <div class="icon-info mb-3">
                                                 <i class="fas fa-handshake bg-soft-success"></i>
                                             </div>
-                                            <h3 class="text-dark">18</h3>
+                                            <h3 class="text-dark">1</h3>
                                             <h6 class="font-14 text-dark">Assigned Cases</h6>                                                                                                                            
                                         </div><!--end card-body--> 
                                     </div><!--end card-->   
@@ -86,7 +90,7 @@ require('top-navbar.php');
                                             <div class="icon-info mb-3">
                                                 <i class="fas fa-clipboard bg-soft-primary"></i>
                                             </div>
-                                            <h3 class="text-danger">92</h3>
+                                            <h3 class="text-danger">2</h3>
                                             <h6 class="font-14 text-dark">Unassigned Cases</h6>                                                                                                                            
                                         </div><!--end card-body--> 
                                     </div><!--end card-->   

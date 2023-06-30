@@ -63,7 +63,7 @@ if (isset($_GET['error'])) {
                                                     include 'config/config.php';
                                                     $user = new AdProfile($conn);
                                                     $info=$user->displayUserInfo();
-                                                    print_r($info);
+                                                    
                                                     ?>
                                                     <div class="met-profile-main-pic">
                                                         <img src="<?php echo $info['file']; ?>" alt="" class="rounded-circle">
@@ -121,12 +121,12 @@ if (isset($_GET['error'])) {
                                                 <div class="card-body dash-info-carousel">
                                                     <h4 class="mt-0 header-title mb-4">Active Case</h4>
                                                     <div class="d-flex justify-content-between">
-                                                        <button type="button" class="btn btn-gradient-primary btn-sm">View Cases</button>
+                                                    <a href="case_list.php" class="btn btn-gradient-primary btn-sm">View Cases</a>
                                                     </div>
                                                     <div class="bg-light p-3 mt-3 d-flex justify-content-between">
                                                         <div>
-                                                            <h2 class="mb-1 font-weight-semibold">402</h2>
-                                                            <p class="text-muted mb-0">Total Cases Handelled</p>
+                                                            <h2 class="mb-1 font-weight-semibold">3</h2>
+                                                            <p class="text-muted mb-0">Total Cases</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -180,7 +180,7 @@ if (isset($_GET['error'])) {
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-8">
-                                                            <input type="file" name="file" enctype="multipart/form-data">
+                                                            <input type="file" name="file" value="<?php echo $info['file']; ?>">
                                                             </div>
                                                             <div class="form-group">
                                                                 <!-- <textarea rows="5" placeholder="Message" class="form-control"></textarea> -->

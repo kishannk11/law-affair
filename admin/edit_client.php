@@ -19,8 +19,10 @@ require("top-navbar.php");
                             </ol>
                         </div>
                         <h4 class="page-title">Edit Client</h4>
-                    </div><!--end page-title-box-->
-                </div><!--end col-->
+                    </div>
+                    <!--end page-title-box-->
+                </div>
+                <!--end col-->
             </div>
             <!-- end page title end breadcrumb -->
 
@@ -87,7 +89,7 @@ require("top-navbar.php");
                                 <div class="row">
 
                                     <div class="col-lg-12">
-                                        <div class="form-group ">
+                                        <div class="col-lg-6">
                                             <label for="example-text-input" class="">Name</label>
 
                                             <input class="form-control" name="id" type="hidden" id="example-text-input"
@@ -96,7 +98,7 @@ require("top-navbar.php");
                                                 value="<?php echo htmlspecialchars($client['name']) ?>">
 
                                         </div>
-                                        <div class="form-group">
+                                        <div class="col-lg-6">
                                             <label for="example-tel-input" class="">Mobile
                                                 Number</label>
 
@@ -105,29 +107,39 @@ require("top-navbar.php");
 
                                         </div>
 
-
-                                        <div class="form-group">
+                                        <div class="col-lg-6">
                                             <label class="">Upload Photo</label>
 
                                             <div class="custom-file">
-                                                <input type="file" class="" id="customFile"
-                                                    name="photo" value="<?php echo $client['photo_name'] ?>">
+                                                <input type="file" class="" id="customFile" name="photo"
+                                                    value="<?php echo $client['photo_name'] ?>">
                                                 <label class="custom-file-label" for="customFile">Choose file</label>
                                             </div>
                                         </div>
 
-                                        <div class="form-group ">
-                                            <label for="example-text-input"
-                                                class="">Address</label>
-                                            <div class="">
-                                                <textarea class="form-control" name="address" rows="5"
-                                                    id="message"><?php echo $client['address'] ?></textarea>
-                                            </div>
+    
+                                        <div class="col-lg-6">
+                                            <label for="exampleInputEmail1">Address</label>
+                                            <input class="form-control" name="address" value="<?php echo $client['address'] ?>"type="text"
+                                                id="example-text-input">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label for="exampleInputEmail1">City</label>
+                                            <input class="form-control" name="city" type="text" value="<?php echo $client['city'] ?>" id="example-text-input">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label for="exampleInputEmail1">State</label>
+                                            <input class="form-control" name="state" type="text" value="<?php echo $client['state'] ?>"
+                                                id="example-text-input">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label for="exampleInputEmail1">Pincode</label>
+                                            <input class="form-control" name="pincode" type="text"
+                                                id="example-text-input" value="<?php echo $client['pincode'] ?>">
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="example-datetime-local-input"
-                                                class="">Upload Documents</label>
+                                        <div class="col-lg-6">
+                                            <label for="example-datetime-local-input" class="">Upload Documents</label>
 
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input" id="inputGroupFile04"
@@ -135,7 +147,8 @@ require("top-navbar.php");
                                                 <label class="custom-file-label" for="customFile">Choose file</label>
                                             </div>
                                         </div>
-
+                                        &nbsp;
+                                        &nbsp;
 
                                         <div class="row">
                                             <div class="col-sm-10 ml-auto">
@@ -149,20 +162,19 @@ require("top-navbar.php");
                         </div>
                     </div>
                 </div>
-            </div><!--end row-->
+            </div>
+            <!--end row-->
 
         </div><!-- container -->
 
         <footer class="footer text-center text-sm-left">
             &copy; 2023 Law Affair
-        </footer><!--end footer-->
+        </footer>
+        <!--end footer-->
     </div>
     <!-- end page content -->
 </div>
 <!-- end page-wrapper -->
-
-
-
 
 <!-- jQuery  -->
 <script src="assets/js/jquery.min.js"></script>

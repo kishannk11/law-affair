@@ -91,6 +91,10 @@ require("top-navbar.php");
                             <?php endif; ?>
                             <div class="card col-sm-12">
                                 <div class="card-body">
+                                
+                                
+                               
+<button type="submit" class="btn btn-gradient-danger float-right btn-close-case" onclick="confirmCloseCase('<?php echo $note['case_number']; ?>')" <?php echo $note['status'] === 'closed' ? 'disabled' : ''; ?>>Close Case</button>
                                     <h4 class="mt-0 header-title">Case No: <?php echo $note['case_number']; ?></h4>
                                     <p class="text-muted">Handled by: <?php echo $note['advocate']; ?></p>
                                     <?php $currentCase = $note['case_number']; ?>
@@ -104,7 +108,7 @@ require("top-navbar.php");
                         </div>
                 <?php endif; ?>
 
-                <button type="submit" class="btn btn-gradient-danger">Close Case</button>
+                
             </div> <!-- end row -->
 
         </div><!-- container -->
@@ -144,6 +148,40 @@ require("top-navbar.php");
             });
         });
     });
+</script>
+<script>
+function confirmCloseCase(caseNumber) {
+  Swal.fire({
+    title: 'Do you want to close the case?',
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonText: 'Yes',
+    cancelButtonText: 'No'
+  }).then((result) => {
+    if (result.value) {
+      // Make AJAX request to update case status
+      updateCaseStatus(caseNumber);
+    }
+  });
+}
+
+function updateCaseStatus(caseNumber) {
+  // Make AJAX request to update case status
+  $.ajax({
+    url: 'update_case_status.php',
+    type: 'POST',
+    data: { caseNumber: caseNumber },
+    success: function(response) {
+      // Disable the close case button
+      document.querySelector('.btn-close-case').disabled = true;
+      // Show success message
+      Swal.fire('Case closed!', '', 'success');
+    },
+    error: function() {
+      Swal.fire('Error!', 'An error occurred while closing the case.', 'error');
+    }
+  });
+}
 </script>
 
 

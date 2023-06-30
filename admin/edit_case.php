@@ -107,7 +107,8 @@ Swal.fire({
                                                         <select class="form-control" name="client">
                                                             <option value="">Select</option>
                                                             <?php foreach ($clientNames as $client) { ?>
-                                                                <option value="<?php echo $client['username']; ?>"><?php echo $client['name'] . ' (' . $client['username'] . ')'; ?></option>
+                                                                <option value="<?php echo $client['username']; ?>"<?php if ($client['username'] == $cases[0]['client']) echo 'selected'; ?>>
+                                                                <?php echo $client['name'] . ' (' . $client['username'] . ')'; ?></option>
                                                             <?php } ?>
                                                             </select>
                                                         </div><!--end col-->                                                        
@@ -146,14 +147,18 @@ Swal.fire({
                                                             <input type="date" class="form-control" name="case_next_date" id="pro-start-date" value="<?php echo $cases[0]['case_next_date']; ?>" placeholder="Enter start date">
                                                         </div><!--end col-->
                                                         <div class="form-group col-lg-6 mb-2 mb-lg-0">
-                                                            <label class="drop-down">Select Advocate</label>
-                                                            <select class="form-control" name="advocate">
-                                                                <option value="">Select</option>
-                                                                <?php foreach ($advocateNames as $advocate) { ?>
-                                                                    <option value="<?php echo $advocate['username']; ?>"><?php echo $advocate['name'] . ' (' . $advocate['username'] . ')'; ?></option>
-                                                                <?php } ?>  
-                                                            </select>
-                                                        </div>                                                      
+                                                        <label class="drop-down">Select Advocate</label>
+                                                        <select class="form-control" name="advocate">
+                                                            <option value="">Select</option>
+                                                            <?php foreach ($advocateNames as $advocate) { ?>
+                                                                <option value="<?php echo $advocate['username']; ?>" <?php if ($advocate['username'] == $cases[0]['advocate']) echo 'selected'; ?>>
+                                                                    <?php echo $advocate['name'] . ' (' . $advocate['username'] . ')'; ?>
+                                                                </option>
+                                                            <?php } ?>  
+                                                           
+                                                        </select>
+                                                
+                                                    </div>                                                      
                                                     </div><!--end row-->
                                                 </div><!--end form-group-->
 
@@ -162,6 +167,12 @@ Swal.fire({
                                                     <label for="pro-message">Special Note</label>
                                                     <textarea class="form-control" name="special_note" rows="5" id="pro-message"  placeholder="Special Note"><?php echo $cases[0]['special_note']; ?></textarea>
                                                 </div>
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Upload Photo</label>
+                                                    <input class="form-control" name="photo" type="file" id="example-text-input">
+                                                </div>
+                                                &nbsp;
+                                                &nbsp;
                                                 
                                                 <div class="form-group">
                                                 <b>Payment Details</b>
