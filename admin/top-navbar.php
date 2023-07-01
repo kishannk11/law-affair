@@ -124,6 +124,7 @@ require_once('config/session.php');
                     <ul class="nav-second-level" aria-expanded="false">
                         <li class="nav-item"><a class="nav-link" href="add_case.php"><i class="ti-control-record"></i>Add Case</a></li>
                         <li class="nav-item"><a class="nav-link" href="case_list.php"><i class="ti-control-record"></i>Case List</a></li>
+                        <li class="nav-item"><a class="nav-link" href="case_closed.php"><i class="ti-control-record"></i>Closed Cases</a></li>
                     </ul>
                 </li>
 
