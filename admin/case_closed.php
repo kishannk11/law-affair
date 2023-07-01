@@ -14,7 +14,7 @@ require("top-navbar.php");
                     <div class="page-title-box">
                         <div class="float-right">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="dashboard.php">Law Affair</a></li>
+                                <li class="breadcrumb-item"><a href="dashboard.php">Legal Partner</a></li>
                                 <li class="breadcrumb-item active">Closed Cases</li>
                             </ol>
                         </div>
@@ -72,10 +72,7 @@ require("top-navbar.php");
                                         // echo "<td>" . htmlspecialchars($case["case_status"]) . "</td>";
                                         echo "<td>" . htmlspecialchars($case["advocate"]) . "</td>";
                                         echo "<td>" . htmlspecialchars($case["special_note"]) . "</td>";
-                                        echo "<td>";
-                                        echo '<a href="edit_case.php?id='. $case["id"] .'" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>';
-                                        echo "<a onclick=\"deleteCase({$case['id']})\"><i class=\"fas fa-trash-alt text-danger font-16\"></i></a>";
-                                        echo "</td>";
+                                        echo "<td>View Details</i></td>";
                                         echo "</tr>";
                                     }
                                     ?>
@@ -88,7 +85,7 @@ require("top-navbar.php");
             </div><!-- container -->
 
         <footer class="footer text-center text-sm-left">
-            &copy; 2023 Law Affair
+            &copy; 2023 Legal Partner
         </footer><!--end footer-->
     </div>
     <!-- end page content -->

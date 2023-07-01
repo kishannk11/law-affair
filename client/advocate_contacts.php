@@ -72,7 +72,7 @@ require("top-navbar.php");
     </div><!-- container -->
 
     <footer class="footer text-center text-sm-left">
-            &copy; 2023 Law Affair 
+            &copy; 2023 Legal Partner 
     </footer><!--end footer-->
 </div>
 <!-- end page content -->

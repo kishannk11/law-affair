@@ -1,5 +1,5 @@
 /**
- * Theme: Law Affair - Responsive Bootstrap 4 Admin Dashboard
+ * Theme: Legal Partner - Responsive Bootstrap 4 Admin Dashboard
  * Author: Mannatthemes
  * Gmaps Js
  */

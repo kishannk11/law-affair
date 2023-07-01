@@ -22,7 +22,7 @@ require_once "Database.php";
 
 <head>
     <meta charset="utf-8" />
-    <title>Law-Affair</title>
+    <title>Legal-Partner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="" name="author" />
@@ -60,7 +60,7 @@ require_once "Database.php";
                                 }
                                 ?>
                                 <div class="text-center auth-logo-text">
-                                    <h4 class="mt-0 mb-3 mt-5">Welcome to LAW AFFAIR</h4>
+                                    <h4 class="mt-0 mb-3 mt-5">Welcome to Legal Partner</h4>
                                     <p class="text-muted mb-0">Sign in to continue to Portal</p>
                                 </div> <!--end auth-logo-text-->
 
