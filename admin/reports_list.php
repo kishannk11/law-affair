@@ -94,7 +94,7 @@ require("top-navbar.php");
                                 
                                 
                                
-<button type="submit" class="btn btn-gradient-danger float-right btn-close-case" onclick="confirmCloseCase('<?php echo $note['case_number']; ?>')" <?php echo $note['status'] === 'closed' ? 'disabled' : ''; ?>>Close Case</button>
+                                    <button type="submit" class="btn btn-gradient-danger float-right btn-close-case" onclick="confirmCloseCase('<?php echo $note['case_number']; ?>')" <?php echo $note['status'] === 'closed' ? 'disabled' : ''; ?>>Close Case</button>
                                     <h4 class="mt-0 header-title">Case No: <?php echo $note['case_number']; ?></h4>
                                     <p class="text-muted">Handled by: <?php echo $note['advocate']; ?></p>
                                     <?php $currentCase = $note['case_number']; ?>
