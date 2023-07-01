@@ -103,7 +103,6 @@ require("top-navbar.php");
 
                                             <input class="form-control" name="mobileNumber" type="tel"
                                                 id="example-tel-input" required>
-
                                         </div>
 
                                         <div class="form-group">
@@ -111,8 +110,14 @@ require("top-navbar.php");
 
                                             <input class="form-control" type="date" name="joiningDate"
                                                 id="example-datetime-local-input" required>
-
                                         </div>
+
+                                        <div class="form-group">
+                                            <label for="example-text-input">Name</label>
+                                            <input class="form-control" name="name" type="text" id="example-text-input"
+                                                required>
+                                        </div>
+                                        
                                         <div class="form-group">
                                             <label for="example-text-input" class="">Password</label>
 
@@ -139,6 +144,40 @@ require("top-navbar.php");
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">State</label>
                                         <input class="form-control"  name="state" type="text" id="example-text-input" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">State</label>
+                                        <select class="form-control" id="exampleFormControlSelect1">
+                                            <option>Select State</option>
+                                            <option>Andhra Pradesh</option>
+                                            <option>Arunachal Pradesh</option>
+                                            <option>Assam</option>
+                                            <option>Bihar</option>
+                                            <option>Chhattisgarh</option>
+                                            <option>Goa</option>
+                                            <option>Gujarat</option>
+                                            <option>Haryana</option>
+                                            <option>Himachal Pradesh</option>
+                                            <option>Jharkhand</option>
+                                            <option>Karnataka</option>
+                                            <option>Kerala</option>
+                                            <option>Madhya Pradesh</option>
+                                            <option>Maharashtra</option>
+                                            <option>Manipur</option>
+                                            <option>Meghalaya</option>
+                                            <option>Mizoram</option>
+                                            <option>Nagaland</option>
+                                            <option>Odisha</option>
+                                            <option>Punjab</option>
+                                            <option>Rajasthan</option>
+                                            <option>Sikkim</option>
+                                            <option>Tamil Nadu</option>
+                                            <option>Telangana</option>
+                                            <option>Tripura</option>
+                                            <option>Uttar Pradesh</option>
+                                            <option>Uttarakhand</option>
+                                            <option>West Bengal</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Pincode</label>

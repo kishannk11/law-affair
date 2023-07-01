@@ -89,7 +89,7 @@ require("top-navbar.php");
                                 <div class="row">
 
                                     <div class="col-lg-12">
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-12">
                                             <label for="example-text-input" class="">Name</label>
 
                                             <input class="form-control" name="id" type="hidden" id="example-text-input"
@@ -98,7 +98,7 @@ require("top-navbar.php");
                                                 value="<?php echo htmlspecialchars($client['name']) ?>">
 
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-12">
                                             <label for="example-tel-input" class="">Mobile
                                                 Number</label>
 
@@ -107,7 +107,7 @@ require("top-navbar.php");
 
                                         </div>
 
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-12">
                                             <label class="">Upload Photo</label>
 
                                             <div class="custom-file">
@@ -118,27 +118,56 @@ require("top-navbar.php");
                                         </div>
 
     
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-12">
                                             <label for="exampleInputEmail1">Address</label>
                                             <input class="form-control" name="address" value="<?php echo $client['address'] ?>"type="text"
                                                 id="example-text-input">
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-12">
                                             <label for="exampleInputEmail1">City</label>
                                             <input class="form-control" name="city" type="text" value="<?php echo $client['city'] ?>" id="example-text-input">
                                         </div>
-                                        <div class="col-lg-6">
-                                            <label for="exampleInputEmail1">State</label>
-                                            <input class="form-control" name="state" type="text" value="<?php echo $client['state'] ?>"
-                                                id="example-text-input">
+                                        <div class="col-lg-12">
+                                            <label for="exampleFormControlSelect1">State</label>
+                                            <select class="form-control" id="exampleFormControlSelect1">
+                                                <option>Select State</option>
+                                                <option>Andhra Pradesh</option>
+                                                <option>Arunachal Pradesh</option>
+                                                <option>Assam</option>
+                                                <option>Bihar</option>
+                                                <option>Chhattisgarh</option>
+                                                <option>Goa</option>
+                                                <option>Gujarat</option>
+                                                <option>Haryana</option>
+                                                <option>Himachal Pradesh</option>
+                                                <option>Jharkhand</option>
+                                                <option>Karnataka</option>
+                                                <option>Kerala</option>
+                                                <option>Madhya Pradesh</option>
+                                                <option>Maharashtra</option>
+                                                <option>Manipur</option>
+                                                <option>Meghalaya</option>
+                                                <option>Mizoram</option>
+                                                <option>Nagaland</option>
+                                                <option>Odisha</option>
+                                                <option>Punjab</option>
+                                                <option>Rajasthan</option>
+                                                <option>Sikkim</option>
+                                                <option>Tamil Nadu</option>
+                                                <option>Telangana</option>
+                                                <option>Tripura</option>
+                                                <option>Uttar Pradesh</option>
+                                                <option>Uttarakhand</option>
+                                                <option>West Bengal</option>
+                                            </select>
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-12">
                                             <label for="exampleInputEmail1">Pincode</label>
                                             <input class="form-control" name="pincode" type="text"
                                                 id="example-text-input" value="<?php echo $client['pincode'] ?>">
                                         </div>
 
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-12">
                                             <label for="example-datetime-local-input" class="">Upload Documents</label>
 
                                             <div class="custom-file">
