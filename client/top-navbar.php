@@ -25,6 +25,9 @@ require_once('config/session.php');
         <link href="assets/css/metisMenu.min.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link href="plugins/sweet-alert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
+        <link href="plugins/animate/animate.css" rel="stylesheet" type="text/css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     </head>
 
