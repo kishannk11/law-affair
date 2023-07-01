@@ -112,7 +112,7 @@ if (isset($_GET['error'])) {
                                                             <img src="assets/images/widgets/monthly-re.png" alt="" height="75">
                                                             <div class="align-self-center">
                                                                 <h2 class="mt-0 mb-2 font-weight-semibold">₹955</h2>
-                                                                <h4 class="title-text mb-0">Monthly Revenue</h4>
+                                                                <h4 class="title-text mb-0">Total Revenue</h4>
                                                             </div>
                                                         </div>                                    
                                                     </div><!--end card-body-->
@@ -132,21 +132,7 @@ if (isset($_GET['error'])) {
                                                 </div>
                                             </div><!--end card-->
                                         </div><!--end col-->
-                                        <div class="col-lg-8">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <div class="float-lg-right float-none eco-revene-history justify-content-end">
-                                                        <ul class="nav">
-                                                            <li class="nav-item">
-                                                                <a class="nav-link" href="#">This Year</a>
-                                                            </li>                                     
-                                                        </ul>
-                                                    </div>
-                                                    <h4 class="header-title mt-0">Cases Attended</h4>
-                                                    <canvas id="bar" class="drop-shadow w-100"  height="350"></canvas>
-                                                </div><!--end card-body-->
-                                            </div><!--end card-->                                          
-                                        </div><!--end col-->  
+                                          
                                     </div><!--end row-->                                     
                                 </div><!--end general detail-->
 

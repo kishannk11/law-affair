@@ -67,7 +67,7 @@ require_once('config/session.php');
                     <li class="dropdown">
                         <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
                             aria-haspopup="false" aria-expanded="false">
-                            <img src="assets/images/new-logo.png" alt="profile-user" class="rounded-circle"width="40" height="40"> 
+                            <img src="assets/images/users/admin-dp.png" alt="profile-user" class="rounded-circle"width="40" height="40"> 
                             <span class="ml-1 nav-user-name hidden-sm">Admin<i class="mdi mdi-chevron-down"></i> </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -85,7 +85,7 @@ require_once('config/session.php');
                     </li>
                     <li class="hide-phone app-search">
                         <form role="search" class="">
-                            <input type="text" id="AllCompo" placeholder="Search..." class="form-control">
+                            <input type="text" placeholder="Search..." class="form-control">
                             <a href=""><i class="fas fa-search"></i></a>
                         </form>
                     </li>
