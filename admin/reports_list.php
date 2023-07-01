@@ -33,6 +33,11 @@ require("top-navbar.php");
             $caseNumber = $caseDetails->getCaseNumber();
 
             ?>
+            
+            <div class="card col-sm-12">
+                &nbsp;
+                &nbsp;
+                <div class="card-body">
             <form method="POST">
             <div class="row form-inline text-center">
                 <div class="col-md-4">
@@ -70,6 +75,8 @@ require("top-navbar.php");
                 &nbsp;
             </div>
             </form>
+                        </div>
+            </div>
             <?php
             $report = new caseReport($conn);
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -80,7 +87,7 @@ require("top-navbar.php");
             }
 
             ?>
-            <div class="row">
+            <div class="">
                 <?php if (isset($specialNotes) && !empty($specialNotes)): ?>
                     <?php $currentCase = null; ?>
                     <?php foreach ($specialNotes as $note): ?>
