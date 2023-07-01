@@ -132,7 +132,7 @@ require_once('config/session.php');
                 </li>
 
                 <li>
-                    <a href="payment.php"><i class="ti-bar-chart"></i><span>Payment</span></i></span></a>
+                    <a href="payment.php"><i class="ti-wallet"></i><span>Payment</span></i></span></a>
                 </li>
 
                 <li>
