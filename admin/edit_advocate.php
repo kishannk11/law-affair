@@ -27,7 +27,7 @@ require("top-navbar.php");
             <!-- end page title end breadcrumb -->
 
             <div class="row">
-            <?php
+                <?php
                 if (isset($_GET['succes'])) {
                     $success = $_GET['succes'];
                     // echo '<div class="alert alert-success">' . $success . '</div>';
@@ -57,7 +57,7 @@ require("top-navbar.php");
                             <form action="update_advocate.php" method="POST" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                    <?php
+                                        <?php
                                          include 'config/config.php';
                                          include 'Database.php';
                                          ini_set('display_errors', 1);
@@ -81,64 +81,72 @@ require("top-navbar.php");
                                         ?>
                                         <div class="form-group">
                                             <label for="example-text-input">Name</label>
-                                            <input class="form-control" name="id" type="hidden"
-                                                    id="example-text-input" value="<?php echo $id; ?>">
-                                                <input class="form-control" name="name" type="text"
-                                                    id="example-text-input" value="<?php echo $name; ?>">
+                                            <input class="form-control" name="id" type="hidden" id="example-text-input"
+                                                value="<?php echo $id; ?>">
+                                            <input class="form-control" name="name" type="text" id="example-text-input"
+                                                value="<?php echo $name; ?>">
                                         </div>
 
-                                        
-                                        
-
                                         <div class="form-group">
-                                            <label for="example-tel-input"
-                                                class="">Mobile
+                                            <label for="example-tel-input" class="">Mobile
                                                 Number</label>
-                                                <input class="form-control" name="mobileNumber" type="tel"
-                                                    id="example-tel-input" value="<?php echo $mobile_number; ?>">
-                                            
+                                            <input class="form-control" name="mobileNumber" type="tel"
+                                                id="example-tel-input" value="<?php echo $mobile_number; ?>">
+
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="example-datetime-local-input"
-                                                class="">Joining Date</label>
-                                            
-                                                <input class="form-control" type="date" name="joiningDate"
-                                                    id="example-datetime-local-input"
-                                                    value="<?php echo $joining_date; ?>">
-                                            
+                                            <label for="example-datetime-local-input" class="">Joining Date</label>
+
+                                            <input class="form-control" type="date" name="joiningDate"
+                                                id="example-datetime-local-input" value="<?php echo $joining_date; ?>">
+
                                         </div>
                                         <div class="form-group">
-                                            <label for="example-text-input"
-                                                class="">Password</label>
-                                            
-                                                <input class="form-control" name="password" type="text"
-                                                    id="example-text-input">
-                                            
-                                        </div>
+                                            <label for="example-text-input" class="">Password</label>
 
+                                            <input class="form-control" name="password" type="text"
+                                                id="example-text-input">
+
+                                        </div>
 
                                         <div class="form-group">
                                             <label class="">Upload Photo</label>
-                                            
-                                                <input type="file" name="photo" class="form-control"
-                                                    id="inputGroupFile04">
-                                                
-                                            
-                                        </div>
 
-                                        <div class="form-group">
-                                            <label for="example-text-input"
-                                                class="">Address</label>
-                                            
-                                                <textarea class="form-control" name="address" rows="5"
-                                                    id="message"><?php echo $address; ?></textarea>
-                                            
+                                            <input type="file" name="photo" class="form-control" id="inputGroupFile04">
+
                                         </div>
                                         <div class="form-group">
-                                            <label for="example-text-input"
-                                                class="">Specialization</label>
-                                                <div class="col-md-9">
+                                            <label for="exampleInputEmail1">Address</label>
+                                            <input class="form-control" name="address" type="text"
+                                                id="example-text-input"
+                                                value="<?php echo $advocateDetails['address'];?>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">City</label>
+                                            <input class="form-control" name="city" type="text" id="example-text-input"
+                                                value="<?php echo $advocateDetails['city'];?>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">State</label>
+                                            <input class="form-control" name="state" type="text" id="example-text-input"
+                                                value="<?php echo $advocateDetails['state'];?>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Pincode</label>
+                                            <input class="form-control" name="pincode" type="text"
+                                                id="example-text-input"
+                                                value="<?php echo $advocateDetails['pincode'];?>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Country</label>
+                                            <input class="form-control" name="country" type="text"
+                                                id="example-text-input"
+                                                value="<?php echo $advocateDetails['country'];?>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="example-text-input" class="">Specialization</label>
+                                            <div class="col-md-9">
                                                 <div class="checkbox my-2">
                                                     <div class="custom-control custom-checkbox">
                                                         <input type="checkbox" name="lawyer[]" value="Tax Lawyer"
@@ -201,7 +209,7 @@ require("top-navbar.php");
                                         <div class="row">
                                             <div class="col-sm-10 ml-auto">
                                                 <button type="submit" class="btn btn-gradient-primary">Submit</button>
-                                                <button type="button"   class="btn btn-gradient-danger">Cancel</button>
+                                                <button type="button" class="btn btn-gradient-danger">Cancel</button>
                                             </div>
                                         </div>
 
@@ -211,12 +219,9 @@ require("top-navbar.php");
                         </div>
                     </div>
                 </div>
-            </div><!--end row-->
+            </div>
+            <!--end row-->
 
-
-
-
-            
         </div>
         <!--end card-body-->
     </div>
@@ -236,9 +241,9 @@ require("top-navbar.php");
 </div>
 <!-- end page-wrapper -->
 <script>
-function goBack() {
-  window.history.back();
-}
+    function goBack() {
+        window.history.back();
+    }
 </script>
 <!-- jQuery  -->
 <script src="assets/js/jquery.min.js"></script>

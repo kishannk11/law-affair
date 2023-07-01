@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         return; 
     } 
     // Update advocate data in the database 
-    $success = $updateAdvocate->update_advocate($_POST["id"], $_POST["name"], $_POST["mobileNumber"], $_POST["joiningDate"], $photo, $_POST["address"], $_POST["lawyer"]); 
+    $success = $updateAdvocate->update_advocate($_POST["id"], $_POST["name"], $_POST["mobileNumber"], $_POST["joiningDate"], $photo, $_POST["address"], $_POST["lawyer"], $_POST["city"], $_POST["state"], $_POST["pincode"], $_POST["country"]); 
     header("Location: edit_advocate.php?id=" . $_POST["id"] . "&succes=" . urlencode($success)); 
 }
 ?>

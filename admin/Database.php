@@ -51,7 +51,7 @@ class AddAdvocate
         $data = htmlspecialchars($data);
         return $data;
     }
-     public function addAdvocateData($name, $mobileNumber, $joiningDate, $photo, $address, $specialization, $username, $password,$role)
+    public function addAdvocateData($name, $mobileNumber, $joiningDate, $photo, $address, $specialization, $username, $password,$role, $city, $state, $pincode, $country)
     {
         // Validate and sanitize input data
         $name = $this->validateInput($name);
@@ -60,10 +60,14 @@ class AddAdvocate
         $address = $this->validateInput($address);
         $username = $this->validateInput($username);
         $password = $this->validateInput($password);
+        $city = $this->validateInput($city);
+        $state = $this->validateInput($state);
+        $pincode = $this->validateInput($pincode);
+        $country = $this->validateInput($country);
         // Validate and sanitize specialization array
         $specialization = array_map(array($this, 'validateInput'), $specialization);
         // Prepare and bind SQL statement
-        $stmt = $this->conn->prepare("INSERT INTO advocates (name, mobile_number, joining_date, photo, address, specializations, username, password,role) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)");
+        $stmt = $this->conn->prepare("INSERT INTO advocates (name, mobile_number, joining_date, photo, address, specializations, username, password,role, city, state, pincode, country) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->bindParam(1, $name, PDO::PARAM_STR);
         $stmt->bindParam(2, $mobileNumber, PDO::PARAM_STR);
         $stmt->bindParam(3, $joiningDate, PDO::PARAM_STR);
@@ -73,6 +77,10 @@ class AddAdvocate
         $stmt->bindParam(7, $username, PDO::PARAM_STR);
         $stmt->bindParam(8, $password, PDO::PARAM_STR);
         $stmt->bindParam(9, $role, PDO::PARAM_STR);
+        $stmt->bindParam(10, $city, PDO::PARAM_STR);
+        $stmt->bindParam(11, $state, PDO::PARAM_STR);
+        $stmt->bindParam(12, $pincode, PDO::PARAM_STR);
+        $stmt->bindParam(13, $country, PDO::PARAM_STR);
         // Execute statement
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
@@ -91,48 +99,59 @@ class AddAdvocate
 class Client
 {
     private $conn;
-     public function __construct($conn)
+
+    public function __construct($conn)
     {
         $this->conn = $conn;
     }
-     public function sanitizeInput($input)
+
+    public function sanitizeInput($input)
     {
         return htmlspecialchars(strip_tags(trim($input)));
     }
-     public function validateName($name)
+
+    public function validateName($name)
     {
         return !empty($name) && preg_match("/^[a-zA-Z ]*$/", $name);
     }
-     public function validateMobileNumber($mobileNumber)
+
+    public function validateMobileNumber($mobileNumber)
     {
         return !empty($mobileNumber) && preg_match("/^[0-9]{10}$/", $mobileNumber);
     }
-     public function validateAddress($address)
+
+    public function validateAddress($address)
     {
         return !empty($address);
     }
+
     public function uploadFile($file, $destination)
     {
         $allowedExtensions = array('png', 'jpg', 'jpeg', 'pdf');
         $fileExtension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+
         if (in_array($fileExtension, $allowedExtensions) && move_uploaded_file($file['tmp_name'], $destination)) {
             return true;
         } else {
             return false;
         }
     }
-    public function addClient($name, $mobileNumber, $photo, $address, $document, $username) 
-    { 
-        $stmt = $this->conn->prepare("INSERT INTO clients (name, mobile_number, photo_name, address, document_name, username) VALUES (?, ?, ?, ?, ?, ?)"); 
-        $stmt->bindParam(1, $name); 
-        $stmt->bindParam(2, $mobileNumber); 
-        $stmt->bindParam(3, $photo); 
-        $stmt->bindParam(4, $address); 
-        $stmt->bindParam(5, $document); 
-        $stmt->bindParam(6, $username); 
-        return $stmt->execute(); 
-    } 
-    
+
+    public function addClient($name, $mobileNumber, $photo, $address, $document, $username, $city, $state, $pincode)
+    {
+        $stmt = $this->conn->prepare("INSERT INTO clients (name, mobile_number, photo_name, address, document_name, username, city, state, pincode) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bindParam(1, $name);
+        $stmt->bindParam(2, $mobileNumber);
+        $stmt->bindParam(3, $photo);
+        $stmt->bindParam(4, $address);
+        $stmt->bindParam(5, $document);
+        $stmt->bindParam(6, $username);
+        $stmt->bindParam(7, $city);
+        $stmt->bindParam(8, $state);
+        $stmt->bindParam(9, $pincode);
+
+        return $stmt->execute();
+    }
 }
 
 class Advocate {
@@ -217,23 +236,31 @@ class UpdateAdvocate {
         return htmlspecialchars(stripslashes(trim($input)));
     }
 
-    public function update_advocate($id, $name, $mobileNumber, $joiningDate, $photo, $address, $specialization) { 
+    public function update_advocate($id, $name, $mobileNumber, $joiningDate, $photo, $address, $specialization, $city, $state, $pincode, $country) { 
         // Validate and sanitize input data 
         $name = $this->sanitize_input($name); 
         $mobileNumber = $this->sanitize_input($mobileNumber); 
         $joiningDate = $this->sanitize_input($joiningDate); 
         $address = $this->sanitize_input($address); 
+        $city = $this->sanitize_input($city); 
+        $state = $this->sanitize_input($state); 
+        $pincode = $this->sanitize_input($pincode); 
+        $country = $this->sanitize_input($country); 
         // Validate and sanitize specialization array 
         $specialization = array_map(array($this, 'sanitize_input'), $specialization); 
         // Prepare and bind SQL statement 
-        $stmt = $this->conn->prepare("UPDATE advocates SET name = ?, mobile_number = ?, joining_date = ?, photo = ?, address = ?, specializations = ? WHERE id = ?"); 
+        $stmt = $this->conn->prepare("UPDATE advocates SET name = ?, mobile_number = ?, joining_date = ?, photo = ?, address = ?, specializations = ?, city = ?, state = ?, pincode = ?, country = ? WHERE id = ?"); 
         $stmt->bindParam(1, $name, PDO::PARAM_STR); 
         $stmt->bindParam(2, $mobileNumber, PDO::PARAM_STR); 
         $stmt->bindParam(3, $joiningDate, PDO::PARAM_STR); 
         $stmt->bindParam(4, $photo, PDO::PARAM_LOB); 
         $stmt->bindParam(5, $address, PDO::PARAM_STR); 
         $stmt->bindParam(6, json_encode($specialization), PDO::PARAM_STR); 
-        $stmt->bindParam(7, $id, PDO::PARAM_INT); 
+        $stmt->bindParam(7, $city, PDO::PARAM_STR); 
+        $stmt->bindParam(8, $state, PDO::PARAM_STR); 
+        $stmt->bindParam(9, $pincode, PDO::PARAM_STR); 
+        $stmt->bindParam(10, $country, PDO::PARAM_STR); 
+        $stmt->bindParam(11, $id, PDO::PARAM_INT); 
         // Execute statement 
         $stmt->execute(); 
         if($stmt->rowCount() > 0) {  
@@ -264,7 +291,7 @@ class ClientDetails {
     }
 
     public function getClientDetails($id) {
-        $stmt = $this->conn->prepare("SELECT id,name, mobile_number, photo_name, address, document_name FROM clients WHERE id = ?");
+        $stmt = $this->conn->prepare("SELECT * FROM clients WHERE id = ?");
         $stmt->bindParam(1, $id, PDO::PARAM_INT);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -281,16 +308,18 @@ class updateClient
         $this->conn = $conn;
     }
 
-    public function updateClientData($id, $name, $mobileNumber, $photo, $address, $document)
+    public function updateClientData($id, $name, $mobileNumber, $photo, $address, $document, $city, $state, $pincode)
     {
-        $stmt = $this->conn->prepare("UPDATE clients SET name=:name, mobile_number=:mobileNumber, photo_name=:photo, address=:address, document_name=:document WHERE id=:id");
+        $stmt = $this->conn->prepare("UPDATE clients SET name=:name, mobile_number=:mobileNumber, photo_name=:photo, address=:address, document_name=:document, city=:city, state=:state, pincode=:pincode WHERE id=:id");
         $stmt->bindParam(':id', $id);
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':mobileNumber', $mobileNumber);
         $stmt->bindParam(':photo', $photo);
         $stmt->bindParam(':address', $address);
         $stmt->bindParam(':document', $document);
-
+        $stmt->bindParam(':city', $city);
+        $stmt->bindParam(':state', $state);
+        $stmt->bindParam(':pincode', $pincode);
         if ($stmt->execute()) {
             return true;
         } else {
@@ -345,7 +374,8 @@ class AddCase
     public function saveCase($data)
     {
         $special_note = $data['special_note'] . ' - ' . $_SESSION['username'];
-        $sql = "INSERT INTO cases (case_number, filing_number, fillingDate, client, party_name, case_status, advocate, case_next_date, special_note, total_amount, recieved_amount, pending_amount, payment) VALUES (:case_number, :ffiling_number, :fillingDate, :client, :party_name, :case_status, :advocate, :case_next_date, :special_note, :total_amount, :recieved_amount, :pending_amount, :payment)";
+        $status="open";
+        $sql = "INSERT INTO cases (case_number, filing_number, fillingDate, client, party_name, case_status, advocate, case_next_date, special_note, total_amount, recieved_amount, pending_amount, payment,status) VALUES (:case_number, :ffiling_number, :fillingDate, :client, :party_name, :case_status, :advocate, :case_next_date, :special_note, :total_amount, :recieved_amount, :pending_amount, :payment,:status)";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':case_number', $data['case_number']);
         $stmt->bindParam(':ffiling_number', $data['ffiling_number']);
@@ -360,6 +390,7 @@ class AddCase
         $stmt->bindParam(':recieved_amount', $data['recieved_amount']);
         $stmt->bindParam(':pending_amount', $data['pending_amount']);
         $stmt->bindParam(':payment', $data['payment']);
+        $stmt->bindParam(':status', $status);
         return $stmt->execute();
     }
 }
@@ -478,12 +509,6 @@ class getAllCaseDetails {
         $stmt->bindParam(1, $id);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        foreach ($result as &$case) {
-            $advocateName = $this->getAdvocateName($case['advocate']);
-            $clientName = $this->getClientName($case['client']);
-            $case['advocate'] = $advocateName;
-            $case['client'] = $clientName;
-        }
         return $result;
     }
     public function getAdvocateName($username)
