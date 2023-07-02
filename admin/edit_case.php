@@ -42,7 +42,7 @@ Swal.fire({
                     <div class="page-title-box">
                         <div class="float-right">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="dashboard.php">Law Affair</a></li>
+                                <li class="breadcrumb-item"><a href="dashboard.php">Legal Partner</a></li>
                                 <li class="breadcrumb-item active">Edit Case</li>
                             </ol>
                         </div>
@@ -212,7 +212,7 @@ Swal.fire({
                     </div><!-- container -->
 
         <footer class="footer text-center text-sm-left">
-            &copy; 2023 Law Affair
+            &copy; 2023 Legal Partner
         </footer><!--end footer-->
 </div>
 <!-- end page content -->

@@ -21,7 +21,7 @@ $info=$user->displayUserInfo();
                             <div class="page-title-box">
                                 <div class="float-right">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="javascript:void(0);">Law Affair</a></li>
+                                        <li class="breadcrumb-item"><a href="javascript:void(0);">Legal Partner</a></li>
                                         <li class="breadcrumb-item active">Dashboard</li>
                                     </ol>
                                 </div>
@@ -70,7 +70,7 @@ $info=$user->displayUserInfo();
                 </div><!-- container -->
 
                 <footer class="footer text-center text-sm-left">
-                    &copy; 2023 Law Affair 
+                    &copy; 2023 Legal Partner 
                 </footer><!--end footer-->
             </div>
             <!-- end page content -->

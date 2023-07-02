@@ -6,7 +6,6 @@ require("top-navbar.php");
 
     <!-- Page Content-->
     <div class="page-content">
-
         <div class="container-fluid">
             <!-- Page-Title -->
             <div class="row">
@@ -14,7 +13,7 @@ require("top-navbar.php");
                     <div class="page-title-box">
                         <div class="float-right">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="dashboard.php">Law Affair</a></li>
+                                <li class="breadcrumb-item"><a href="dashboard.php">Legal Partner</a></li>
                                 <li class="breadcrumb-item active">Payment </li>
                             </ol>
                         </div>
@@ -64,7 +63,97 @@ require("top-navbar.php");
                     </form>
                 </div>
             </div>
-                                    </div>
+            </div>
+
+            <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="mt-0 header-title">Edit Case</h4>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                        <form action="update_case.php" method="POST" enctype="multipart/form-data">
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 mb-2 mb-lg-0">
+                                                            <label for="pro-start-date">Case No</label>
+                                                            <input type="text" class="form-control"  id="case_number" value="<?php echo $cases[0]['case_number']; ?>" readonly    >
+                                                            <input type="hidden" class="form-control" name="id"  id="id" value="<?php echo $cases[0]['id']; ?>" readonly    >
+                                                        </div><!--end col-->
+                                                        <div class="col-lg-3 mb-2 mb-lg-0">
+                                                            <label for="pro-start-date">Filing No</label>
+                                                            <input type="text" name="ffiling_number" class="form-control" id="case_number" value="<?php echo $cases[0]['filing_number']; ?>">
+                                                        </div><!--end col-->
+                                                        <div class="col-lg-3 mb-2 mb-lg-0">
+                                                            <label for="pro-start-date">Filing Date</label>
+                                                            <input type="date" name="fillingDate" class="form-control" id="pro-start-date" placeholder="Enter start date" value="<?php echo $cases[0]['fillingDate']; ?>">
+                                                        </div><!--end col-->
+                                                        <div class="col-lg-3">
+                                                        <label class="drop-down">Client Name</label>
+                                                        <select class="form-control" name="client">
+                                                            <option value="">Select</option>
+                                                            </select>
+                                                        </div><!--end col-->                                                        
+                                                    </div><!--end row-->
+                                                </div><!--end form-group-->
+                                                <div class="form-group">
+                                                    <label for="projectName">Party Name :</label>
+                                                    <input type="text" class="form-control" id="projectName"  value="<?php echo $cases[0]['party_name']; ?>" name="party_name" aria-describedby="emailHelp" placeholder="Enter Party Name">
+                                                </div><!--end form-group-->
+                                                
+                                                <div class="col-md-9">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-lg-6 mb-2 mb-lg-0">
+                                                            <label for="pro-start-date">Case Next Date</label>
+                                                            <input type="date" class="form-control" name="case_next_date" id="pro-start-date" value="<?php echo $cases[0]['case_next_date']; ?>" placeholder="Enter start date">
+                                                        </div><!--end col-->
+                                                        <div class="form-group col-lg-6 mb-2 mb-lg-0">
+                                                        <label class="drop-down">Select Advocate</label>
+                                                        <select class="form-control" name="advocate">
+                                                            <option value="">Select</option>
+                                                           
+                                                        </select>
+                                                
+                                                    </div>                                                      
+                                                    </div><!--end row-->
+                                                </div><!--end form-group-->
+                                                <div class="form-group">
+                                                <b>Payment Details</b>
+                                                <div class="row">
+                                                    <div class="col-lg-3 mb-2 mb-lg-0">
+                                                        <label for="pro-start-date">Total Amount</label>
+                                                        <input type="text" name="total_amount" value="<?php echo $cases[0]['total_amount']; ?>" class="form-control" id="case_number">
+                                                    </div><!--end col-->
+                                                    <div class="col-lg-3 mb-2 mb-lg-0">
+                                                        <label for="pro-start-date">Received Amount</label>
+                                                        <input type="text" class="form-control" value="<?php echo $cases[0]['recieved_amount']; ?>" name="recieved_amount" id="case_number" oninput="calculatePendingAmount()">
+                                                    </div><!--end col-->
+                                                    <div class="col-lg-3 mb-2 mb-lg-0">
+                                                        <label for="pro-start-date">Pending Amount</label>
+                                                        <input type="text" class="form-control" value="<?php echo $cases[0]['pending_amount']; ?>" name="pending_amount" id="case_number" readonly>
+                                                    </div><!--end col-->
+                                                    <div class="col-lg-3">
+                                                    <label for="pro-end-date">Mode of Payment</label>
+                                                    <select class="form-control" name="payment">
+                                                        <option value="upi" <?php if ($cases[0]['payment'] == 'upi') echo 'selected'; ?>>UPI</option>
+                                                        <option value="cash" <?php if ($cases[0]['payment'] == 'cash') echo 'selected'; ?>>CASH</option>
+                                                        <option value="card" <?php if ($cases[0]['payment'] == 'card') echo 'selected'; ?>>Credit Card/Debit Card</option>
+                                                        <option value="Netbanking" <?php if ($cases[0]['payment'] == 'Netbanking') echo 'selected'; ?>>Netbanking</option>
+                                                    </select>
+                                                    </div><!--end col-->                                                        
+                                                </div><!--end row-->
+                                            </div><!--end form-group-->
+                                                
+                                                <button type="submit" class="btn btn-gradient-primary">Update Case</button>
+                                                <button type="button" class="btn btn-gradient-danger">Cancel</button>
+                                            </form>  <!--end form-->
+                                        </div><!--end col-->
+                                    </div><!--end row-->                                                                              
+                                </div><!--end card-body-->
+                            </div><!--end card-->
+                        </div><!--end col-->
             <div class="row">
             <div class="card col-sm-12">
                 <div class="card-body">
@@ -109,7 +198,7 @@ require("top-navbar.php");
         </div><!-- container -->
 
         <footer class="footer text-center text-sm-left">
-            &copy; 2023 Law Affair
+            &copy; 2023 Legal Partner
         </footer><!--end footer-->
     </div>
     <!-- end page content -->

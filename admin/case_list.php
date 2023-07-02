@@ -38,7 +38,7 @@ if (isset($_GET['error'])) {
                         <div class="page-title-box">
                             <div class="float-right">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="dashboard.php">Law Affair</a></li>
+                                    <li class="breadcrumb-item"><a href="dashboard.php">Legal Partner</a></li>
                                     <li class="breadcrumb-item active">Case List</li>
                                 </ol>
                             </div>
@@ -128,7 +128,7 @@ if (isset($_GET['error'])) {
                 <!--end footer-->
             </div>
             <footer class="footer text-center text-sm-left">
-                    &copy; 2023 Law Affair
+                    &copy; 2023 Legal Partner
                 </footer>
             <!-- end page content -->
         </div>
