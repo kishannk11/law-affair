@@ -217,22 +217,21 @@ require("top-navbar.php");
                                                         <label for="pro-start-date">Total Amount</label>
                                                         <input type="text" name="total_amount" class="form-control" id="case_number" required>
                                                     </div><!--end col-->
-                                                    <div class="col-lg-3 mb-2 mb-lg-0">
-                                                        <label for="pro-start-date">Received Amount</label>
-                                                        <input type="text" class="form-control" name="recieved_amount" id="case_number" oninput="calculatePendingAmount()" required>
-                                                    </div><!--end col-->
-                                                    <div class="col-lg-3 mb-2 mb-lg-0">
-                                                        <label for="pro-start-date">Pending Amount</label>
-                                                        <input type="text" class="form-control" name="pending_amount" id="case_number" readonly>
-                                                    </div><!--end col-->
-                                                    <div class="col-lg-3">
+                                                        <!--end col-->
+                                                        <div class="col-lg-3">
                                                         <label for="pro-end-date">Mode of Payment</label>
-                                                        <select class="form-control" name="payment" required>
+                                                        <select class="form-control" name="payment" id="payment" onchange="showHideTransactionId()">
+                                                            <option>Select</option>
                                                             <option value="upi">UPI</option>
                                                             <option value="cash">CASH</option>
+                                                            <option value="cash">Cheque</option>
                                                             <option value="card">Credit Card/Debit Card</option>
                                                             <option value="Netbanking">Netbanking</option>
                                                         </select>
+                                                    </div>
+                                                    <div class="col-lg-3 mb-2 mb-lg-0" id="transactionIdField" style="display: none;">
+                                                        <label for="pro-start-date">Transaction ID</label>
+                                                        <input type="text" class="form-control" name="transaction" id="transactionId">
                                                     </div><!--end col-->                                                        
                                                 </div><!--end row-->
                                             </div><!--end form-group-->
@@ -260,25 +259,15 @@ require("top-navbar.php");
 <!-- end page content -->
 </div>
 <!-- end page-wrapper -->
-
-
 <script>
-    function calculatePendingAmount() {
-        // Get the total amount and received amount input elements
-        var totalAmountInput = document.getElementsByName("total_amount")[0];
-        var receivedAmountInput = document.getElementsByName("recieved_amount")[0];
-        var pendingAmountInput = document.getElementsByName("pending_amount")[0];
-
-        // Get the values from the input elements
-        var totalAmount = parseFloat(totalAmountInput.value.replace("Rs.", ""));
-        var receivedAmount = parseFloat(receivedAmountInput.value);
-
-        // Calculate the pending amount
-        var pendingAmount = totalAmount - receivedAmount;
-
-        // Set the pending amount to the input element
-        pendingAmountInput.value = pendingAmount;
+function showHideTransactionId() {
+    var paymentMethod = document.getElementById('payment').value;
+    if (paymentMethod === 'upi' || paymentMethod === 'card') {
+        document.getElementById('transactionIdField').style.display = 'block';
+    } else {
+        document.getElementById('transactionIdField').style.display = 'none';
     }
+}
 </script>
 
 <!-- jQuery  -->

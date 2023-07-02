@@ -44,7 +44,7 @@ require("top-navbar.php");
                                             <th>Advocate</th>
                                             <th>Party Name</th>
                                             <th>Case Status</th>
-                                            <th>Action</th>
+                                            
                                             
                                         </tr>
                                     </thead>
@@ -53,10 +53,10 @@ require("top-navbar.php");
                                 
                                     require_once 'Database.php';
                                     require_once 'config/config.php';
-                                    $caseList = new CaseList($conn);
+                                    $caseList = new CaseManager($conn);
 
                                     // Get the case details
-                                    $cases = $caseList->getCases();
+                                    $cases = $caseList->getClosedCases();
 
 
                                     // Display the case details in a table
@@ -71,8 +71,8 @@ require("top-navbar.php");
                                         echo "<td>" . htmlspecialchars($case["party_name"]) . "</td>";
                                         // echo "<td>" . htmlspecialchars($case["case_status"]) . "</td>";
                                         echo "<td>" . htmlspecialchars($case["advocate"]) . "</td>";
-                                        echo "<td>" . htmlspecialchars($case["special_note"]) . "</td>";
-                                        echo "<td>View Details</i></td>";
+                                        echo "<td>" . htmlspecialchars($case["status"]) . "</td>";
+                                        //echo "<td>View Details</i></td>";
                                         echo "</tr>";
                                     }
                                     ?>
@@ -94,66 +94,6 @@ require("top-navbar.php");
 
 
 
-
-<!-- jQuery  -->
-<script>
-    $(document).ready(function () {
-        // When the case number is selected, make an AJAX request to fetch the filling date and case next date
-        $('#caseNumber').on('change', function () {
-            var caseNumber = $(this).val();
-            $.ajax({
-                url: 'getCaseDates.php',
-                type: 'POST',
-                data: { caseNumber: caseNumber },
-                success: function (response) {
-                    var dates = JSON.parse(response);
-                    $('#startDate').empty();
-                    $.each(dates.fillingDates, function (index, fillingDate) {
-                        $('#startDate').append('<option>' + fillingDate + '</option>');
-                    });
-                    $('#endDate').empty();
-                    $.each(dates.caseNextDates, function (index, caseNextDate) {
-                        $('#endDate').append('<option>' + caseNextDate + '</option>');
-                    });
-                }
-            });
-        });
-    });
-</script>
-<script>
-function confirmCloseCase(caseNumber) {
-  Swal.fire({
-    title: 'Do you want to close the case?',
-    icon: 'question',
-    showCancelButton: true,
-    confirmButtonText: 'Yes',
-    cancelButtonText: 'No'
-  }).then((result) => {
-    if (result.value) {
-      // Make AJAX request to update case status
-      updateCaseStatus(caseNumber);
-    }
-  });
-}
-
-function updateCaseStatus(caseNumber) {
-  // Make AJAX request to update case status
-  $.ajax({
-    url: 'update_case_status.php',
-    type: 'POST',
-    data: { caseNumber: caseNumber },
-    success: function(response) {
-      // Disable the close case button
-      document.querySelector('.btn-close-case').disabled = true;
-      // Show success message
-      Swal.fire('Case closed!', '', 'success');
-    },
-    error: function() {
-      Swal.fire('Error!', 'An error occurred while closing the case.', 'error');
-    }
-  });
-}
-</script>
 
 
 <script src="assets/js/jquery.min.js"></script>

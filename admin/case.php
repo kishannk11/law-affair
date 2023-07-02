@@ -20,8 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         'case_next_date' => '',
         'special_note' => '',
         'total_amount' => '',
-        'recieved_amount' => '',
-        'pending_amount' => '',
+        'transaction' => '',
         'payment' => '',
     ];
     // Check if any field is empty
@@ -33,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $errors[$key] = "Error: " . ucfirst($key) . " field is required.";
             }
         } else {
-            if (empty($_POST[$key]) && $key !== 'special_note') {
+            if ($key !== 'transaction' && empty($_POST[$key]) && $key !== 'special_note') {
                 $errors[$key] = "Error: " . ucfirst($key) . " field is required.";
             } else {
                 $data[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_STRING);
