@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 01, 2023 at 08:22 AM
+-- Generation Time: Jul 02, 2023 at 07:54 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -92,10 +92,6 @@ CREATE TABLE `cases` (
   `advocate` varchar(100) NOT NULL,
   `case_next_date` date NOT NULL,
   `special_note` text DEFAULT NULL,
-  `total_amount` decimal(10,2) DEFAULT 0.00,
-  `recieved_amount` decimal(10,2) DEFAULT 0.00,
-  `pending_amount` decimal(10,2) DEFAULT 0.00,
-  `payment` varchar(20) DEFAULT NULL,
   `status` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -103,8 +99,10 @@ CREATE TABLE `cases` (
 -- Dumping data for table `cases`
 --
 
-INSERT INTO `cases` (`id`, `case_number`, `filing_number`, `fillingDate`, `client`, `party_name`, `case_status`, `advocate`, `case_next_date`, `special_note`, `total_amount`, `recieved_amount`, `pending_amount`, `payment`, `status`) VALUES
-(41, 'CASE7915', '45678', '2023-06-29', 'CLNT4057', 'Aamir', 'Status 1', 'ADVCT4123', '2023-07-01', 'Note - admin', 1000.00, 500.00, 500.00, 'upi', 'closed');
+INSERT INTO `cases` (`id`, `case_number`, `filing_number`, `fillingDate`, `client`, `party_name`, `case_status`, `advocate`, `case_next_date`, `special_note`, `status`) VALUES
+(45, 'CASE4911', '1234', '2023-07-02', 'CLNT4057', 'Aamir update', 'Status 1', 'ADVCT4123', '2023-07-03', 'Note - admin', 'open'),
+(46, 'CASE4911', '1234', '2023-07-02', 'CLNT4057', 'Aamir ', 'Status 1', 'ADVCT4123', '2023-07-03', 'Note - admin', 'open'),
+(47, 'CASE2806', '45678', '2023-07-02', 'CLNT4057', 'Aamir', 'Status 1', 'ADVCT4123', '2023-07-05', 'note - admin', 'open');
 
 -- --------------------------------------------------------
 
@@ -133,6 +131,35 @@ CREATE TABLE `clients` (
 
 INSERT INTO `clients` (`id`, `name`, `mobile_number`, `photo_name`, `address`, `document_name`, `username`, `created_at`, `updated_at`, `city`, `state`, `pincode`) VALUES
 (7, 'Ranjith Update', '9876543210', 'uploads/advocates-photo.jpeg', 'Banglore', 'uploads/advocates-photo(1).pdf', 'CLNT4057', '2023-06-30 07:02:34', '2023-06-30 07:22:48', 'Banglore', 'Karnataka', '574220');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payments`
+--
+
+CREATE TABLE `payments` (
+  `id` int(11) NOT NULL,
+  `case_number` varchar(255) DEFAULT NULL,
+  `total_amount` decimal(10,2) DEFAULT NULL,
+  `received_amount` decimal(10,2) DEFAULT NULL,
+  `pending_amount` decimal(10,2) DEFAULT NULL,
+  `payment` varchar(255) DEFAULT NULL,
+  `transaction_id` varchar(250) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `payments`
+--
+
+INSERT INTO `payments` (`id`, `case_number`, `total_amount`, `received_amount`, `pending_amount`, `payment`, `transaction_id`, `created_at`) VALUES
+(1, 'CASE4911', 5000.00, 2000.00, 3000.00, 'cash', '', '2023-07-02 14:49:02'),
+(2, 'CASE4911', 3000.00, 1000.00, 2000.00, 'cash', '', '2023-07-02 14:49:02'),
+(3, 'CASE2806', 10000.00, 5000.00, 5000.00, 'cash', '', '2023-07-02 16:09:58'),
+(7, 'CASE4911', 5000.00, 2000.00, 3000.00, 'cash', '', '2023-07-02 17:27:20'),
+(8, 'CASE4911', 5000.00, 2000.00, 3000.00, 'upi', '4dvee67eeghegee', '2023-07-02 17:27:49'),
+(9, 'CASE4911', 5000.00, 1000.00, 4000.00, 'cash', '', '2023-07-02 17:35:25');
 
 -- --------------------------------------------------------
 
@@ -175,6 +202,12 @@ ALTER TABLE `clients`
   ADD UNIQUE KEY `username` (`username`);
 
 --
+-- Indexes for table `payments`
+--
+ALTER TABLE `payments`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tokens`
 --
 ALTER TABLE `tokens`
@@ -200,13 +233,19 @@ ALTER TABLE `advocates`
 -- AUTO_INCREMENT for table `cases`
 --
 ALTER TABLE `cases`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `payments`
+--
+ALTER TABLE `payments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
