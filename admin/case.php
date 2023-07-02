@@ -2,6 +2,9 @@
 require_once 'config/config.php';
 require_once 'config/session.php';
 require_once 'Database.php';
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 $addCase = new AddCase($conn);
 $errors = array();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

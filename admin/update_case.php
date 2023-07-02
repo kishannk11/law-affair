@@ -19,7 +19,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         'case_status' => '',
         'advocate' => filter_input(INPUT_POST, 'advocate', FILTER_SANITIZE_STRING),
         'case_next_date' => filter_input(INPUT_POST, 'case_next_date', FILTER_SANITIZE_STRING),
-        'special_note' => filter_input(INPUT_POST, 'special_note', FILTER_SANITIZE_STRING),
         'total_amount' => filter_input(INPUT_POST, 'total_amount', FILTER_SANITIZE_STRING),
         'recieved_amount' => filter_input(INPUT_POST, 'recieved_amount', FILTER_SANITIZE_STRING),
         'pending_amount' => filter_input(INPUT_POST, 'pending_amount', FILTER_SANITIZE_STRING),

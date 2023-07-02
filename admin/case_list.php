@@ -72,9 +72,7 @@ if (isset($_GET['error'])) {
                                             <th>Case Status</th>
                                             <th>Case Next Date</th>
                                             <th>Note</th>
-                                            <th>Total Amount</th>
-                                            <th>Amount Recieved</th>
-                                            <th>Amount Pending</th>
+                                            
                                             <th>Action</th>
                                             
                                         </tr>
@@ -104,9 +102,7 @@ if (isset($_GET['error'])) {
                                         echo "<td>" . htmlspecialchars($case["advocate"]) . "</td>";
                                         echo "<td>" . htmlspecialchars($case["case_next_date"]) . "</td>";
                                         echo "<td>" . htmlspecialchars($case["special_note"]) . "</td>";
-                                        echo "<td>" . htmlspecialchars($case["total_amount"]) . "</td>";
-                                        echo "<td>" . htmlspecialchars($case["recieved_amount"]) . "</td>";
-                                        echo "<td>" . htmlspecialchars($case["pending_amount"]) . "</td>";
+                                       
                                         echo "<td>";
                                         echo '<a href="edit_case.php?id='. $case["id"] .'" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>';
                                         echo "<a onclick=\"deleteCase({$case['id']})\"><i class=\"fas fa-trash-alt text-danger font-16\"></i></a>";
