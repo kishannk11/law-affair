@@ -1,5 +1,5 @@
 /**
- * Theme: Law Affair - Responsive Bootstrap 4 Admin Dashboard
+ * Theme: Legal Partner - Responsive Bootstrap 4 Admin Dashboard
  * Author: Mannatthemes
  * Apexcharts Js
  */
@@ -2954,7 +2954,7 @@ var spark1 = {
       opacity: 0.2,
   },
   series: [{
-      name: 'Law Affair Sales ',
+      name: 'Legal Partner Sales ',
       data: randomizeArray(sparklineData)
   }],
   yaxis: {
@@ -3006,7 +3006,7 @@ var spark2 = {
       opacity: 0.2,
   },
   series: [{
-      name: 'Law Affair Expenses ',
+      name: 'Legal Partner Expenses ',
       data: randomizeArray(sparklineData)
   }],
   yaxis: {

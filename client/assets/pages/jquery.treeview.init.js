@@ -1,5 +1,5 @@
 /*
- Template: Law Affair - Bootstrap 4 Admin Dashboard
+ Template: Legal Partner - Bootstrap 4 Admin Dashboard
  Author: Mannatthemes
  File: Treeview
  */

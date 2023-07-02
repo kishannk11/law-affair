@@ -1,5 +1,5 @@
 /*
-Template Name: Law Affair - Admin & Dashboard Template
+Template Name: Legal Partner - Admin & Dashboard Template
 Author: Mannatthemes
 File: Topbar
 */
@@ -19,10 +19,10 @@ File: Topbar
       text-align: center;
       height: $topbar-height;
       position: relative;
-      width: $topbar-left-width;
+      width: 140px;
       z-index: 1;
       .logo {
-          line-height: $topbar-height;
+          line-height: 42px;
           .logo-sm {
               height: 42px;                
           }
@@ -37,6 +37,8 @@ File: Topbar
       }
   }
 }
+
+
 
 .navbar-custom {
   background: $bg-navbar;

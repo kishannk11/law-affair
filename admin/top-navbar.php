@@ -7,14 +7,14 @@ require_once('config/session.php');
 
     <head>
         <meta charset="utf-8" />
-        <title>Law Affair - Admin & Dashboard Template</title>
+        <title>Legal Partner - Admin Dashboard</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
         <!-- App favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.png">
+        <link rel="shortcut icon" href="assets/images/favi.png">
         <link href="plugins/sweet-alert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
         <link href="plugins/animate/animate.css" rel="stylesheet" type="text/css">
         <!-- App css -->
@@ -41,6 +41,19 @@ require_once('config/session.php');
         .error-text {
             color: red;
         }
+        /* .new-logo {
+            height: 60%;
+            width: auto;
+        }
+        .new-topbarleft {
+            background: #292e40;
+            float: left;
+            text-align: center;
+            position: relative;
+            width: 240px;
+            height: 70px;
+            padding-top: 15px;
+        } */
         </style>
 
     </head>
@@ -124,6 +137,7 @@ require_once('config/session.php');
                     <ul class="nav-second-level" aria-expanded="false">
                         <li class="nav-item"><a class="nav-link" href="add_case.php"><i class="ti-control-record"></i>Add Case</a></li>
                         <li class="nav-item"><a class="nav-link" href="case_list.php"><i class="ti-control-record"></i>Case List</a></li>
+                        <li class="nav-item"><a class="nav-link" href="case_closed.php"><i class="ti-control-record"></i>Closed Cases</a></li>
                     </ul>
                 </li>
 
@@ -132,7 +146,7 @@ require_once('config/session.php');
                 </li>
 
                 <li>
-                    <a href="payment.php"><i class="ti-bar-chart"></i><span>Payment</span></i></span></a>
+                    <a href="payment.php"><i class="ti-wallet"></i><span>Payment</span></i></span></a>
                 </li>
 
                 <li>
