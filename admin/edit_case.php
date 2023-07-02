@@ -169,7 +169,7 @@ Swal.fire({
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Upload Photo</label>
-                                                    <input class="form-control" name="photo" type="file" id="example-text-input">
+                                                    <input class="form-control"  type="file" id="example-text-input">
                                                 </div>
                                                 &nbsp;
                                                 &nbsp;

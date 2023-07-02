@@ -31,17 +31,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $errors['case_status'] = "Error: Case status field is required.";
     }
-     if (empty($errors)) {
+    if (empty($errors)) {
         // Save the form data to the database
         $caseId = $data['id']; // Save the case and get the case ID
-        if ($caseId) {
+        $isSaved = $addCase->saveCase($data); // Call the saveCase method
+        if ($isSaved) {
             $success = "Case Updated";
             header("Location: edit_case.php?id=" . $caseId . "&success=" . urlencode($success));
         } else {
             $error = "Error: Could not add case.";
             header("Location: edit_case.php?error=" . urlencode($error));
         }
-    } else {
+    }else {
         // Encode the error messages array as a JSON string and pass it as a URL parameter
         echo '<form id="errorForm" action="edit_case.php" method="post" style="display:none;">';
         foreach ($errors as $key => $value) {
