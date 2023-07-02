@@ -2,10 +2,15 @@
 require('top-navbar.php');
 ?>
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 require_once 'config/config.php';
 require_once 'Database.php';
-$case = new totalCase($conn);
-$total_count_case = $case->getTotalCount();
+$totalCase = new totalCase($conn);
+$totalCount = $totalCase->getTotalCount();
+$openCases = $totalCount['open_cases'];
+$closedCases = $totalCount['closed_cases'];
 
 $totalAdvocates = new totalAdvocates($conn);
 $total_count_advocate = $totalAdvocates->getTotalCount();
@@ -56,7 +61,7 @@ $total_count_advocate = $totalAdvocates->getTotalCount();
                                                 <i class="fas fa-ticket-alt bg-soft-warning"></i>
                                             </div>
                                             <h3 class="text-dark">
-                                            <?php echo $total_count_case;?>
+                                            <?php echo $openCases+$closedCases;?>
                                             </h3>
                                             <h6 class="font-14 text-dark">Total Cases</h6>                                                                                                                            
                                         </div><!--end card-body--> 
@@ -79,8 +84,8 @@ $total_count_advocate = $totalAdvocates->getTotalCount();
                                             <div class="icon-info mb-3">
                                                 <i class="fas fa-handshake bg-soft-success"></i>
                                             </div>
-                                            <h3 class="text-dark">1</h3>
-                                            <h6 class="font-14 text-dark">Assigned Cases</h6>                                                                                                                            
+                                            <h3 class="text-dark"><?php echo $openCases;?></h3>
+                                            <h6 class="font-14 text-dark">Open Cases</h6>                                                                                                                            
                                         </div><!--end card-body--> 
                                     </div><!--end card-->   
                                 </div><!-- end col-->
@@ -90,8 +95,8 @@ $total_count_advocate = $totalAdvocates->getTotalCount();
                                             <div class="icon-info mb-3">
                                                 <i class="fas fa-clipboard bg-soft-primary"></i>
                                             </div>
-                                            <h3 class="text-danger">2</h3>
-                                            <h6 class="font-14 text-dark">Unassigned Cases</h6>                                                                                                                            
+                                            <h3 class="text-danger"><?php echo $closedCases;?></h3>
+                                            <h6 class="font-14 text-dark">Closed Cases</h6>                                                                                                                            
                                         </div><!--end card-body--> 
                                     </div><!--end card-->   
                                 </div><!-- end col-->                       

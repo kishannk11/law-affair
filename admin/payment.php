@@ -83,8 +83,6 @@ require("top-navbar.php");
                                                         <tr>
                                                             <th>SL No</th>
                                                             <th>Total Amount</th>
-                                                            <th>Recieved Amount</th>
-                                                            <th>Pending</th>
                                                             <th>Date</th>
                                                         </tr>
                                                         </thead>
@@ -99,18 +97,11 @@ require("top-navbar.php");
                                                 <b>Payment Details</b>
                                                 <div class="row">
                                                 
+                                                    <!--end col-->
                                                     <div class="col-lg-3 mb-2 mb-lg-0">
-                                                        <label for="pro-start-date">Total Amount</label>
-                                                        <input type="text" name="total_amount" class="form-control" id="totalamount" readonly>
+                                                        <label for="pro-start-date">Amount</label>
+                                                        <input type="text" class="form-control" name="amount" >
                                                         <input type="hidden" name="case_number" class="form-control" id="case">
-                                                    </div><!--end col-->
-                                                    <div class="col-lg-3 mb-2 mb-lg-0">
-                                                        <label for="pro-start-date">Received Amount</label>
-                                                        <input type="text" class="form-control"  name="recieved_amount" id="case_number" oninput="calculatePendingAmount()">
-                                                    </div><!--end col-->
-                                                    <div class="col-lg-3 mb-2 mb-lg-0">
-                                                        <label for="pro-start-date">Pending Amount</label>
-                                                        <input type="text" class="form-control" name="pending_amount" id="case_number" readonly>
                                                     </div>
                                                     <!--end col-->
                                                     <div class="col-lg-3">
@@ -119,6 +110,7 @@ require("top-navbar.php");
                                                             <option>Select</option>
                                                             <option value="upi">UPI</option>
                                                             <option value="cash">CASH</option>
+                                                            <option value="cash">Cheque</option>
                                                             <option value="card">Credit Card/Debit Card</option>
                                                             <option value="Netbanking">Netbanking</option>
                                                         </select>
@@ -203,6 +195,7 @@ $(document).ready(function() {
                 var caseDetails = response.caseDetails;
                 var paymentDetails = response.paymentDetails;
                 var totalAmount = paymentDetails[0].total_amount;
+                var totalAmount = 0;
                 console.log(totalAmount);
                  // Update the UI with the case details and payment details
                 // ...
@@ -224,12 +217,16 @@ $(document).ready(function() {
                     var row = $('<tr>');
                     row.append($('<td>').text(index + 1));
                     row.append($('<td>').text(detail.total_amount));
-                    row.append($('<td>').text(detail.received_amount));
-                    row.append($('<td>').text(detail.pending_amount));
                     row.append($('<td>').text(detail.created_at));
                     tbody.append(row);
+                    totalAmount += parseFloat(detail.total_amount);
                 });
-            },
+                var totalRow = $('<tr>');
+                totalRow.append($('<td>').html('<strong>Total Amount</strong>'));
+                totalRow.append($('<td>').html(totalAmount.toFixed(2))); // Display the total amount with 2 decimal places
+                totalRow.append($('<td>')); // Leave the last column empty
+                tbody.append(totalRow);
+                },
             error: function(xhr, status, error) {
                 // Handle any errors
                 console.log(error);

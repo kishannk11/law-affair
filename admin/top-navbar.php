@@ -67,7 +67,7 @@ require_once('config/session.php');
             <div class="topbar-left">
                 <a href="dashboard.php" class="logo">
                     <span>
-                        <img src="assets/images/new-logo.png" alt="logo" class="logo-sm">
+                        <img src="assets/images/new-logo.png" alt="logo" width="100" height="50">
                     </span>
                 </a>
             </div>
@@ -80,7 +80,7 @@ require_once('config/session.php');
                     <li class="dropdown">
                         <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
                             aria-haspopup="false" aria-expanded="false">
-                            <img src="assets/images/users/admin-dp.png" alt="profile-user" class="rounded-circle"width="40" height="40"> 
+                            <img src="assets/images/users/admin-dp.png" alt="profile-user" class="rounded-circle"width="80" height="80"> 
                             <span class="ml-1 nav-user-name hidden-sm">Admin<i class="mdi mdi-chevron-down"></i> </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">

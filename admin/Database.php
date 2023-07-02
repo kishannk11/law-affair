@@ -388,12 +388,11 @@ class AddCase
         $stmt->bindParam(':special_note', $special_note);
         $stmt->bindParam(':status', $status);
         $stmt->execute();
-        $paymentSql = "INSERT INTO payments (case_number, total_amount,received_amount, pending_amount, payment) VALUES (:case_number, :total_amount, :received_amount, :pending_amount, :payment)";
+        $paymentSql = "INSERT INTO payments (case_number, total_amount, transaction_id, payment) VALUES (:case_number, :total_amount, :transaction_id, :payment)";
         $paymentStmt = $this->conn->prepare($paymentSql);
         $paymentStmt->bindParam(':case_number', $data['case_number']);
         $paymentStmt->bindParam(':total_amount', $data['total_amount']);
-        $paymentStmt->bindParam(':received_amount', $data['recieved_amount']);
-        $paymentStmt->bindParam(':pending_amount', $data['pending_amount']);
+        $paymentStmt->bindParam(':transaction_id', $data['transaction']);
         $paymentStmt->bindParam(':payment', $data['payment']);
     
     return $paymentStmt->execute();
@@ -469,19 +468,28 @@ class deleteCase {
 class totalCase {
     private $conn;
     private $table_name = "cases";
-    
-    public function __construct($db) {
+     public function __construct($db) {
         $this->conn = $db;
     }
-    
-    // Function to fetch total count of cases
+     // Function to fetch total count of open and closed cases
     public function getTotalCount() {
-        // SQL query to fetch total count of cases
-        $query = "SELECT COUNT(*) as total_count FROM " . $this->table_name;
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute();
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $row['total_count'];
+        // SQL query to fetch total count of open cases
+        $openQuery = "SELECT COUNT(*) as open_count FROM " . $this->table_name . " WHERE status = 'open'";
+        $openStmt = $this->conn->prepare($openQuery);
+        $openStmt->execute();
+        $openRow = $openStmt->fetch(PDO::FETCH_ASSOC);
+        $openCount = $openRow['open_count'];
+         // SQL query to fetch total count of closed cases
+        $closedQuery = "SELECT COUNT(*) as closed_count FROM " . $this->table_name . " WHERE status = 'closed'";
+        $closedStmt = $this->conn->prepare($closedQuery);
+        $closedStmt->execute();
+        $closedRow = $closedStmt->fetch(PDO::FETCH_ASSOC);
+        $closedCount = $closedRow['closed_count'];
+         $totalCount = array(
+            'open_cases' => $openCount,
+            'closed_cases' => $closedCount
+        );
+         return $totalCount;
     }
 }
 
@@ -663,6 +671,22 @@ class getPayment {
             'paymentDetails' => $paymentDetails
         );
          echo json_encode($result);
+    }
+}
+
+
+class CaseManager {
+    private $conn;
+    
+    public function __construct($conn) {
+        $this->conn = $conn;
+    }
+    
+    public function getClosedCases() {
+        $stmt = $this->conn->prepare("SELECT * FROM cases WHERE status = 'closed'");
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
     }
 }
 ?>
