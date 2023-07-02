@@ -375,7 +375,7 @@ class AddCase
     {
         $special_note = $data['special_note'] . ' - ' . $_SESSION['username'];
         $status="open";
-        $sql = "INSERT INTO cases (case_number, filing_number, fillingDate, client, party_name, case_status, advocate, case_next_date, special_note, total_amount, recieved_amount, pending_amount, payment,status) VALUES (:case_number, :ffiling_number, :fillingDate, :client, :party_name, :case_status, :advocate, :case_next_date, :special_note, :total_amount, :recieved_amount, :pending_amount, :payment,:status)";
+        $sql = "INSERT INTO cases (case_number, filing_number, fillingDate, client, party_name, case_status, advocate, case_next_date, special_note,status) VALUES (:case_number, :ffiling_number, :fillingDate, :client, :party_name, :case_status, :advocate, :case_next_date, :special_note, :status)";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':case_number', $data['case_number']);
         $stmt->bindParam(':ffiling_number', $data['ffiling_number']);
@@ -386,12 +386,17 @@ class AddCase
         $stmt->bindParam(':advocate', $data['advocate']);
         $stmt->bindParam(':case_next_date', $data['case_next_date']);
         $stmt->bindParam(':special_note', $special_note);
-        $stmt->bindParam(':total_amount', $data['total_amount']);
-        $stmt->bindParam(':recieved_amount', $data['recieved_amount']);
-        $stmt->bindParam(':pending_amount', $data['pending_amount']);
-        $stmt->bindParam(':payment', $data['payment']);
         $stmt->bindParam(':status', $status);
-        return $stmt->execute();
+        $stmt->execute();
+        $paymentSql = "INSERT INTO payments (case_number, total_amount,received_amount, pending_amount, payment) VALUES (:case_number, :total_amount, :received_amount, :pending_amount, :payment)";
+        $paymentStmt = $this->conn->prepare($paymentSql);
+        $paymentStmt->bindParam(':case_number', $data['case_number']);
+        $paymentStmt->bindParam(':total_amount', $data['total_amount']);
+        $paymentStmt->bindParam(':received_amount', $data['recieved_amount']);
+        $paymentStmt->bindParam(':pending_amount', $data['pending_amount']);
+        $paymentStmt->bindParam(':payment', $data['payment']);
+    
+    return $paymentStmt->execute();
     }
 }
 
@@ -539,7 +544,7 @@ class updateAllCase
     public function saveCase($data)
     {
         $special_note = $data['special_note'];
-        $sql = "UPDATE cases SET filing_number = :filing_number, fillingDate = :fillingDate, client = :client, party_name = :party_name, case_status = :case_status, advocate = :advocate, case_next_date = :case_next_date, special_note = :special_note, total_amount = :total_amount, recieved_amount = :recieved_amount, pending_amount = :pending_amount, payment = :payment WHERE id = :id";
+        $sql = "UPDATE cases SET filing_number = :filing_number, fillingDate = :fillingDate, client = :client, party_name = :party_name, case_status = :case_status, advocate = :advocate, case_next_date = :case_next_date WHERE id = :id";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':filing_number', $data['ffiling_number']);
         $stmt->bindParam(':fillingDate', $data['fillingDate']);
@@ -548,11 +553,6 @@ class updateAllCase
         $stmt->bindParam(':case_status', $data['case_status']);
         $stmt->bindParam(':advocate', $data['advocate']);
         $stmt->bindParam(':case_next_date', $data['case_next_date']);
-        $stmt->bindParam(':special_note', $special_note);
-        $stmt->bindParam(':total_amount', $data['total_amount']);
-        $stmt->bindParam(':recieved_amount', $data['recieved_amount']);
-        $stmt->bindParam(':pending_amount', $data['pending_amount']);
-        $stmt->bindParam(':payment', $data['payment']);
         $stmt->bindParam(':id', $data['id']);
         return $stmt->execute();
     }
@@ -639,6 +639,30 @@ class AdProfile{
         $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
         return $user;
+    }
+}
+
+class getPayment {
+    private $db;
+     public function __construct($conn) {
+        $this->db = $conn;
+    }
+     public function getPaymentDetails($caseNumber) {
+        $query = "SELECT * FROM cases WHERE case_number = :case_number";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':case_number', $caseNumber);
+        $stmt->execute();
+         $caseDetails = $stmt->fetch(PDO::FETCH_ASSOC);
+         $query = "SELECT * FROM payments WHERE case_number = :case_number";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':case_number', $caseNumber);
+        $stmt->execute();
+         $paymentDetails = $stmt->fetchAll(PDO::FETCH_ASSOC);
+         $result = array(
+            'caseDetails' => $caseDetails,
+            'paymentDetails' => $paymentDetails
+        );
+         echo json_encode($result);
     }
 }
 ?>
