@@ -165,7 +165,7 @@ Swal.fire({
 
                                                 <div class="form-group">
                                                     <label for="pro-message">Special Note</label>
-                                                    <textarea class="form-control" name="special_note" rows="5" id="pro-message"  placeholder="Special Note"><?php echo $cases[0]['special_note']; ?></textarea>
+                                                    <textarea class="form-control"  rows="5" id="pro-message"  placeholder="Special Note"><?php echo $cases[0]['special_note']; ?></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Upload Photo</label>
@@ -174,32 +174,6 @@ Swal.fire({
                                                 &nbsp;
                                                 &nbsp;
                                                 
-                                                <div class="form-group">
-                                                <b>Payment Details</b>
-                                                <div class="row">
-                                                    <div class="col-lg-3 mb-2 mb-lg-0">
-                                                        <label for="pro-start-date">Total Amount</label>
-                                                        <input type="text" name="total_amount" value="<?php echo $cases[0]['total_amount']; ?>" class="form-control" id="case_number">
-                                                    </div><!--end col-->
-                                                    <div class="col-lg-3 mb-2 mb-lg-0">
-                                                        <label for="pro-start-date">Received Amount</label>
-                                                        <input type="text" class="form-control" value="<?php echo $cases[0]['recieved_amount']; ?>" name="recieved_amount" id="case_number" oninput="calculatePendingAmount()">
-                                                    </div><!--end col-->
-                                                    <div class="col-lg-3 mb-2 mb-lg-0">
-                                                        <label for="pro-start-date">Pending Amount</label>
-                                                        <input type="text" class="form-control" value="<?php echo $cases[0]['pending_amount']; ?>" name="pending_amount" id="case_number" readonly>
-                                                    </div><!--end col-->
-                                                    <div class="col-lg-3">
-                                                    <label for="pro-end-date">Mode of Payment</label>
-                                                    <select class="form-control" name="payment">
-                                                        <option value="upi" <?php if ($cases[0]['payment'] == 'upi') echo 'selected'; ?>>UPI</option>
-                                                        <option value="cash" <?php if ($cases[0]['payment'] == 'cash') echo 'selected'; ?>>CASH</option>
-                                                        <option value="card" <?php if ($cases[0]['payment'] == 'card') echo 'selected'; ?>>Credit Card/Debit Card</option>
-                                                        <option value="Netbanking" <?php if ($cases[0]['payment'] == 'Netbanking') echo 'selected'; ?>>Netbanking</option>
-                                                    </select>
-                                                    </div><!--end col-->                                                        
-                                                </div><!--end row-->
-                                            </div><!--end form-group-->
                                                 
                                                 <button type="submit" class="btn btn-gradient-primary">Update Case</button>
                                                 <button type="button" class="btn btn-gradient-danger">Cancel</button>
