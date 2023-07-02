@@ -14,7 +14,7 @@ require_once('config/session.php');
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
         <!-- App favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.png">
+        <link rel="shortcut icon" href="assets/images/favi.png">
         <link href="plugins/sweet-alert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
         <link href="plugins/animate/animate.css" rel="stylesheet" type="text/css">
         <!-- App css -->
@@ -41,6 +41,19 @@ require_once('config/session.php');
         .error-text {
             color: red;
         }
+        /* .new-logo {
+            height: 60%;
+            width: auto;
+        }
+        .new-topbarleft {
+            background: #292e40;
+            float: left;
+            text-align: center;
+            position: relative;
+            width: 240px;
+            height: 70px;
+            padding-top: 15px;
+        } */
         </style>
 
     </head>
