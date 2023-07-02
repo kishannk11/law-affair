@@ -7,7 +7,7 @@ require_once('config/session.php');
 
     <head>
         <meta charset="utf-8" />
-        <title>Law-Affair Client</title>
+        <title>Legal Partner Client</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="" name="author" />
@@ -39,11 +39,8 @@ require_once('config/session.php');
             <!-- LOGO -->
             <div class="topbar-left">
                 <a href="dashboard.php" class="logo">
-                    <span>
-                        <img src="assets/images/logo-sm.png" alt="logo-small" class="logo-sm">
-                    </span>
-                    <span>
-                        <img src="assets/images/logo.png" alt="logo-large" class="logo-lg logo-light">
+                <span>
+                        <img src="assets/images/new-logo.png" alt="logo" width="100" height="50">
                     </span>
                 </a>
             </div>
