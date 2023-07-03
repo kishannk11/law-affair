@@ -51,7 +51,7 @@ class AddAdvocate
         $data = htmlspecialchars($data);
         return $data;
     }
-    public function addAdvocateData($name, $mobileNumber, $joiningDate, $photo, $address, $specialization, $username, $password,$role, $city, $state, $pincode, $country)
+    public function addAdvocateData($name, $mobileNumber, $joiningDate, $photo, $address, $specialization, $username, $password,$role, $city, $state, $pincode, $country,$email)
     {
         // Validate and sanitize input data
         $name = $this->validateInput($name);
@@ -64,10 +64,11 @@ class AddAdvocate
         $state = $this->validateInput($state);
         $pincode = $this->validateInput($pincode);
         $country = $this->validateInput($country);
+        $email = $this->validateInput($email);
         // Validate and sanitize specialization array
         $specialization = array_map(array($this, 'validateInput'), $specialization);
         // Prepare and bind SQL statement
-        $stmt = $this->conn->prepare("INSERT INTO advocates (name, mobile_number, joining_date, photo, address, specializations, username, password,role, city, state, pincode, country) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $this->conn->prepare("INSERT INTO advocates (name, mobile_number, joining_date, photo, address, specializations, username, password,role, city, state, pincode, country,email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)");
         $stmt->bindParam(1, $name, PDO::PARAM_STR);
         $stmt->bindParam(2, $mobileNumber, PDO::PARAM_STR);
         $stmt->bindParam(3, $joiningDate, PDO::PARAM_STR);
@@ -81,6 +82,7 @@ class AddAdvocate
         $stmt->bindParam(11, $state, PDO::PARAM_STR);
         $stmt->bindParam(12, $pincode, PDO::PARAM_STR);
         $stmt->bindParam(13, $country, PDO::PARAM_STR);
+        $stmt->bindParam(14, $email, PDO::PARAM_STR);
         // Execute statement
         $stmt->execute();
         if ($stmt->rowCount() > 0) {

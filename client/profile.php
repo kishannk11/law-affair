@@ -65,7 +65,7 @@ if (isset($_GET['error'])) {
 
                                                     ?>
                                                     <div class="met-profile-main-pic">
-                                                        <img src="../admin/<?php echo $info['photo']; ?>" alt="" class="rounded-circle" width="100" height="100">
+                                                        <img src="../admin/uploads/<?php echo $info['photo']; ?>" alt="" class="rounded-circle" width="100" height="100">
                                                         <!-- <span class="fro-profile_main-pic-change">
                                                             <i class="fas fa-camera"></i>
                                                         </span> -->
@@ -99,63 +99,37 @@ if (isset($_GET['error'])) {
                             </div><!--end card-->
                         </div><!--end col-->
                     </div><!--end row-->
+                    <?php
+                    require_once 'config/config.php';
+                    $case = new totalCase($conn);
+                    $total_count_case = $case->getTotalCount();
+                    ?>
                     <div class="row">
                         <div class="col-12">
                             <div class="tab-content detail-list" id="pills-tabContent">
                                 <div class="tab-pane fade show active" id="general_detail">
                                     <div class="row">
-                                        <div class="col-xl-4">  
+                                        <div class="col-xl-12">  
                                                 <div class="card">
-                                                    <div class="card-body">
-                                                        <div class=" d-flex justify-content-between">
-                                                            <img src="assets/images/widgets/monthly-re.png" alt="" height="75">
-                                                            <div class="align-self-center">
-                                                                <h2 class="mt-0 mb-2 font-weight-semibold">$955<span class="badge badge-soft-success font-11 ml-2"><i class="fas fa-arrow-up"></i> 8.6%</span></h2>
-                                                                <h4 class="title-text mb-0">Monthly Revenue</h4>
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex justify-content-between bg-purple p-3 mt-3 rounded">
-                                                            <div>
-                                                                <h4 class="mb-1 font-weight-semibold text-white">$10255</h4>
-                                                                <p class="text-white mb-0">Card Balance</p>
-                                                            </div>
-                                                            <div>
-                                                                <h4 class=" mb-1 font-weight-semibold text-white">25.12 <small>BTC</small></h4>
-                                                                <p class="text-white mb-0">Crypto Balance</p>
-                                                            </div>
-                                                        </div>                                    
-                                                    </div><!--end card-body-->
-                                                </div><!--end card-->                        
+                                                    <!--end card-->                        
                                             <div class="card">
                                                 <div class="card-body dash-info-carousel">
                                                     <h4 class="mt-0 header-title mb-4">Active Case</h4>
                                                     <div class="d-flex justify-content-between">
+                                                    <a href="case_list.php">
                                                         <button type="button" class="btn btn-gradient-primary btn-sm">View Cases</button>
+                                                        </a>
                                                     </div>
                                                     <div class="bg-light p-3 mt-3 d-flex justify-content-between">
                                                         <div>
-                                                            <h2 class="mb-1 font-weight-semibold">402</h2>
+                                                            <h2 class="mb-1 font-weight-semibold"><?php echo $total_count_case;?></h2>
                                                             <p class="text-muted mb-0">Total Cases Handelled</p>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div><!--end card-->
                                         </div><!--end col-->
-                                        <div class="col-lg-8">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <div class="float-lg-right float-none eco-revene-history justify-content-end">
-                                                        <ul class="nav">
-                                                            <li class="nav-item">
-                                                                <a class="nav-link" href="#">This Year</a>
-                                                            </li>                                     
-                                                        </ul>
-                                                    </div>
-                                                    <h4 class="header-title mt-0">Cases Attended</h4>
-                                                    <canvas id="bar" class="drop-shadow w-100"  height="350"></canvas>
-                                                </div><!--end card-body-->
-                                            </div><!--end card-->                                          
-                                        </div><!--end col-->  
+                                        <!--end col-->  
                                     </div><!--end row-->                                     
                                 </div><!--end general detail-->
 
