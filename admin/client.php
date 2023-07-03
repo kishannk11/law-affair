@@ -75,29 +75,29 @@ require("top-navbar.php");
                         <div class="card-body">
                             <form action="add_client.php" method="POST" enctype="multipart/form-data">
                             
-                                <div class="col-lg-12">
+                                <div class="col-lg-6">
                                     <label for="exampleInputEmail1">Name</label>
                                     <input class="form-control" name="name" type="text" id="example-text-input">
                                 </div>
                                 &nbsp;
-                                <div class="col-lg-12">
+                                <div class="col-lg-6">
                                     <label for="exampleInputEmail1">Mobile</label>
                                     <input class="form-control" name="mobileNumber" type="text" id="example-text-input">
                                 </div>
                                 &nbsp;
-                                <div class="col-lg-12">
+                                <div class="col-lg-6">
                                     <label for="exampleInputEmail1">Address</label>
                                     <input class="form-control" name="address" type="text" id="example-text-input">
                                 </div>
                                 &nbsp;
-                                <div class="col-lg-12">
+                                <div class="col-lg-6">
                                     <label for="exampleInputEmail1">City</label>
                                     <input class="form-control" name="city" type="text" id="example-text-input">
                                 </div>
                                 &nbsp;
-                                <div class="form-group">
+                                <div class="col-lg-6">
                                         <label for="exampleFormControlSelect1">State</label>
-                                        <select class="form-control" id="exampleFormControlSelect1">
+                                        <select class="form-control" id="exampleFormControlSelect1" name="state">
                                             <option>Select State</option>
                                             <option>Andhra Pradesh</option>
                                             <option>Arunachal Pradesh</option>
@@ -130,18 +130,18 @@ require("top-navbar.php");
                                         </select>
                                     </div>
                                 &nbsp;
-                                <div class="col-lg-12">
+                                <div class="col-lg-6">
                                     <label for="exampleInputEmail1">Pincode</label>
                                     <input class="form-control" name="pincode" type="text" id="example-text-input">
                                 </div>
                                 &nbsp;
                                 
-                                <div class="col-lg-12">
+                                <div class="col-lg-6">
                                     <label for="exampleInputEmail1">Upload Photo</label>
                                     <input class="form-control" name="photo" type="file" id="example-text-input">
                                 </div>
                                 &nbsp;
-                                <div class="col-lg-12">
+                                <div class="col-lg-6">
                                     <label for="exampleInputEmail1">Upload Documents</label>
                                     <input class="form-control" name="document" type="file" id="example-text-input">
                                 </div>

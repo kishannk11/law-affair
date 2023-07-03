@@ -13,12 +13,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $case_status = implode(', ', $_POST['case']); // Convert the case status array to a string
     $case_next_date = $_POST['case_next_date'];
     $special_note = $_POST['special_note'];
-    $total_amount = $_POST['total_amount'];
-    $received_amount = $_POST['recieved_amount'];
-    $pending_amount = $_POST['pending_amount'];
-    $payment_mode = $_POST['payment'];
+    
      // Check if the case was successfully inserted
-    if ($insertmyCases->insertCase($case_number, $filing_number, $party_name, $case_status, $case_next_date, $special_note, $total_amount, $received_amount, $pending_amount, $payment_mode)) {
+     if ($insertmyCases->insertCase($case_number, $filing_number, $party_name, $case_status, $case_next_date, $special_note)) {
         $success="Case Updated";
         header("Location: case_list.php?success=".urlencode($success));
         exit;

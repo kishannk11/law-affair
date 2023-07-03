@@ -126,13 +126,9 @@ require("top-navbar.php");
                                     foreach ($cases as $case) {
                                         $output = $case['case_status'];  
                                     }
-                                    print_r($output);
+                                    
                                     $caseStatuses = ['Status 1', 'Status 2', 'Status 3', 'Status 4', 'Status5 '];
-                                    //$output = $cases[0]['case_status'];
-                                    //Status 1
-                                    //Status 1
                                     $i = 6;
-
                                     foreach ($caseStatuses as $status) {
                                         $checked = isChecked($status, $output) ? 'checked' : '';
                                         echo "
@@ -143,7 +139,9 @@ require("top-navbar.php");
                                                 </div>
                                             </div>
                                         ";
-                                        $i++;
+                                        if ($checked) {
+                                            $i++;
+                                        }
                                     }
                                     ?>
                                 </div>
@@ -161,7 +159,7 @@ require("top-navbar.php");
                                 </div>
                                 <div class="form-group">
                                     <label for="example-datetime-local-input">Case Next Date</label>
-                                    <input class="form-control" name ="case_next_date" type="date" id="example-datetime-local-input">
+                                    <input class="form-control" name ="case_next_date" type="date" id="example-datetime-local-input" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="example-datetime-local-input">Filing Date</label>
@@ -182,29 +180,7 @@ require("top-navbar.php");
                                     <label for="message">Special Note for <?php echo $case['case_next_date']; ?> </label> 
                                     <textarea class="form-control" name="special_note" rows="5" id="message"></textarea> 
                                 </div>
-                                <div class="row">
-                                <div class="col-lg-3 mb-2 mb-lg-0">
-                                    <label for="pro-start-date">Total Amount</label>
-                                    <input type="text" name="total_amount" value="<?php echo $cases[0]['total_amount']; ?>" class="form-control" id="case_number">
-                                </div><!--end col-->
-                                <div class="col-lg-3 mb-2 mb-lg-0">
-                                    <label for="pro-start-date">Received Amount</label>
-                                    <input type="text" class="form-control" value="<?php echo $cases[0]['recieved_amount']; ?>" name="recieved_amount" id="case_number" oninput="calculatePendingAmount()">
-                                </div><!--end col-->
-                                <div class="col-lg-3 mb-2 mb-lg-0">
-                                    <label for="pro-start-date">Pending Amount</label>
-                                    <input type="text" class="form-control" value="<?php echo $cases[0]['pending_amount']; ?>" name="pending_amount" id="case_number" readonly>
-                                </div><!--end col-->
-                                <div class="col-lg-3">
-                                <label for="pro-end-date">Mode of Payment</label>
-                                <select class="form-control" name="payment">
-                                    <option value="upi" <?php if ($cases[0]['payment'] == 'upi') echo 'selected'; ?>>UPI</option>
-                                    <option value="cash" <?php if ($cases[0]['payment'] == 'cash') echo 'selected'; ?>>CASH</option>
-                                    <option value="card" <?php if ($cases[0]['payment'] == 'card') echo 'selected'; ?>>Credit Card/Debit Card</option>
-                                    <option value="Netbanking" <?php if ($cases[0]['payment'] == 'Netbanking') echo 'selected'; ?>>Netbanking</option>
-                                </select>
-                                </div><!--end col-->                                                        
-                            </div>
+                                
                                  
 
                                 

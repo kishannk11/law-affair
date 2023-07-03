@@ -80,7 +80,7 @@ require("top-navbar.php");
                             <form action="advocate.php" method="POST" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <div class="form-group">
+                                        <div class="col-lg-6">
                                             <label for="example-tel-input" class="">Username</label>
 
                                             <?php
@@ -91,13 +91,13 @@ require("top-navbar.php");
                                                 id="example-tel-input" value="<?php echo $username ?>" readonly>
 
                                         </div>
-                                        <div class="form-group">
+                                        <div class="col-lg-6">
                                             <label for="example-text-input">Name</label>
                                             <input class="form-control" name="name" type="text" id="example-text-input"
                                                 required>
                                         </div>
 
-                                        <div class="form-group">
+                                        <div class="col-lg-6">
                                             <label for="example-tel-input" class="">Mobile
                                                 Number</label>
 
@@ -105,20 +105,20 @@ require("top-navbar.php");
                                                 id="example-tel-input" required>
                                         </div>
 
-                                        <div class="form-group">
+                                        <div class="col-lg-6">
                                             <label for="example-datetime-local-input" class="">Joining Date</label>
 
                                             <input class="form-control" type="date" name="joiningDate"
                                                 id="example-datetime-local-input" required>
                                         </div>
 
-                                        <div class="form-group">
+                                        <div class="col-lg-6">
                                             <label for="example-text-input">Name</label>
                                             <input class="form-control" name="name" type="text" id="example-text-input"
                                                 required>
                                         </div>
                                         
-                                        <div class="form-group">
+                                        <div class="col-lg-6">
                                             <label for="example-text-input" class="">Password</label>
 
                                             <input class="form-control" name="password" type="password"
@@ -126,28 +126,28 @@ require("top-navbar.php");
 
                                         </div>
 
-                                        <div class="form-group">
+                                        <div class="col-lg-6">
                                             <label class="">Upload Photo</label>
 
                                             <input type="file" name="photo" class="form-control" id="inputGroupFile04" required>
 
                                         </div>
 
-                                        <div class="form-group">
+                                        <div class="col-lg-6">
                                         <label for="exampleInputEmail1">Address</label>
                                         <input class="form-control" name="address" type="text" id="example-text-input" required>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="col-lg-6">
                                         <label for="exampleInputEmail1">City</label>
                                         <input class="form-control" name="city" type="text" id="example-text-input" required>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="col-lg-6">
                                         <label for="exampleInputEmail1">State</label>
                                         <input class="form-control"  name="state" type="text" id="example-text-input" required>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="col-lg-6">
                                         <label for="exampleFormControlSelect1">State</label>
-                                        <select class="form-control" id="exampleFormControlSelect1">
+                                        <select class="form-control" id="exampleFormControlSelect1" name="state">
                                             <option>Select State</option>
                                             <option>Andhra Pradesh</option>
                                             <option>Arunachal Pradesh</option>
@@ -179,15 +179,15 @@ require("top-navbar.php");
                                             <option>West Bengal</option>
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="col-lg-6">
                                         <label for="exampleInputEmail1">Pincode</label>
                                         <input class="form-control" name="pincode" type="text" id="example-text-input" required>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="col-lg-6">
                                         <label for="exampleInputEmail1">Country</label>
                                         <input class="form-control" name="country" type="text" id="example-text-input" required>
                                     </div>
-                                        <div class="form-group">
+                                        <div class="col-lg-6">
                                             <label for="example-text-input" class="">Specialization</label>
                                             <div class="col-md-9">
                                                 <div class="checkbox my-2">
