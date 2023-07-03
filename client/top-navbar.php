@@ -60,7 +60,7 @@ require_once('config/session.php');
                     <li class="dropdown">
                         <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
                             aria-haspopup="false" aria-expanded="false">
-                            <img src="../admin/<?php echo $details['profile_path'];?>" alt="profile-user" class="rounded-circle" /> 
+                            <img src="../admin/uploads/<?php echo $details['profile_path'];?>" alt="profile-user" class="rounded-circle" /> 
                             <span class="ml-1 nav-user-name hidden-sm"><?php echo $details['name'];?><i class="mdi mdi-chevron-down"></i> </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -106,6 +106,10 @@ require_once('config/session.php');
 
                 <li>
                     <a href="reports_list.php"><i class="ti-bar-chart"></i><span>My Reports</span></i></span></a>
+                </li>
+
+                <li>
+                    <a href="payment.php"><i class="ti-wallet"></i><span>Payment</span></i></span></a>
                 </li>
 
                 <li>

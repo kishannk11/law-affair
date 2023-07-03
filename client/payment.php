@@ -24,11 +24,11 @@ require("top-navbar.php");
             <!-- end page title end breadcrumb -->
             <?php
             include 'config/config.php';
-            include 'Database.php';
+            //include 'Database.php';
             ini_set('display_errors', 1);
             ini_set('display_startup_errors', 1);
             error_reporting(E_ALL);
-            $caseDetails = new CaseDetails($conn);
+            $caseDetails = new CaseDetailsClient($conn);
             $caseNumber = $caseDetails->getCaseNumber();
 
             ?>

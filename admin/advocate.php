@@ -28,6 +28,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["lawyer"])) {
         $errors["lawyer"] = "Please select a specialization.";
     }
+    if (empty($_POST["email"])) {
+        $errors["email"] = "Please enter email id.";
+    }
     if (empty($_POST["city"])) {
         $errors["city"] = "Please enter a city.";
     }
@@ -61,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $role="client";
 
         // Add advocate data to the database
-        $addAdvocate->addAdvocateData($_POST["name"], $_POST["mobileNumber"], $_POST["joiningDate"], $photo_path, $_POST["address"], $_POST["lawyer"],$_POST["username"],$hashed_password,$role, $_POST["city"], $_POST["state"], $_POST["pincode"], $_POST["country"]);
+        $addAdvocate->addAdvocateData($_POST["name"], $_POST["mobileNumber"], $_POST["joiningDate"], $photo_path, $_POST["address"], $_POST["lawyer"],$_POST["username"],$hashed_password,$role, $_POST["city"], $_POST["state"], $_POST["pincode"], $_POST["country"],$_POST["email"]);
         $success = $addAdvocate->getSuccessMessage();
         header("Location: add_advocate.php?succes=" . urlencode($success));
 

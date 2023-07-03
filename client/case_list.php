@@ -63,10 +63,12 @@ if (isset($_GET['error'])) {
                                         <th>Filling Number</th>
                                         <th>Filling Date</th>
                                         <th>Client</th>
-                                        <th>Advocate</th>
                                         <th>Party Name</th>
+                                        
                                         <th>Case Status</th>
+                                        <th>Advocate</th>
                                         <th>Case Next Date</th>
+                                        
                                         <th>Action</th>
                                     </tr>
                                 </thead>
