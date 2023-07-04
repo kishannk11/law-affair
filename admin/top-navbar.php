@@ -17,6 +17,7 @@ require_once('config/session.php');
         <link rel="shortcut icon" href="assets/images/favi.png">
         <link href="plugins/sweet-alert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
         <link href="plugins/animate/animate.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
         <!-- App css -->
 
         <link href="plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />

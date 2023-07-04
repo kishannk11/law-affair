@@ -66,7 +66,7 @@ if (isset($_GET['error'])) {
                                                     
                                                     ?>
                                                     <div class="met-profile-main-pic">
-                                                        <img src="<?php echo $info['file']; ?>" alt="" class="rounded-circle">
+                                                        <img src="../admin/uploads/<?php echo $info['file']; ?>" alt="" class="rounded-circle">
                                                         <!-- <span class="fro-profile_main-pic-change">
                                                             <i class="fas fa-camera"></i>
                                                         </span> -->
@@ -105,11 +105,13 @@ if (isset($_GET['error'])) {
                             <div class="tab-content detail-list" id="pills-tabContent">
                                 <div class="tab-pane fade show active" id="general_detail">
                                     <div class="row">
-                                        <div class="col-xl-12">  
-                                                <!--end card-->                        
+                                        <div class="col-xl-4">  
+                                                <div class="card">
+                                                    <!--end card-body-->
+                                                </div><!--end card-->                        
                                             <div class="card">
                                                 <div class="card-body dash-info-carousel">
-                                                    <h4 class="mt-0 header-title mb-12">Active Case</h4>
+                                                    <h4 class="mt-0 header-title mb-4">Active Case</h4>
                                                     <div class="d-flex justify-content-between">
                                                     <a href="case_list.php" class="btn btn-gradient-primary btn-sm">View Cases</a>
                                                     </div>

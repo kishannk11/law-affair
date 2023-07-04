@@ -214,7 +214,7 @@ require("top-navbar.php");
                                                 <b>Payment Details</b>
                                                 <div class="row">
                                                     <div class="col-lg-3 mb-2 mb-lg-0">
-                                                        <label for="pro-start-date">Total Amount</label>
+                                                        <label for="pro-start-date">Advance Payment</label>
                                                         <input type="text" name="total_amount" class="form-control" id="case_number" required>
                                                     </div><!--end col-->
                                                         <!--end col-->

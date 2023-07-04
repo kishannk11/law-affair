@@ -11,18 +11,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Sanitize and validate user input
     $data = [
         'id' => filter_input(INPUT_POST, 'id', FILTER_SANITIZE_STRING),
-        //'case_number' => filter_input(INPUT_POST, 'case_number', FILTER_SANITIZE_STRING),
-        'ffiling_number' => filter_input(INPUT_POST, 'ffiling_number', FILTER_SANITIZE_STRING),
-        'fillingDate' => filter_input(INPUT_POST, 'fillingDate', FILTER_SANITIZE_STRING),
+        'case_number' => filter_input(INPUT_POST, 'case_number', FILTER_SANITIZE_STRING),
+        //'ffiling_number' => filter_input(INPUT_POST, 'ffiling_number', FILTER_SANITIZE_STRING),
+        //'fillingDate' => filter_input(INPUT_POST, 'fillingDate', FILTER_SANITIZE_STRING),
         'client' => filter_input(INPUT_POST, 'client', FILTER_SANITIZE_STRING),
         'party_name' => filter_input(INPUT_POST, 'party_name', FILTER_SANITIZE_STRING),
         'case_status' => '',
         'advocate' => filter_input(INPUT_POST, 'advocate', FILTER_SANITIZE_STRING),
-        'case_next_date' => filter_input(INPUT_POST, 'case_next_date', FILTER_SANITIZE_STRING),
-        'total_amount' => filter_input(INPUT_POST, 'total_amount', FILTER_SANITIZE_STRING),
-        'recieved_amount' => filter_input(INPUT_POST, 'recieved_amount', FILTER_SANITIZE_STRING),
-        'pending_amount' => filter_input(INPUT_POST, 'pending_amount', FILTER_SANITIZE_STRING),
-        'payment' => filter_input(INPUT_POST, 'payment', FILTER_SANITIZE_STRING),
+        //'case_next_date' => filter_input(INPUT_POST, 'case_next_date', FILTER_SANITIZE_STRING),
+        //'total_amount' => filter_input(INPUT_POST, 'total_amount', FILTER_SANITIZE_STRING),
+        //'recieved_amount' => filter_input(INPUT_POST, 'recieved_amount', FILTER_SANITIZE_STRING),
+        //'pending_amount' => filter_input(INPUT_POST, 'pending_amount', FILTER_SANITIZE_STRING),
+        //'payment' => filter_input(INPUT_POST, 'payment', FILTER_SANITIZE_STRING),
     ];
     // Check if case_status field is empty
     if (isset($_POST['case'])) {

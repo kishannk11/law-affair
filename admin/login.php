@@ -79,15 +79,17 @@ require_once "Database.php";
                                     </div><!--end form-group-->
 
                                     <div class="form-group">
-                                        <label for="userpassword">Password</label>
-                                        <div class="input-group mb-3">
-                                            <span class="auth-form-icon">
-                                                <i class="dripicons-lock"></i>
-                                            </span>
-                                            <input type="password" class="form-control" name="userpassword"
-                                                id="userpassword" placeholder="Enter password">
+                                    <label for="userpassword">Password</label>
+                                    <div class="input-group mb-3">
+                                        
+                                        <input type="password" class="form-control" name="userpassword" id="userpassword" placeholder="Enter password">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                            </button>
                                         </div>
-                                    </div><!--end form-group-->
+                                    </div>
+                                </div><!--end form-group-->
 
                                     <div class="form-group row mt-4">
                                         <div class="col-sm-6">
@@ -127,15 +129,26 @@ require_once "Database.php";
 
     <!-- jQuery  -->
     <script src="../assets/js/jquery.min.js"></script>
-    <script src="../assets/js/jquery-ui.min.js"></script>
-    <script src="../assets/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/metismenu.min.js"></script>
-    <script src="../assets/js/waves.js"></script>
-    <script src="../assets/js/feather.min.js"></script>
-    <script src="../assets/js/jquery.slimscroll.min.js"></script>
+    <script>
+        var togglePassword = document.getElementById("togglePassword");
+        var passwordInput = document.getElementById("userpassword");
+        togglePassword.addEventListener("click", function () {
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+        });
+    </script>
+    <script src="assets/js/jquery-ui.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/metismenu.min.js"></script>
+    <script src="assets/js/waves.js"></script>
+    <script src="assets/js/feather.min.js"></script>
+    <script src="assets/js/jquery.slimscroll.min.js"></script>
 
     <!-- App js -->
-    <script src="../assets/js/app.js"></script>
+    <script src="assets/js/app.js"></script>
 
 </body>
 

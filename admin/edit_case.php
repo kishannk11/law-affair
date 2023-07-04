@@ -91,16 +91,16 @@ Swal.fire({
                                                     <div class="row">
                                                         <div class="col-lg-3 mb-2 mb-lg-0">
                                                             <label for="pro-start-date">Case No</label>
-                                                            <input type="text" class="form-control"  id="case_number" value="<?php echo $cases[0]['case_number']; ?>" readonly    >
+                                                            <input type="text" class="form-control"  name="case_number" value="<?php echo $cases[0]['case_number']; ?>" readonly    >
                                                             <input type="hidden" class="form-control" name="id"  id="id" value="<?php echo $cases[0]['id']; ?>" readonly    >
                                                         </div><!--end col-->
                                                         <div class="col-lg-3 mb-2 mb-lg-0">
                                                             <label for="pro-start-date">Filing No</label>
-                                                            <input type="text" name="ffiling_number" class="form-control" id="case_number" value="<?php echo $cases[0]['filing_number']; ?>">
+                                                            <input type="text" name="ffiling_number" class="form-control" id="case_number" value="<?php echo $cases[0]['filing_number']; ?>" readonly>
                                                         </div><!--end col-->
                                                         <div class="col-lg-3 mb-2 mb-lg-0">
                                                             <label for="pro-start-date">Filing Date</label>
-                                                            <input type="date" name="fillingDate" class="form-control" id="pro-start-date" placeholder="Enter start date" value="<?php echo $cases[0]['fillingDate']; ?>">
+                                                            <input type="date" name="fillingDate" class="form-control" id="pro-start-date" placeholder="Enter start date" value="<?php echo $cases[0]['fillingDate']; ?>" readonly>
                                                         </div><!--end col-->
                                                         <div class="col-lg-3">
                                                         <label class="drop-down">Client Name</label>
@@ -144,7 +144,7 @@ Swal.fire({
                                                     <div class="row">
                                                         <div class="col-lg-6 mb-2 mb-lg-0">
                                                             <label for="pro-start-date">Case Next Date</label>
-                                                            <input type="date" class="form-control" name="case_next_date" id="pro-start-date" value="<?php echo $cases[0]['case_next_date']; ?>" placeholder="Enter start date">
+                                                            <input type="date" class="form-control" name="case_next_date" id="pro-start-date" value="<?php echo $cases[0]['case_next_date']; ?>" placeholder="Enter start date" readonly>
                                                         </div><!--end col-->
                                                         <div class="form-group col-lg-6 mb-2 mb-lg-0">
                                                         <label class="drop-down">Select Advocate</label>

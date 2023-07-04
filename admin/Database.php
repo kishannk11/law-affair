@@ -554,16 +554,13 @@ class updateAllCase
     public function saveCase($data)
     {
         $special_note = $data['special_note'];
-        $sql = "UPDATE cases SET filing_number = :filing_number, fillingDate = :fillingDate, client = :client, party_name = :party_name, case_status = :case_status, advocate = :advocate, case_next_date = :case_next_date WHERE id = :id";
+        $sql = "UPDATE cases SET client = :client, party_name = :party_name, case_status = :case_status, advocate = :advocate WHERE case_number = :case_number";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':filing_number', $data['ffiling_number']);
-        $stmt->bindParam(':fillingDate', $data['fillingDate']);
         $stmt->bindParam(':client', $data['client']);
         $stmt->bindParam(':party_name', $data['party_name']);
         $stmt->bindParam(':case_status', $data['case_status']);
         $stmt->bindParam(':advocate', $data['advocate']);
-        $stmt->bindParam(':case_next_date', $data['case_next_date']);
-        $stmt->bindParam(':id', $data['id']);
+        $stmt->bindParam(':case_number', $data['case_number']);
         return $stmt->execute();
     }
 }
