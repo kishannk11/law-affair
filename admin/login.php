@@ -128,7 +128,7 @@ require_once "Database.php";
 
 
     <!-- jQuery  -->
-    <script src="../assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
     <script>
         var togglePassword = document.getElementById("togglePassword");
         var passwordInput = document.getElementById("userpassword");

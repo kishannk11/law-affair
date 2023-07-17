@@ -128,7 +128,7 @@ require("top-navbar.php");
                                         <div class="col-lg-6">
                                             <label for="example-text-input" class="">Password</label>
                                             <div class="input-group">
-                                                <input class="form-control" name="password" type="password" id="example-text-input" required>
+                                                <input class="form-control" name="password" type="password" id="userpassword" required>
                                                 <div class="input-group-append">
                                                     <button class="btn btn-outline-secondary" type="button" id="togglePassword">
                                                         <i class="fa fa-eye" aria-hidden="true"></i>
@@ -284,16 +284,16 @@ require("top-navbar.php");
 </div>
 <!-- end page-wrapper -->
 <script>
-    var togglePassword = document.getElementById("togglePassword");
-    var passwordInput = document.getElementById("example-text-input");
-     togglePassword.addEventListener("click", function () {
-        if (passwordInput.type === "password") {
-            passwordInput.type = "text";
-        } else {
-            passwordInput.type = "password";
-        }
-    });
-</script>
+        var togglePassword = document.getElementById("togglePassword");
+        var passwordInput = document.getElementById("userpassword");
+        togglePassword.addEventListener("click", function () {
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+        });
+    </script>
 <!-- jQuery  -->
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/bootstrap.bundle.min.js"></script>
